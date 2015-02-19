@@ -1,0 +1,69 @@
+\documentclass[a4paper,10pt,twoside,fleqn]{book}
+%\documentclass[a4paper,10pt]{scrartcl}
+
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amscd}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{setspace}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{makeidx}
+\usepackage[italian]{varioref}
+
+
+\makeindex
+
+\title{}
+\author{}
+\date{}
+
+\pdfinfo{%
+  /Title    ()
+  /Author   ()
+  /Creator  ()
+  /Producer ()
+  /Subject  ()
+  /Keywords ()
+}
+
+\newcommand{\Def}{\overset{def}{=}}
+\renewcommand{\bar}{\overline}
+\newcommand{\vet}{\overrightarrow}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\E}{\mathbb{E}}
+\renewcommand{\L}{\mathbb{L}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\renewcommand{\phi}{\varphi}
+\DeclareMathOperator{\Char}{Char}
+
+
+\begin{document}
+\frontmatter
+\begin{titlepage}
+ \maketitle
+\end{titlepage}
+
+\newtheorem*{defi}{Definizione}
+\newtheorem*{prop}{Proposizione}
+\newtheorem*{teo}{Teorema}
+\newtheorem*{cor}{Corollario}
+\newtheorem*{lemma}{Lemma}
+\newtheorem*{esempio}{Esempio}
+\doublespacing
+\tableofcontents
+\cleardoublepage
+\mainmatter
+
+\input{Capitoli/capitolo1}
+
+\end{document}
