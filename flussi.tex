@@ -92,24 +92,40 @@ nelle categorie $C^\infty(\mathbb{T}^1)$ e $C^\omega(\mathbb{T}^1)$.
 \begin{lista}
 \item $\alpha$ diofanteo $\sse$ per ogni $\psi\in\C^\infty(\mathbb{T}^1)$ a media nulla
 l'equazione coomologica ha una (unica) soluzione $\chi\in C^\infty(\mathbb{T}^1)$.
-\item Se $\lim_{n\to\infty}\frac{\ln q_{n+1}}{q_n}<\infty$ (dove $\frac{p_n}{q_n}$ sono i convergenti di $\alpha$),
-per ogni $\psi\in C^\omega(\mathbb{T}^1)$ a media nulla
+\item $\alpha$ soddisfa $\lim_{n\to\infty}\frac{\ln q_{n+1}}{q_n}<\infty$ (dove $\frac{p_n}{q_n}$ sono i suoi convergenti)
+$\sse$ per ogni $\psi\in C^\omega(\mathbb{T}^1)$ a media nulla
 l'equazione coomologica ha una (unica) soluzione $\chi\in C^\omega(\mathbb{T}^1)$ a media nulla.
 \end{lista}
 \end{teo}
 
-\begin{proof}Vediamo solo il primo punto. $(\Rightarrow)$: trasformando l'equazione coomologica troviamo
+\begin{proof}Vediamo il punto $(1)$. $(\Rightarrow)$: trasformando l'equazione coomologica troviamo
 $\pa{1-e^{2\pi i k\alpha}}\widehat{\chi}(k)=\widehat{\psi}(k)$. Inoltre per ipotesi
 $\norm{k\alpha}\ge\gamma k^{-(1+\tau)}$, quindi
 \[ \abs{\widehat{\chi}(k)}=\frac{\abs{\widehat{\psi}(k)}}{\abs{1-e^{2\pi i k\alpha}}}=\abs{\widehat{\psi}(k)}O(k^{1+\tau}) \]
 e la decrescenza rapida di $\widehat{\psi}(k)$ implica quella di $\widehat{\chi}(k)$;
-dunque la funzione $\chi$ avente questi coefficienti di Fourier è $C^\infty$ e risolve l'equazione. \\
+dunque la funzione $\chi$ avente questi coefficienti di Fourier (e $\widehat{\chi}(0)=0$) è $C^\infty$ e risolve l'equazione. \\
 $(\Leftarrow)$: supponiamo per assurdo $\alpha$ non diofanteo, ovvero esista una successione $k_j\uparrow\infty$
 per cui $\abs{1-e^{2\pi i k_j\alpha}}^{-1}\ge k_j^j$. Costruiamo una $\psi$ con una serie di Fourier ``lacunare'': sia
 \[ \psi(x):=\sum_j \pa{1-e^{2\pi i k_j\alpha}}e^{2\pi i k_j x}+\sum_j \pa{1-e^{-2\pi i k_j\alpha}}e^{-2\pi i k_j x}. \]
 $\psi$ ha valori reali ed è $C^\infty$ grazie alla decrescenza rapida dei coefficienti.
 Però non può esistere una $\chi\in C^\infty$ che risolve l'equazione coomologica perché come visto prima
-dovrebbe avere tutti i coefficienti di indice $k_j$ pari a $1$.
+dovrebbe avere tutti i coefficienti di indice $k_j$ pari a $1$. \\
+Passiamo al punto $(2)$ (facoltativo). $(\Rightarrow)$: fissato $n>0$ (il caso $n<0$ è analogo), per la proprietà di migliore approssimazione ??
+abbiamo $\norm{n\alpha}\ge\norm{q_k\alpha}$ dove $q_k\le n<q_{k+1}$. Inoltre
+\[ \norm{q_k\alpha}=\frac{1}{q_{k+1}+q_k\alpha_{k+1}}\sim\frac{1}{q_{k+1}} \]
+($0<\alpha_{k+1}<1$ si ottiene applicando $k+1$ volte la mappa di Gauss a $\set{\alpha}$).
+L'ipotesi dice che $\abs{\widehat{\psi}(n)}\le Ce^{-\delta n}$, quindi come nel punto precedente otteniamo
+\[ \abs{\widehat{\chi}(n)}=\frac{\abs{\widehat{\psi}(n)}}{\abs{1-e^{2\pi i n\alpha}}}\lesssim Ce^{-\delta n}\norm{n\alpha}^{-1}
+\lesssim Ce^{-\delta n}q_{k+1} \]
+e per concludere basta ad esempio $q_{k+1}\le e^{\frac{\delta}{2}n}$ definitivamente.
+Ma per ipotesi $\ln q_{k+1}\le \frac{\delta}{2}q_k\le\frac{\delta}{2}n$ definitivamente. \\
+$(\Leftarrow)$: per assurdo esista $\delta>0$ e una successione $k_j\uparrow\infty$ tale che
+$\ln q_{k_j+1}\ge\delta q_{k_j}$, cioè $q_{k_j+1}\ge e^{\delta q_{k_j}}$. Come prima ricaviamo
+\[ \abs{1-e^{2\pi i q_{k_j}\alpha}}\sim\frac{1}{q_{k_j+1}}\le e^{-\delta q_{k_j}}, \]
+quindi definendo
+\[ \psi(x):=\sum_j \pa{1-e^{2\pi i k_j\alpha}}e^{2\pi i k_j x}+\sum_j \pa{1-e^{-2\pi i k_j\alpha}}e^{-2\pi i k_j x} \]
+otteniamo una funzione analitica a valori reali. Una soluzione $\chi$ dell'equazione coomologica però avrebbe
+$\widehat{\chi}(q_{k_j})=1$ per ogni $j$, assurdo.
 \end{proof}
 
 L'equazione coomologica $\psi-\psi\circ f=\phi$ si può risolvere in una situazione molto più generale.

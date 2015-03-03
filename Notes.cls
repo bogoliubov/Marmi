@@ -83,7 +83,7 @@
   \ifthenelse{\isundefined{\notes@cleardoublepage}}{\ExecuteOptions{nocleardoublepage}}{}%
   \ifthenelse{\isundefined{\notes@columns}}{\ExecuteOptions{onecolumn}}{}%
   \ifthenelse{\isundefined{\notes@side}}{\ExecuteOptions{twoside}}{}%
-  \PassOptionsToPackage{fleqn}{amsmath}%
+  %\PassOptionsToPackage{fleqn}{amsmath}
 }
 \DeclareOption{seminar}{%
   \newcommand{\notes@type}{seminar}%
@@ -175,7 +175,6 @@
 \newcommand{\TODO}{\mymarginpar{TODO}}%
 
 %%% Theorems and sections style
-\swapnumbers
 \newtheoremstyle{plainsc}{10pt}{10pt}{\normalfont\itshape}{}{\normalfont\smallcaps}{.}{.5em}{}
 \newtheoremstyle{definitionsc}{10pt}{10pt}{\normalfont}{}{\normalfont\smallcaps}{.}{.5em}{}
 \newtheoremstyle{remarksc}{10pt}{10pt}{\normalfont}{}{\normalfont\smallcaps}{.}{.5em}{}
