@@ -1,0 +1,212 @@
+\section{Entropia}
+
+Supponiamo di fare un esperimento con $n$ possibili esiti mutualmente esclusivi.
+Modellizziamo la situazione con uno spazio di probabilità (spazio dei campioni) $(X,\mu)$
+e una partizione $X=A_1\sqcup \dots\sqcup A_n$ (il tutto anche mod $0$), con $\mu(A_i)=p_i$: con l'esperimento non conosceremo il preciso elemento $x\in X$ ma solo l'esito $A_i$. Vogliamo trovare un modo di misurare a priori la quantità media di \emph{informazione} su $x$ che si ottiene eseguendo l'esperimento. 
+\Eacc naturale supporre che questa informazione media guadagnata, che chiamiamo \emph{entropia}, dipenda solo da $n$ e da $p_1,\dots,p_n$.
+
+Se la situazione è un sistema fisico che si evolve (ad esempio una particella di gas in una scatola di cui
+in ogni istante possiamo sapere in quale metà della scatola si trova), spesso c'è anche una trasformazione $f:X\to X$
+che preserva $\mu$: lavorando a tempo discreto, $f$ dice come si sposta un punto nello spazio delle fasi
+all'istante successivo. Eseguendo l'esperimento negli istanti $0,\dots,T$ troveremo ancora più informazione su $x$:
+in sostanza conosceremo $\uno_{A_i}\pa{f^k(x)}=\uno_{f^{-k}(A_i)}$, perciò l'entropia sarà quella associata
+alla \emph{partizione congiunta} fatta da tutte le possibili intersezioni $A_{i_0}\cap f^{-1}(A_{i_1})\cap \dots\cap f^{-T}(A_{i_T})$.
+
+\subsection{Definizione assiomatica dell'entropia}
+Cerchiamo un'espressione esplicita per l'entropia, funzione di $p_1,\dots,p_n$, concentrandoci sulla situazione di una sola misurazione
+(cioè senza trasformazioni $f$ e senza i diversi istanti di tempo).
+Poiché $\sum_i p_i=1$, cerchiamo per ogni $n\ge 1$ una funzione 
+\[H^{(n)}:\Delta^{(n)}\to [0,+\infty),\]
+dove $\Delta^{(n)}:=\set{(x_1,\dots,x_n):0\le x_i\le 1,\ \sum_i x_i=1}$ è il simplesso $(n-1)$-dimensionale. Bastano alcuni assiomi di buon senso per determinare completamente $H^{(n)}$:
+\begin{lista}
+\item simmetria negli argomenti
+\item $H^{(n)}(1,0,\dots,0)=0$
+\item $H^{(n)}(0,p_2,\dots,p_n)=H^{(n-1)}(p_2,\dots,p_n)$
+\item $H^{(n)}(p_1,\dots,p_n)\le H^{(n)}\pa{\frac{1}{n},\dots,\frac{1}{n}}$
+\item $H^{(n\ell)}(\pi_{11},\dots,\pi_{1\ell},\dots,\pi_{n1},\dots,\pi_{n\ell})=H^{(n)}(p_1,\dots,p_n)
++\sum_{i=1}^n p_i H^{(\ell)}\pa{\frac{\pi_{i1}}{p_i},\dots,\frac{\pi_{i\ell}}{p_i}}$, dove $p_i:=\sum \pi_{ij}$.
+\end{lista}
+
+L'ultimo assioma equivale a chiedere che, data una partizione $(A_{ij})_{1\le i\le n,1\le j\le\ell}$
+e posto $B_i:=\sqcup_j A_{ij}$, l'entropia di $(A_{ij})$ sia quella della partizione meno fine $(B_i)$
+più la media pesata delle \emph{entropie relative} nei blocchi $B_i$, calcolate con la probabilità condizionata.
+
+\begin{teo}Se le funzioni $H^{(n)}$ soddisfano i suddetti assiomi e sono continue, allora
+\[ H^{(n)}(p_1,\dots,p_n)=-c\sum_{i=1}^n p_i\ln p_i \]
+per qualche costante $c\ge 0$ indipendente da $n$. Inoltre le $H^{(n)}$ così definite soddisfano tutti gli assiomi.
+\end{teo}
+
+\begin{proof}Ovviamente $H^{(1)}(1)=0$. Calcoliamo intanto
+$K(n):=H^{(n)}\pa{\frac{1}{n},\dots,\frac{1}{n}}$. \\
+Grazie a $(3)$ e $(4)$, $K(n)$ è non decrescente. Inoltre $(5)$ dà $K(n\ell)=K(n)+K(\ell)$. \\
+Supponendo ora $r,\ell\ge 2$, per ogni $n$ scegliamo $m$ tale che $\ell^m\le r^n\le\ell^{m+1}$.
+$K(\cdot)$ e il logaritmo sono entrambi non decrescenti e trasformano prodotti in somme, quindi
+\[ \ln(\ell^m)\le\ln(r^n)\le\ln(\ell^{m+1})\implica \frac{m}{n}\le\frac{\ln r}{\ln \ell}\le\frac{m}{n}+\frac{1}{n} \]
+\[ K(\ell^m)\le K(r^n)\le K(\ell^{m+1})\implica \frac{m}{n}\le\frac{K(r)}{K(\ell)}\le\frac{m}{n}+\frac{1}{n} \]
+e mandando $n\to\infty$ otteniamo $\frac{K(r)}{K(\ell)}=\frac{\ln r}{\ln n}$, da cui $K(n)=c\ln n$ per qualche $c\ge 0$. \\
+Osserviamo ora che, grazie a $(3)$, l'assioma $(5)$ vale in questa forma più generale:
+\[ H^{\pa{\sum \ell_i}}(\pi_{11},\dots,\pi_{1\ell_1},\dots,\pi_{n1},\dots,\pi_{n\ell_n})
+=H^{(n)}(p_1,\dots,p_n)+\sum_{i=1}^n p_i H^{(\ell_i)}\pa{\frac{\pi_{i1}}{p_i},\dots,\frac{\pi_{i\ell_i}}{p_i}} \]
+dove come al solito $p_i:=\sum \pi_{ij}$. Quindi se $r_1,\dots,r_n$ sono interi positivi e $s=\sum_i r_i$ otteniamo
+\[ H^{(s)}\pa{\frac{1}{s},\dots,\frac{1}{s}}=H^{(n)}\pa{\frac{r_1}{s},\dots,\frac{r_n}{s}}
++\sum_{i=1}^n \frac{r_i}{s}H^{(r_i)}\pa{\frac{1}{r_i},\dots,\frac{1}{r_i}}, \]
+ovvero definendo $p_i:=\frac{r_i}{s}$ abbiamo $H^{(n)}(p_1,\dots,p_n)=K(s)-\sum_i p_i K(r_i)=-c\sum_i p_i\ln p_i$.
+Per la densità in $\Delta^{(n)}$ dei punti a coordinate razionali e la continuità di $H^{(n)}$ arriviamo alla tesi.
+Che le $H^{(n)}$ trovate soddisfano gli assiomi è semplice, l'unico non ovvio è il $(4)$: la convessità di $x\mapsto x\ln x$ su $[0,\infty)$ dà
+$\frac{1}{n}\sum p_i\ln p_i\ge\frac{1}{n}\ln\pa{\frac{1}{n}}$ (perché $\sum p_i=1$), ovvero $-\sum p_i\ln p_i\le\ln n=K(n)$.
+\end{proof}
+
+
+Scegliamo per convenzione $c=1$.
+Data una partizione $\mathcal{P}=\set{A_1,\dots,A_n}$ di $X$, scriveremo anche $H^{(n)}(\mathcal{P})$ o $H(\mathcal{P})$
+anziché $H^{(n)}\pa{\mu(A_1),\dots,\mu(A_n)}$.
+
+\subsection{Entropia di Kolmogorov-Sinai}
+
+\begin{defi}Date due partizioni $\mathcal{P}=\set{A_1,\dots,A_n}$ e $\mathcal{Q}=\set{B_1,\dots,B_\ell}$,
+definiamo il \emph{raffinamento comune} $\mathcal{P}\vee\mathcal{Q}:=\set{A_i\cap B_j\mid 1\le i\le n,1\le j\le \ell}$.
+\end{defi}
+
+Se oltre a una partizione $\mathcal{P}$ abbiamo anche una trasformazione misurabile $f:X\to X$ che preserva $\mu$,
+possiamo considerare l'informazione media che si acquisisce dopo $T$ istanti di tempo (rilevando
+ad ogni istante $k$ l'insieme $A_i$ in cui finisce $f^k(x)$): questa è $\frac{1}{T}H^{(Tn)}(\mathcal{P}_T)$,
+dove $\mathcal{P}_T:=\mathcal{P}\vee\cdots\vee f^{-(T-1)}(\mathcal{P})$, vista come partizione composta
+da $Tn$ insiemi. Osserviamo che abbiamo mediato anche nel tempo, cioè abbiamo diviso per $T$.
+
+\begin{lemma}[Fekete]\label{fekete} Se $a:\N\nonzero\to\R$ è subadditiva, ovvero $a(m+n)\le a(m)+a(n)$, esiste sempre
+$\lim_{n\to\infty}\frac{a(n)}{n}$ e coincide con $\inf_n\frac{a(n)}{n}$.
+\end{lemma}
+
+\begin{proof}Ovviamente $\liminf_{n\to\infty}\frac{a(n)}{n}\ge\inf_n\frac{a(n)}{n}$. Fissiamo ora $m>0$
+e per ogni $n$ facciamo la divisione con resto: $n=km+r$. La subadditività dà
+\[ \frac{a(n)}{n}\le\frac{a(km)+a(r)}{km+r}=\frac{k}{km+r}a(m)+\frac{a(r)}{km+r} \]
+e mandando $n\to\infty$ (essendo $r$ limitato e così pure $a(r)$) otteniamo $\limsup_{n\to\infty}\le\frac{a(m)}{m}$.
+Dato che questo vale per tutti gli $m$ segue la tesi.
+\end{proof}
+
+\begin{cor}Esiste sempre $h(f,\mathcal{P}):=\lim_{T\to\infty}\frac{1}{T}H(\mathcal{P}_T)$.
+\end{cor}
+
+\begin{proof}Grazie a Fekete, basta mostrare che $H(\mathcal{P}_{m+n})\le H(\mathcal{P}_m)+H(\mathcal{P}_n)$.
+Essendo $\mathcal{P}_{m+n}=\mathcal{P}_m\vee f^{-m}(\mathcal{P}_n)$ e $H(\mathcal{P}_n)=H\pa{f^{-m}(\mathcal{P}_n)}$,
+basta vedere che $H(\mathcal{P}\vee\mathcal{Q})\le H(\mathcal{P})+H(\mathcal{Q})$ per due generiche
+partizioni $\mathcal{P}=\set{A_1,\dots,A_k}$ e $\mathcal{Q}=\set{B_1,\dots,B_\ell}$. \\
+Dall'assioma $(5)$ troviamo
+\[ H(\mathcal{P}\vee\mathcal{Q})=H(\mathcal{P})+\sum_{i,j}\lambda_i f(t_{ij}) \]
+dove $\lambda_i=\mu(A_i)$, $t_{ij}=\frac{\mu(A_i\cap B_j)}{\mu(A_i)}$ e $f(x)=-x\ln x$. \\
+Per la concavità di $f$ e il fatto che $\sum_i\lambda_i=1$ otteniamo (Jensen)
+\[ \sum_i \lambda_i f(t_{ij})\le f\pa{\sum_i\lambda_i t_{ij}}=f(\mu(B_j))=-\mu(B_j)\ln\mu(B_j), \]
+da cui $\sum_{i,j}\lambda_i f(t_{ij})\le -\sum_j \mu(B_j)\ln\mu(B_j)=H(\mathcal{Q})$.
+\end{proof}
+
+\begin{defi}L'\emph{entropia di Kolmogorov-Sinai} del sistema dinamico misurabile $(X,\mathcal{A},\mu,f)$ è
+$h_{KS}(f):=\sup_{\mathcal{P}}h(f,\mathcal{P})$, al variare delle partizioni misurabili $\mathcal{P}$.
+\end{defi}
+
+?? schemi di Bernoulli
+
+\subsection{Entropia topologica}
+
+Vogliamo dare ora una definizione di entropia anche per sistemi dinamici topologici, senza parlare di misura.
+Dato $(X,d,f)$ con $X$ compatto e $f:X\to X$ continua, poniamo $d_n(x,y):=\max_{0\le j\le n}d\pa{f^j(x),f^j(y)}$.
+
+\begin{defi}$S\subseteq X$ è $(n,\epsilon)$-\emph{spanning} se per ogni $x\in X$ c'è un $y\in S$
+con $d_n(x,y)<\epsilon$.
+\end{defi}
+
+Per la continuità di $f$, $d_n$ è una distanza equivalente a $d$, cioè
+induce la stessa topologia. Dalla compattezza di $X$ segue che esiste sempre un insieme $(n,\epsilon)$-spanning finito.
+Poniamo $r(n,\epsilon):=\min\set{\abs{S}:S\ (n,\epsilon)\text{-spanning}}$: per quanto appena detto vale $r(n,\epsilon)<\infty$.
+Se $X$ ha un ricoprimento con $m$ insiemi di diametro minore di $\epsilon$, $r(n,\epsilon)\le m^{n+1}$.
+Infatti, chiamando questi insiemi $A_1,\dots,A_m$, basta prendere un punto da ogni insieme del tipo
+$A_{i_0}\cap f^{-1}(A_{i_1})\cap\dots\cap f^{-n}(A_{i_n})$. Ogni $x\in X$ sta in uno di questi $m^{n+1}$ insiemi,
+quindi la distanza $d_n$ tra $x$ e il punto corrispondente è minore di $\epsilon$ per costruzione.
+
+
+\begin{defi}L'\emph{entropia topologica} di $(X,d,f)$ è
+\[ h_{top}(f):=\lim_{\epsilon\to 0}\limsup_{n\to\infty}\frac{1}{n}\ln r(n,\epsilon). \]
+\end{defi}
+
+Il limite esiste perché $\epsilon\mapsto\limsup_{n\to\infty}\frac{1}{n}\ln r(n,\epsilon)$ è decrescente.
+
+\begin{prop}L'entropia topologica ha le seguenti proprietà:
+\begin{lista}
+\item se $f$ è un'isometria, $h_{top}(f)=0$
+\item se $f\in\homeo(X)$, $h_{top}(f^{-1})=h_{top}(f)$
+\item $h_{top}(f^m)=mh_{top}(f)$ per $m>0$.
+\end{lista}
+\end{prop}
+
+\begin{proof}$(1)$: fissato $\epsilon$, scegliamo $S\subseteq X$ finito tale che per ogni $x\in X$
+ci sia un $y\in S$ con $d(x,y)<\epsilon$. $S$ è $(n,\epsilon)$-spanning per ogni $n$ in quanto $d_n=d$.
+Perciò $\limsup_{n\to\infty}\frac{1}{n}\ln r(n,\epsilon)\le\limsup_{n\to\infty}\frac{\ln\abs{S}}{n}=0$. \\
+$(2)$: se $S$ è $(n,\epsilon)$-spanning per $f$, $f^n(S)$ è $(n,\epsilon)$-spanning per $f^{-1}$. \\
+$(3)$: chiaramente $r(n,\epsilon,f^m)\le r(mn,\epsilon,f)$ perché un insieme $(mn,\epsilon)$-spanning per $f$
+è $(n,\epsilon)$-spanning per $f^m$. Quindi $h_{top}(f^m)\le m h_{top}(f)$. \\
+Per l'altra disuguaglianza: dato $\epsilon$ sia $\delta<\epsilon$ tale che per $d(x,y)<\delta$ si abbia $d\pa{f^j(x),f^j(y)}<\epsilon$,
+per ogni $j=0,\dots,m-1$. Ora un insieme $(n,\delta)$-spanning per $f^m$ è $(mn,\epsilon)$-spanning per $f$:
+basta scrivere ogni $0\le k\le mn$ come $k=qm+r$ e usare le definizioni.
+Quindi $\limsup_{n\to\infty}\frac{1}{n}\ln r(n,\delta,f^m)\ge m\limsup_{n\to\infty}\frac{\ln r(mn,\epsilon,f)}{mn}
+=m\limsup_{k\to\infty}\frac{\ln r(k,\epsilon,f)}{k}$.
+\end{proof}
+
+\begin{esempio}La rotazione irrazionale $R_\alpha$, essendo un'isometria, ha entropia nulla.
+\end{esempio}
+
+\begin{esempio}L'entropia può anche essere infinita. Consideriamo ad esempio
+\[ X:=\set{x\in\ell^2(\N):\abs{x_i}\le 2^{-i}} \]
+(compatto) con l'endomorfismo $f:X\to X$, $\pa{f(x)}_i:=2x_{i+1}$. \Eacc $r\pa{n,\frac{1}{k}}>k^n$:
+infatti $d_n(x,y)\ge\max_{0\le k\le n}\abs{\pa{f^k(x)}_0-\pa{f^k(y)}_0}=\max_{0\le k\le n}2^k\abs{x_k-y_k}$,
+quindi, se $S$ è $\pa{n,\frac{1}{k}}$-spanning, scegliendo
+\[ x=\sum_{k=0}^n\alpha_k 2^{-k}e_k \]
+(con $\abs{\alpha_k}\le 1$) deve esistere un $y\in S$ tale che $\abs{x_k-y_k}<\frac{1}{2^k\cdot k}$,
+cioè $\abs{\alpha_k-(2^k y_k)}<\frac{1}{k}$ per $0\le k\le n$. \\
+Ma gli $\alpha_k$ variano in modo arbitrario su $[-1,1]$, quindi
+\[ [-1,1]^{n+1}\subseteq \cup_{y\in S}B\pa{\pi(y),\frac{1}{k}}, \]
+dove $\pi(y)=(y_0,2y_1,\dots,2^n y_n)\in \R^{n+1}$ e le palle sono rispetto alla norma $\norm{\fantasma{a}}_\infty$.
+Confrontando le misure, $2^{n+1}\le \abs{S}\cdot\pa{\frac{2}{k}}^{n+1}$ $\implica$ $\abs{S}\ge k^{n+1}$, che è la tesi. \\
+Dunque $h_{top}(f)=\lim_{k\to\infty}\limsup_{n\to\infty}\frac{1}{n}\ln r\pa{n,\frac{1}{k}}\ge\lim_{k\to\infty}\ln k=\infty$.
+\end{esempio}
+
+Vediamo altri modi equivalenti di definire l'entropia topologica.
+
+\begin{defi}$A\subseteq X$ è $(n,\epsilon)$-\emph{separato} se per ogni $x,y\in A$ distinti
+vale $d_n(x,y)\ge\epsilon$.
+\end{defi}
+
+\begin{prop}Sia $s(n,\epsilon)$ la massima cardinalità di un insieme $(n,\epsilon)$-separato.
+Allora $h_{top}(f)=\lim_{\epsilon\to 0}\limsup_{n\to\infty}\frac{1}{n}\ln s(n,\epsilon)$.
+\end{prop}
+
+\begin{proof}Sia $A$ un insieme che realizza $s(n,\epsilon)$. $A$ è anche $(n,\epsilon)$-spanning:
+ogni $x\in X\setminus A$ dista (nel senso di $d_n$) meno di $\epsilon$ da un elemento di $A$, altrimenti $A$
+non sarebbe massimale. Quindi $r(n,\epsilon)\le s(n,\epsilon)$. \\
+Inoltre $s(n,2\epsilon)\le r(n,\epsilon)$: siano $A$ è $(n,2\epsilon)$-separato
+e $S=\set{x_1,\dots,x_k}$ è $(n,\epsilon)$-spanning; osserviamo che in realtà
+$S$ è $(n,\epsilon')$-spanning per qualche $\epsilon'<\epsilon$ (per compattezza di $X$),
+quindi $\set{B(x_i,\epsilon')\mid i=1,\dots,k}$ è un ricoprimento con diametro massimo $\le 2\epsilon'$
+(le palle sono rispetto a $d_n$), perciò ogni palla $B(x_i,\epsilon')$ contiene al più un elemento di $A$.
+Da ciò segue che $\abs{A}\le\abs{S}$. \\
+Abbiamo ottenuto $s(n,2\epsilon)\le r(n,\epsilon)\le s(n,\epsilon)$, che dà la tesi.
+è un ricoprimento con palle di diametro $<2\epsilon$
+\end{proof}
+
+\begin{defi}Dati $\alpha,\beta$ ricoprimenti aperti di $X$, definiamo il \emph{ricoprimento congiunto}
+$\alpha\vee\beta:=\set{A\cap B\mid A\in\alpha,B\in\beta}$. \\
+Dato un ricoprimento aperto $\alpha$, chiamiamo $N(\alpha)$ la cardinalità minima di un sottoricoprimento di $\alpha$
+(finita per compattezza).
+\end{defi}
+
+\begin{oss}$N(\alpha\vee\beta)\le N(\alpha)N(\beta)$ e $N\pa{f^{-1}(\alpha)}\le N(\alpha)$
+(qui $f^{-1}(\alpha)=\set{f^{-1}(A)\mid A\in\alpha}$). \\
+Dunque, ponendo temporaneamente $a(n):=\ln N\pa{\bigvee_{i=0}^{n-1}f^{-i}(\alpha)}$,
+\[ a(m+n)\le\ln N\pa{\bigvee_{i=0}^{m-1}f^{-i}(\alpha)}+\ln N\pa{f^{-m}\pa{\bigvee_{i=0}^{n-1}f^{-i}(\alpha)}}
+\le a(m)+a(n). \]
+Perciò, per \hyperref[fekete]{Fekete}, esiste sempre $\lim_{n\to\infty}\frac{1}{n}\ln N\pa{\bigvee_{i=0}^{n-1}f^{-i}(\alpha)}$.
+\end{oss}
+
+Diamo senza dimostrazione una definizione alternativa di entropia topologica, che rende manifesta la somiglianza con l'entropia
+di Kolmogorov-Sinai:
+
+\begin{teo}$h_{top}(f)=\sup_\alpha\lim_{n\to\infty}\frac{1}{n}\ln N\pa{\bigvee_{i=0}^{n-1}f^{-i}(\alpha)}$.
+\end{teo}

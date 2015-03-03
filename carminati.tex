@@ -1,0 +1,49 @@
+\section{Frazioni Continue}
+
+Osserviamo che un $\alpha\in\R$ è irrazionale se e solo se esistono tutte le iterate della mappa di Gauss $G(x)=\{\frac{1}{x}\}$ (ovvero $G^n(\alpha)$ non è mai nulla). Prendiamo allora $\alpha\in\irr$ e definiamo l'$n$\emph{-esimo quoziente completo}
+\[\alpha_n=G(\alpha_{n-1}) \quad\mbox{con}\quad \alpha_0=G\left(\frac{1}{\alpha}\right)\]
+e l'$n$\emph{-esimo quoziente parziale}, che sarà sempre un intero,
+\[a_n=\frac{1}{\alpha_{n-1}}-\alpha_n=\frac{1}{\alpha_{n-1}}-G(\alpha_{n-1})=\left[\frac{1}{\alpha_{n-1}}\right] \quad \mbox{con} \quad a_0=\alpha-\alpha_0\]
+per cui abbiamo una scrittura di $\alpha$ detta \emph{frazione continua}:
+\[\begin{split}
+\alpha&=a_0+\frac{1}{a_1+\frac{1}{a_2+\frac{1}{a_3+\dots}}}\\
+      &:=[a_0,a_1,a_2,a_3,\dots]\\
+      &:=a_0+\frac{1}{a_1+}\frac{1}{a_2+}\frac{1}{a_3+}\cdots
+\end{split}\]
+Di fatto abbiamo stabilito una bigezione tra gli irrazionali e le successioni (unilatere) di interi, per molti versi analoga agli sviluppi in base. Possiamo far corrispondere in modo naturale (non unico) le successioni troncate a dei razionali, che diremo \emph{convergenti}:
+\[\frac{p_n}{q_n}=[a_0,a_1,a_2,\dots,a_n]=a_0+\frac{1}{a_1+}\frac{1}{a_2+}\cdots\frac{1}{a_{n-1}+}\frac{1}{a_n}\]
+Il problema della rappresentazione non unica di numeri razionali in frazione continua, per cui ad esempio $[2,2,3]=[2,2,2,1]$, si può risolvere semplicemente imponendo che il numero di termini della frazione continua sia sempre pari o sempre dispari, ovvero che l'ultimo denominatore sia sempre 1, o non sia mai 1. Per il momento non adotteremo convenzioni, essendo interessati invece a passare dalle frazioni ai razionali.
+
+\begin{teo}[Proprietà dei convergenti] Per ogni $n$ valgono le seguenti
+\[\begin{cases}
+   p_0=a_0 \quad p_1=a_1a_0+1 \quad p_{n}=a_np_{n-1}+p_{n-2}\\
+   q_0=1 \quad q_1=a_1 \quad q_{n}=a_nq_{n-1}+q_{n-2}
+  \end{cases}\]
+\[p_nq_{n-1}-p_{n-1}q_n=(-1)^{n-1} \qquad p_nq_{n-2}-p_{n-2}q_n=(-1)^na_n\]
+\[\alpha=\frac{p_n+p_{n-1}\alpha_n}{q_n+q_{n-1}\alpha_n} \qquad \alpha_n=-\frac{q_n\alpha-p_n}{q_{n-1}\alpha-p_{n-1}}\]
+\end{teo}
+
+\begin{esempio}
+ Con le proprietà suddette, non è difficile vedere che $\alpha\in\irr$ è quadratico (su $\Q$) se e solo se la sua frazione continua è periodica. Si può mostrare inoltre che se $\alpha,\alpha'\in\irr$, esistono $h,k$ tali che
+ \[\alpha=[a_0,\dots,a_k,c_1,\dots,c_n,\dots] \qquad \alpha'=[a'_0,\dots,a'_h,c_1,\dots,c_n,\dots]\]
+ se e solo se esiste $M\in PSL(2,\Z)$ tale che $\alpha=A\alpha'$, ovvero 
+ \[\alpha=\frac{A\alpha'+B}{C\alpha'+D}\quad \mbox{con}\quad |AD-BC|=1.\]
+\end{esempio}
+
+I convergenti approssimano $\alpha$ molto bene, come vediamo con i seguenti risultati. Anzitutto definiamo
+\[\beta_{-1}=1\qquad \beta_n=(-1)^n(q_n\alpha-p_n)>0 \quad \Rightarrow \quad \beta_n=\alpha_0\alpha_1\cdots \alpha_n\]
+
+\begin{teo}[Migliore approssimazione]\begin{enumerate} Se $\alpha\in\irr$, valgono
+  \item $|q_n\alpha-p|=(q_{n+1}+q_n\alpha_{n+1})^{-1}$ da cui $1/2<\beta_nq_{n+1}<1$
+  \item $\beta_n\leq g^n$ e $q_n\geq G^{n-1}$, dove $G,g=\frac{\sqrt 5\pm 1}{2}$ sono i numeri d'oro
+  \item se $0<q<q_n$ allora per ogni $p\in\Z$ si ha $|q\alpha-p|\geq |q_n\alpha-p_n|$, e se vale l'uguaglianza $p=p_n$ e $q=q_n$
+  \item se $\left|\alpha-\frac{p}{q}\right|<\frac{1}{2q^2}$ allora $p/q$ è un convergente.
+  \end{enumerate}\end{teo}
+
+La prova di questo importante teorema non è difficile, ma laboriosa. Le frazioni continue permettono anche di caratterizzare i numeri diofantei come segue:
+\[\begin{split} CD(\tau)&=\{\alpha\in\irr:q_{n+1}=O(q_n^{1+\tau})\}\\
+			&=\{\alpha\in\irr:a_{n+1}=O(q_n^{\tau})\}\\
+			&=\{\alpha\in\irr:\alpha_n^{-1}=O(\beta_{n-1}^{-\tau})\}\\
+			&=\{\alpha\in\irr:\beta_n^{-1}=O(\beta_{n-1}^{-1-\tau})\}
+\end{split}\]
+Un altro esercizio non difficile è provare che convergono $\sum^\infty\frac{\ln q_k}{q_k}$ e $\sum^\infty\frac{1}{q_k}$.

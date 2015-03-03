@@ -1,0 +1,349 @@
+\section{Dinamica Misurabile}
+
+\begin{teo}[Krylov-Bogoliubov] Dati $X$ spazio metrico compatto e $f:X\to X$ continua, esiste sempre una misura $f$-invariante.
+\end{teo}
+
+\begin{proof}Sia $C(X)$ lo spazio (di Banach) delle funzioni continue a valori reali su $X$. Sappiamo che il suo duale è lo spazio $C(X)'=\mathcal{M}(X)$ delle misure finite con segno.
+Sia $\mu$ una qualsiasi misura di probabilità su $X$ (ad esempio una delta). ``Spalmiamo'' questa misura tramite $f$, ottenendo misure sempre più vicine all'essere invarianti:
+poniamo $\mu_n:=\frac{1}{n}\sum_{k=0}^{n-1}(f^k)_*\mu$ (cioè $\mu_n$ è la media dei pushforward di $\mu$ tramite le prime $n$ iterate di $f$). \\
+Le misure $\mu_n$ sono tutte positive e di probabilità, quindi per ogni $n$ $\norm{\mu_n}=1$. Ma la palla unitaria (chiusa) di $\mathcal{M}(X)$, dotata
+della topologia debole*, è compatta (per Banach-Alaoglu) ed è anche metrizzabile (essendo $C(X)$ separabile). Quindi esiste una sottosuccessione convergente
+debole*: $\mu_{n_k}\overset{*}{\rightharpoonup}\nu$. Il limite $\nu$ è una misura positiva (essendo per ogni $\phi\in C(X)$ nonnegativa $\int_X \phi\,d\nu=
+\lim_{n\to\infty}\int_X\phi\,d\mu_n\ge 0$) e di probabilità (perché $\nu(X)=\int_X 1\,d\nu=\lim_{n\to\infty}\int_X 1\,d\mu_n=1$). \\
+Verifichiamo che $\nu$ è $f$-invariante: per ogni $\phi\in C(X)$ vale
+\[ \begin{split}&\int_X \phi\,d\nu-\int_X \phi\,d(f_*\nu)=\int_X \pa{\phi-\phi\circ f}\,d\nu=\lim_{n\to\infty}\int_X \pa{\phi-\phi\circ f}\,d\mu_n \\
+&=\lim_{n\to\infty}\pa{\int_X \frac{\phi+\phi\circ f+\dots+\phi\circ f^{n-1}}{n}\,d\mu-\int_X \frac{(\phi\circ f)+\dots+(\phi\circ f)\circ f^{n-1}}{n}\,d\mu} \\
+&=\lim_{n\to\infty}\int_X\frac{\phi-\phi\circ f^n}{n}\,d\mu_n=0 \end{split} \]
+essendo $\abs{\int_X\frac{\phi-\phi\circ f^n}{n}\,d\mu_n}\le\frac{2}{n}\norm{\phi}_\infty\to 0$. Questo dice che $\nu=f_*\nu$ come elementi del duale di $C(X)$,
+quindi (siccome $C(X)'=\mathcal{M}(X)$) le misure $\nu$ e $f_*\nu$ coincidono.
+\end{proof}
+
+Lavoriamo d'ora in poi con un \emph{sistema dinamico misurabile} $(X,\mathcal{A},\mu,f)$,
+cioè uno spazio di probabilità $(X,\mathcal{A},\mu)$ con una trasformazione $f:X\to X$ misurabile.
+
+\begin{defi}Dato $A\in\mathcal{A}$ e $T$ intero positivo poniamo $\nu_T(x,T,A):=\frac{1}{T}\sum_{j=0}^{T-1}\chi_A\pa{f^j(x)}$.
+Questa è la \emph{frequenza media delle visite} ad $A$ dell'orbita di $x$ tra $0$ e $T$. \\
+Poniamo anche $\obar{\nu}(x,A):=\obar{\lim}_{T\to\infty}\nu(x,T,A)$ e $\ubar{\nu}(x,A):=\ubar{\lim}_{T\to\infty}\nu(x,T,A)$.
+\end{defi}
+
+\begin{defi}Più in generale, data un'osservabile $\phi\in L^1(X)$, definiamo la \emph{somma di Birkhoff} $(S_T\phi)(x):=\sum_{j=0}^{T-1}(\phi\circ f^j)(x)$
+e la \emph{media temporale} $\frac{(S_T\phi)(x)}{T}$.
+\end{defi}
+
+Dimostreremo questo risultato, che per ora diamo per buono:
+
+\begin{teo}[Birkhoff]Per ogni $A\in\mathcal{A}$ esiste q.o. $\nu(x,A):=\lim_{T\to\infty}\nu(x,T,A)$. \\
+Più in generale per ogni $\phi\in L^1(X)$ esiste q.o. il $\lim_{T\to\infty}\frac{(S_T\phi)(x)}{T}$.
+\end{teo}
+
+\begin{defi}$(X,\mathcal{A},\mu,f)$ è \emph{ergodico} se per ogni $A\in\mathcal{A}$ vale $\nu(x,A)=\mu(A)$ q.o.
+Cioè \lcap la statistica delle orbite coincide con la probabilità a priori\rcap.
+\end{defi}
+
+\begin{teo}Sono equivalenti:
+\begin{lista}
+	\item $X$ ergodico 
+	\item per ogni $A\in\mathcal{A}$ con $f(A)\subseteq A$, uno tra $A$ e $A^c$ è trascurabile 
+	\item ogni integrale primo $\phi$ (cioè $\phi\in L^1(X)$ tale che $\phi=\phi\circ f$ q.o.) è costante q.o. 
+	\item per ogni $\phi\in L^1(X)$ vale $\frac{1}{T}(S_T\phi)(x)\to\int_X \phi\,d\mu$ per q.o. $x$ 
+	\item per ogni $A,B\in\mathcal{A}$ vale $\lim_{n\to\infty}\frac{1}{n}\sum_{j=0}^{n-1}\mu\pa{f^{-j}(A)\cap B}=\mu(A)\mu(B)$. 
+\end{lista}
+\end{teo}
+
+\begin{proof}$(1)\implica(2)$: sia $A\in\mathcal{A}$ tale che $f(A)\subseteq A$; possiamo assumere $\mu(A)>0$. Chiaramente per ogni $x\in A$
+è $\nu(x,A)=1$ (perché $f^j(x)\in A$ per ogni $j\ge 0$), ma $\nu(x,A)$ può essere diverso da $\mu(A)$ solo su un insieme trascurabile, quindi $\mu(A)=1$. \\
+$(2)\implica(3)$: per chiarire l'idea vediamo prima il caso in cui $\phi=\phi\circ f$ ovunque.
+Poniamo $A_\gamma:=\set{x:\phi(x)\le\gamma}$ e osserviamo che
+\[ f^{-1}(A_\gamma)=\set{x:\phi\circ f(x)\le\gamma}=A_\gamma. \]
+Quindi $f\pa{f^{-1}(A_\gamma)}\subseteq A_\gamma=f^{-1}(A_\gamma)$,
+cioè $f^{-1}(A_\gamma)$ è invariante (nel senso del punto $(2)$),
+da cui $\mu(A_\gamma)=\mu\pa{f^{-1}(A_\gamma)}\in\set{0,1}$. \\
+Ma la funzione $\gamma\mapsto\mu(A_\gamma)$ è crescente e ha limiti $0$ per $\gamma\to -\infty$ e $1$ per $\gamma\to +\infty$,
+perciò $\obar{\gamma}:=\inf\set{\gamma:\mu(A_\gamma)=1}\in\R$. Essendo anche $A_{\obar{\gamma}}=\cap_n A_{\obar{\gamma}+\frac{1}{n}}$
+e $\set{x:\phi(x)<\obar{\gamma}}=\cup_n A_{\obar{\gamma}-\frac{1}{n}}$ otteniamo $\mu(A_{\obar{\gamma}})=1$
+e $\mu\pa{\set{x:\phi(x)<\obar{\gamma}}}=0$, cioè $\phi\equiv\obar{\gamma}$ q.o. \\
+Il caso in cui $\phi=\phi\circ f$ vale q.o. si sistema facilmente: sia $B_\gamma:=\set{x:\phi\circ f\le\gamma}$;
+siccome $\mu\pa{A_\gamma\Delta B_\gamma}=0$ possiamo scrivere $A_\gamma=B_\gamma\Delta N$ con $N$ trascurabile.
+Ora $B_\gamma=f^{-1}(A_\gamma)=f^{-1}(B_\gamma)\Delta f^{-1}(N)$, da cui
+(posto $\tilde{N}:=f^{-1}(N)$, trascurabile) $f\pa{B_\gamma\Delta\tilde{N}}\subseteq B_\gamma=\pa{B_\gamma\Delta\tilde{N}}\Delta\tilde{N}$,
+ovvero $B_\gamma\Delta\tilde{N}$ è ``quasi invariante''. Per la ?? e l'ipotesi $(2)$ segue
+$\mu(A_\gamma)=\mu(B_\gamma)=\mu(B_\gamma\Delta\tilde{N})\in\set{0,1}$ e si conclude come nel caso precedente. \\
+$(3)\implica (4)$: possiamo assumere $\phi\ge 0$.
+Essendo $\norm{\phi\circ f^j}_1=\norm{\phi}_1$ per ogni $j\ge 0$, abbiamo $\norm{\frac{S_T\phi}{T}}_1\le \norm{\phi}_1$ per ogni $T>0$.
+Il teorema di Birkhoff dice che è ben definito q.o. $\tilde{\phi}:=\lim_{T\to\infty}\frac{S_T\phi}{T}$ e per il lemma di Fatou $\tilde{\phi}\in L^1(X)$.
+Ora $\tilde{\phi}$ è un integrale primo, quindi è costante q.o., diciamo $\tilde{\phi}=c$ q.o. Integrando otteniamo $c=\int_X\tilde{\phi}
+\le\ubar{\lim}_{n\to\infty}\int_X\frac{S_T\phi}{T}\,d\mu=\int_X\phi\,d\mu$ (dato che $f$ conserva $\mu$). Quindi $\lim_{T\to\infty}\frac{S_T\phi}{T}\le \int_X\phi\,d\mu$. \\
+Per i troncamenti $\phi\wedge N$, per convergenza dominata, vale di più: $\lim_{T\to\infty}\frac{S_T(\phi\wedge N)}{T}=\int_X \phi\wedge N\,d\mu$. Dunque
+\[ \int_X\phi\wedge N=\lim_{T\to\infty}\frac{S_T(\phi\wedge N)}{T}\le\lim_{T\to\infty}\frac{S_T\phi}{T}\le \int_X\phi\,d\mu \]
+e mandando $N\to\infty$ otteniamo la tesi per convergenza monotona. \\
+$(4)\implica (1)$: basta scegliere $\phi:=\chi_A$. \\
+$(4)\implica(5)$: ponendo $\phi:=\chi_A$ otteniamo $\phi\circ f^j=\chi_{f^{-j}(A)}$, da cui
+\[ \frac{1}{n}\sum_{j=0}^{n-1}\mu\pa{f^{-j}(A)\cap B}=\int_B\frac{S_n\phi}{n}\,d\mu\to\int_B\pa{\int_X\phi\,d\mu}\,d\mu=\mu(B)\mu(A) \]
+(abbiamo usato il teorema di convergenza dominata). \\
+$(5)\implica (2)$: dato $A$ invariante, scegliamo $B:=A^c$ e osserviamo che $A\subseteq f^{-j}(A)$. Perciò
+\[ \mu(A)=\mu\pa{f^{-j}(A)}=\mu(A)+\mu\pa{f^{-j}(A)\cap B}, \]
+da cui segue che $\mu\pa{f^{-j}(A)\cap B}=0$ per ogni $j\ge 0$. Ma allora, per quanto afferma $(5)$, $\mu(A)\mu(B)=0$.
+\end{proof}
+
+\begin{oss}Se un insieme $A\in\mathcal{A}$ è ``quasi invariante'', nel senso che $f(A)\subseteq A\cup N$ per qualche
+$N$ trascurabile, $A$ è equivalente a un insieme $A'$ invariante (cioè $\mu(A\Delta A')=0$ e $f(A')\subseteq A'$):
+basta porre $N':=\cup_{j=0}^\infty$ e $A':=A\setminus N'$. Ora se $x\in A'$ abbiamo
+$f(x)\in A\cup N$ e $f(x)\nin N'$ (perché $f^{-1}(N')\subseteq N'$), quindi $f(A')\subseteq (A\cup N)\setminus N'=A\setminus N'=A'$.
+\end{oss}
+
+?? sarebbe meglio mettere l'oss dopo la def. dei s.d. misurabili
+
+\begin{oss}Se il sistema dinamico è \emph{strongly mixing}, ovvero per ogni $A,B\in\mathcal{A}$ vale
+$\lim_{j\to\infty}\mu\pa{f^{-j}(A)\cap B}=\mu(A)\mu(B)$ (\lcap decadimento delle correlazioni\rcap),
+la condizione $(5)$ del teorema è banalmente verificata. \\
+Quindi strongly mixing $\implica$ ergodico.
+\end{oss}
+
+\begin{oss}Sia $(X,d,f)$ uno spazio metrico compatto con una trasformazione $f:X\to X$ continua che preserva
+una misura $\mu$. $X$ ha contemporaneamente le strutture di sistema dinamico topologico
+e misurabile. Ci chiediamo se ci sono relazioni tra la transitività topologica e l'ergodicità. \\
+Assumendo che ogni aperto non vuoto abbia misura positiva, l'ergodicità implica la transitività:
+dati $U,V$ aperti non vuoti è $\lim_{n\to\infty}\frac{1}{n}\sum_{j=0}^{n-1}\mu\pa{f^{-j}(U)\cap V}=\mu(U)\mu(V)>0$,
+quindi per qualche $N\ge 0$ abbiamo $\mu\pa{f^{-N}(U)\cap V}>0$. \\
+%Dato un aperto $W$ vale sempre $\mu\pa{f(W)}\ge\mu(W)$: infatti $f(W)$ è un boreliano (essendo $W$ $\sigma$-compatto)
+%e $\mu\pa{f(W)}=\mu\pa{f^{-1}\pa{f(W)}}\ge\mu(W)$ (dato che $f^{-1}\pa{f(W)}\supseteq W$). \\
+%Applicando questo a $f^{-N}(U)\cap V$ e alla mappa $f^N$ (che preserva $\mu$) otteniamo
+%\[ \mu\pa{U\cap f^N(V)}\ge\mu\pa{f^N\pa{f^{-N}(U)\cap V}}\ge\mu\pa{f^{-N}(U)\cap V}>0, \]
+Dunque $f^{-N}(U)\cap V\neq\emptyset$ e la sua immagine tramite $f^N$ è inclusa in $U\cap f^N(V)$, perciò
+quest'ultimo insieme è non vuoto e questa è la tesi (v. anche l'Osservazione ??).
+\end{oss}
+
+\begin{esempio}Sia $\alpha\in\R\setminus\Q$ un irrazionale. Il toro $\mathbb{T}^1$
+con la misura di Lebesgue e la trasformazione $R_\alpha(x)=x+\alpha$ (la solita rotazione irrazionale)
+è un sistema ergodico. Infatti il teorema precedente vale anche se nei punti $(3)$ e $(4)$ ci restringiamo a osservabili in $L^2$
+(con la stessa dimostrazione: abbiamo usato solo il fatto che le funzioni caratteristiche sono $L^1$, ma
+sono anche $L^p$ per ogni $p$). Ora, dato un integrale primo $\phi\in L^2(X)$, i suoi coefficienti di Fourier soddisfano
+\[ \widehat{\phi}(k)=\widehat{\phi\circ R_\alpha}(k)=e^{2\pi i k\alpha}\widehat{\phi}(k) \]
+per ogni $k\in\Z$. Ma se $k\neq 0$ abbiamo $e^{2\pi i k\alpha}\neq 1$ (perché $\alpha$ è irrazionale), quindi
+$\widehat{\phi}(k)=0$ per $k\neq 0$ e questo dice che $\phi$ è costante q.o.
+\end{esempio}
+
+
+\begin{teo}[ergodico di von Neumann] Sia $U$ un'isometria di $H$ spazio di Hilbert, allora
+ \[\forall\phi\in H \quad \exists \lim_{n\rightarrow\infty}\frac{1}{n}\sum_{j=0}^{n-1}U^j\phi:=\hat\phi\]
+ e inoltre $U\hat\phi=\phi$. Per cui in una dinamica misurabile $(X,\A,\mu,f)$, considerando nello spazio di Hilbert $L^2_\C(X,\A,\mu)$ l'\emph{operatore di Koopman} $U_f$ tale che $U_f \phi=\phi\circ f$, che è un'isometria essendo $\mu$ $f$-invariante, si ha che le somme di Birkhoff convergono in $L^2$. 
+ \end{teo}
+
+\begin{oss}
+ In dimensione finita, cioè per $U$ unitario in un $\C$-spazio $k$-dimensionale, il teorema spettrale permette di diagonalizzare $U$ riconducendosi al caso monodimensionale sugli autospazi: $Uz=e^{i\alpha}z$ per $z\in\C$. Allora
+ \[\frac{1}{n}\sum_{j=0}^{n-1}e^{ij\alpha}z=\begin{cases} z \qquad \alpha=0 \\ \frac{1}{n}\frac{1-e^{in\alpha}}{1-e^{i\alpha}}z \overset{n\rightarrow\infty}{\longrightarrow}0 \qquad \alpha\neq 0\end{cases}   .                                                                                                                                                                                            \]
+ Per applicare questo ragionamento in dimensione infinita servirebbe il teorema spettrale relativo (Stone). La dimostrazione che daremo è di Riesz.
+\end{oss}
+
+\begin{proof}
+ Sia $D=\{\phi\in H|\exists\psi\in H : \phi=U\psi-\psi\}$ (insieme dei \emph{cobordi}); anzitutto mostriamo che $\forall \theta \in D^\bot \quad U\theta=\theta$. Infatti se $\theta \in D^\bot$, si ha
+ \[(\theta, U\theta-\theta)=0\]
+ \[(U\theta,U\theta-\theta)=(U\theta,U\theta)-(U\theta,\theta)=(\theta-U\theta,\theta)=0\]
+ sommando quindi $(U\theta-\theta,U\theta-\theta)=0$ da cui quanto detto.
+ Sia ora $I=\{\phi\in H | U\phi=\phi\}$, allora $(D\cup I)^\bot=\{0\}$, e quindi $D\cup I$ è denso in $H$. Osserviamo che in $D\cup I$ vale la tesi, per cui concludiamo vedendo che la tesi vale anche in $\overline{D\cup I}$, ovvero che la tesi passa al limite. Sia $\phi_k\rightarrow\phi$ di Cauchy in $D\cup I$, ovvero $h,k$-definitivamente $\|\phi_h-\phi_k\|<\epsilon$, allora anche $\|\hat\phi_h-\hat\phi_k\|<\epsilon$, cioè anche $\hat\phi_k$ è di Cauchy, e quindi ha limite $\hat\phi$, e allora da
+ \[\|\hat\phi-\frac{1}{n}\sum_{j=0}^{n-1}U^j\phi\|\leq \|\frac{1}{n}\sum_{j=0}^{n-1}U^j(\phi-\phi_k)\|+
+  \|\frac{1}{n}\sum_{j=0}^{n-1}(U^j\phi_k-\hat\phi_k)\|+\|\hat\phi_k-\hat\phi\|\]
+ si conclude che vale proprio $\|\hat\phi-\frac{1}{n}\sum_{j=0}^{n-1}U^j\phi\|\rightarrow 0$.
+\end{proof}
+
+\begin{defi}In un sistema dinamico misurabile $(X,\A,\mu,S)$, per $A\in\A$, $x\in X$ diciamo somma di Birkhoff ($n$-esima) \[T(x,A,n)=\sum_{j=0}^{n-1}\chi_A(S^jx)\]
+inoltre saranno $\nu(x,A,n)=\frac{1}{n}T(x,A,n)$, $\bar\nu(x,A)=\limsup_{n\rightarrow\infty}\frac{1}{n}T(x,A,n)$ e rispettivamente $\underline\nu(x,A)$, e infine, se esiste, $\nu(x,A)=\lim_{n\rightarrow\infty}\frac{1}{n}T(x,A,n)$.
+\end{defi}
+
+
+\begin{teo}[di Birkhoff per frequenze di visita] Per $\mu$-quasi ogni $x\in X$ esiste $\nu(x,A)$.\end{teo}
+\begin{proof}
+ Fissiamo $\epsilon>0$ e definiamo
+ \[\bar\tau(x,A,\epsilon)=\min\{n\in\N:\nu(x,A,n)\geq\bar\nu(x,A)-\epsilon\}\]
+ e analogamente $\underline\tau$ per $\underline\nu$. Supponiamo dapprima che $\forall x\in X \quad \bar\tau(x,A,\epsilon)\leq M$ (con $M$ che dipenderà eventualmente da $\epsilon$). Fissiamo $n$ più grande di $M$ e definiamo ricorsivamente una sottosuccessione di $\{S^jx\}_0^{n-1}$
+ \[\begin{cases}
+ x_0=x \qquad \tau_0=\bar\tau(x_0,A,\epsilon)\\
+ x_{k+1}=S^{\bar\tau(x_k,A,\epsilon)}x_k=S^{\tau_k}x_0 \qquad \tau_k=\sum^{k-1}\bar\tau(x_h,A,\epsilon)
+ \end{cases} \]
+ che quindi deve concludersi con $x_{K}$ tale che $\bar\tau_{K}<n$ e $\bar\tau_{K+1}\geq n$. Osserviamo che, poichè $\nu(x,A,\bar\tau(x,A,\epsilon))\geq\bar\nu(x,A)-\epsilon$ e $\bar\nu(x,A)=\bar\nu(Sx,A)$, si hanno le seguenti disuguaglianze
+ \[\begin{split}
+  T(x_k,A,\bar\tau(x_k,A,\epsilon))&=\bar\tau(x_k,A,\epsilon)\nu(x_k,A,\bar\tau(x_k,A,\epsilon)) \\
+  &\geq \bar\tau(x_k,A,\epsilon) (\bar\nu(x_k,A)-\epsilon)=\bar\tau(x_k,A,\epsilon)(\bar\nu(x_0,A)-\epsilon)
+ \end{split}\]
+ 
+ \[\begin{split}
+  T(x,A,n)&=\sum^{K-1}T(x_k,A,\bar\tau(x_k,A,\epsilon))+\underbrace{T(x_k,A,n-K)}_{\geq 0}   \\
+	  &\geq \underbrace{\sum^{K-1} \bar\tau(x_k,A,\epsilon)}_{\bar\tau_K}(\bar\nu(x,A)-\epsilon)   \\
+	  &\geq (n-M)(\bar\nu(x,A)-\epsilon)
+ \end{split}\]
+da cui, integrando, si ha
+\[n \mu(A)=\int_X T(x,A,n) d\mu(x)\geq (n-M)\left(\int_X \bar\nu(x,A)d\mu(x)-\epsilon\right)\]
+e dunque per arbitrarietà di $\epsilon$ abbiamo $\mu(A)\geq \int_X \bar\nu(x,A)d\mu(x)$. Analogamente supponendo $\underline\tau$ limitato, si ottiene l'altra disuguaglianza:
+\[\int_X \underline\nu(x,A)d\mu\geq\mu(A)\geq \int_X \bar\nu(x,A)d\mu\]
+per cui $\underline\nu(x,A)\geq \bar\nu(x,A)$ per $\mu$-quasi ogni $x\in X$, e quindi la tesi.
+
+Rimuoviamo infine l'ipotesi $\bar\tau$ limitato: fissato $\epsilon>0$, scegliamo $C$ tale che
+\[\mu(A_C)=\mu\{x\in X: \bar\tau(x,A,\epsilon)>C\}<\epsilon\]
+poniamo quindi $\bar A=A\cup A_C$ e
+\[\bar\tau'(x,A,\epsilon)=\begin{cases}\bar\tau(x,A,\epsilon) \qquad x\notin A_C\\
+					1 \qquad x\in A_C
+  \end{cases}\]
+e definiamo analogamente a prima la successione $x_{k+1}'=S^{\bar\tau'(x_k,A,\epsilon)}x_k'$. Abbiamo allora che
+\[T(x_k,\bar A,\bar\tau'(x_k,A,\epsilon))
+    \begin{cases} =T(x_k',\bar A,1)=1\geq \bar\nu(x_0,A)-\epsilon \qquad x\in A_C \\
+		  \begin{split}\geq T(x_k,A,\bar\tau'(x_k,A,\epsilon))&=T(x_k,A,\bar\tau(x_k,A,\epsilon))\\
+			&\geq \bar\tau(x_k,A,\epsilon)(\bar\nu(x_0,A)-\epsilon) \qquad x\in A \end{split}
+    \end{cases}\]
+\[T(x_k,\bar A,\bar\tau'(x_k,A,\epsilon))\geq \bar\tau'(x_k,A,\epsilon)(\bar\nu(x_0,A)-\epsilon)\]
+per cui concludiamo esattamente come sopra sommando sulla successione e integrando, ottenendo
+\[\mu(A)+\epsilon\geq\mu(\bar A)\geq \int_X \bar\nu(x,A)-\epsilon.\]
+\end{proof}
+
+
+\begin{esercizio}Sia $(X,\mathcal{A},\mu,S)$ ergodico e $\mu_1$ un'altra misura di probabilità $S$-invariante.
+Sono equivalenti:
+\begin{lista}
+\item $\mu\neq\mu_1$
+\item $\mu_1$ non è assolutamente continua rispetto a $\mu$
+\item esiste un $A\in\mathcal{A}$ $S$-invariante (cioè $S(A)\subseteq A$) con $\mu(A)=0$ e $\mu_1(A)\neq 0$.
+\end{lista}
+\end{esercizio}
+
+\begin{soluz}Ovviamente $(3)\implica (2)$ e $(2)\implica (1)$. \\
+Resta da vedere che $(1)\implica (3)$: se $\mu\neq\mu_1$ esistono $A$ misurabili con $\mu_1(A)>\mu(A)$.
+Consideriamo $M:=\sup\set{\mu_1(A)-\mu(A)\mid A\in\mathcal{A}}>0$: questo $\sup$ è in realtà un $\max$
+e viene realizzato dal supporto $P$ di $(\mu_1-\mu)^+$ (la parte positiva della decomposizione di Hahn di $\mu_1-\mu$). \\
+Se $(\mu_1-\mu)(A)=M$ allora $A$ coincide con $P$ a meno di insiemi $\abs{\mu_1-\mu}$-trascurabili e scriviamo
+$A\sim P$ per risparmiare bytes.
+L'invarianza di $\mu$ e $\mu_1$ dà $(\mu_1-\mu)\pa{S^{-1}(P)}=M$, quindi $S^{-1}(P)\sim P$; analogamente $S^{-n}(P)\sim P$,
+quindi $P':=\cup_{n\ge 0}S^{-n}(P)\sim P$. $P'$ è $S$-invariante e $1\ge \mu_1(P')>\mu(P')$, perciò
+(ergodicità di $\mu$) $\mu(P')=0$.
+\end{soluz}
+
+\begin{oss}$(2)\implica (3)$ si può anche mostrare così: per ipotesi c'è un $N\in\mathcal{A}$ tale che $\mu(N)=0$ e $\mu_1(N)\neq 0$.
+Poniamo $A:=\limsup_{k\to\infty}f^{-k}(N)=\cap_{m\ge 0}\cup_{n\ge m}f^{-n}(N)$ (l'insieme dei punti che
+cascano frequentemente in $A$). $A$ è $S$-invariante e $\mu(A)=0$, $\mu_1(A)\neq 0$ grazie all'invarianza di $\mu$ e $\mu_1$.
+\end{oss}
+
+\begin{oss}Se $\mu_1\neq\mu$ è anch'essa ergodica, tornando all'ultima parte della soluzione dell'esercizio
+otteniamo $\mu_1(P')=1$, quindi $\mu\perp\mu_1$.\footnote{Questo risponde a una domanda fatta da Andrea Bianchi
+a lezione}
+\end{oss}
+
+\begin{defi}$(X,\mathcal{A},\mu,S)$ è \emph{unicamente ergodico} se $\mu$ è l'unica misura di probabilità
+$S$-invariante su $\mathcal{A}$.
+\end{defi}
+
+Nel seguito $X$ è uno spazio metrico compatto, $\mathcal{A}=\mathcal{B}(X)$ ($\sigma$-algebra dei boreliani)
+e $S:X\to X$ è continua.
+
+\begin{teo}Se $\mu$ è unicamente ergodica, $\mu$ è ergodica e per ogni $f\in C(X,\R)$
+le somme di Birkhoff $\frac{1}{n}\sum_{j=0}^{n-1}f\circ S^j$ convergono uniformemente a $\widehat{f}:=\int_X f\,d\mu$.
+\end{teo}
+
+La seconda parte della dimostrazione assomiglia molto a quella di Krylov-Bogoliubov,
+perciò evitiamo di ripetere tutti i dettagli nell'utilizzare la compattezza delle misure.
+
+\begin{proof}Mostriamo che $\mu$ è ergodica: se $A$ è un boreliano invariante (cioè $S(A)\subseteq A$)
+e $0<\mu(A)<1$, allora $\pa{\frac{\uno_A}{\mu(A)}}\mu$ è una misura invariante, di probabilità e diversa da $\mu$
+(invarianza: $A\subseteq S^{-1}(A)$ e $\mu(A)=\mu\pa{S^{-1}(A)}$, quindi $\mu\pa{S^{-1}(A)\setminus A}=0$;
+perciò, per ogni $B$, $(\uno_A\mu)\pa{S^{-1}(B)}=\mu\pa{S^{-1}(B)\cap A}=\mu\pa{S^{-1}(B)\cap S^{-1}(A)}=\mu(B\cap A)=(\uno_A\mu)(B)$)
+e questo contraddice l'ipotesi. \\
+Mostriamo per assurdo anche la seconda parte, cioè supponiamo che esistano $f:X\to\R$ continua e $\epsilon>0$ tali che
+$\norm{\frac{1}{n_i}\sum_{j=0}^{n_i-1}f\circ S^j-\int_X f\,d\mu}_\infty\ge\epsilon$ per qualche sottosuccessione $n_i\uparrow\infty$.
+Esiste allora una successione di punti $(x_i)$ tale che
+\[ \abs{\frac{1}{n_i}\sum_{j=0}^{n_i-1}f\pa{S^j(x_i)}-\int_X f\,d\mu}\ge\epsilon. \]
+Poniamo $\nu_i:=\frac{1}{n_i}\sum_{j=0}^{n_i-1}\delta_{S^j(x_i)}$: $\nu_i$ è una misura di probabilità che soddisfa (per costruzione)
+$\abs{\int_X f\,d\nu_i-\int_X f\,d\mu}\ge\epsilon$. \\
+Per la compattezza debole* delle misure (viste come il duale di $C(X)$), a meno di un'ulteriore sottosuccessione
+abbiamo $\nu_i\overset{*}{\rightharpoonup}\nu$ per qualche misura di probabilità $\nu$. \\
+Ora $\abs{\int_X f\,d\nu-\int_X f\,d\mu}=\lim_{i\to\infty}\abs{\int_X f\,d\nu_i-\int_X f\,d\mu}\ge\epsilon$, da cui $\mu\neq\nu$.
+Per arrivare all'assurdo basta mostrare che $\nu$ è invariante, che equivale a $\int_X g\circ S\,d\nu=\int_X g\,d\nu$. Ma
+\[ \int_X (g\circ S-g)\,d\nu=\lim_{i\to\infty}\frac{1}{n_i}\sum_{j=0}^{n_i-1}\pa{g\pa{S^{j+1}(x_i)}-g\pa{S^j(x_i)}}
+=\lim_{i\to\infty}\frac{1}{n_i}\pa{g\pa{S^{n_i}(x_i)}-g(x_i)}=0 \]
+e abbiamo finito.
+\end{proof}
+
+\begin{oss}[facoltativa] Vale anche il viceversa del teorema appena visto: se per ogni $f\in C(X,\R)$ le somme $\frac{1}{n}\sum_{j=0}^{n-1}f\circ S^j$ convergono puntualmente a $\int_X f\,d\mu$, allora $S$ è unicamente ergodica. Infatti se $\nu$ è un'altra misura invariante, per convergenza dominata si ha
+\[\int_X f\,d\nu=\int_X \frac{1}{n}\sum_{j=0}^{n-1}f\circ S^j d\nu \xrightarrow{n\rightarrow\infty}\int_X \left(\int_X f d\mu\right)d\nu=\int_X f d\mu\]
+per ogni $f\in C(X,\R)$, da cui $\mu$ e $\nu$ coincidono.
+\end{oss}
+
+
+
+\begin{esercizio}Consideriamo la cifra più significativa di $2^k$, per $k=1,2,\dots$.
+Nella successione che si ottiene compare più spesso il $7$ o l'$8$?
+\end{esercizio}
+
+\begin{soluz}Sia $s$ tale che $10^s\le 2^k<10^{s+1}$. $c\in\set{1,\dots,9}$ è la cifra più significativa di $2^k$
+quando $c\cdot 10^s\le 2^k<(c+1)10^s$, cioè quando $s+\log_{10}(c)\le k\log_{10}(2)<s+\log_{10}(c+1)$.
+Inoltre $s=\floor{k\log_{10}(2)}$, quindi ci stiamo chiedendo se è
+$\set{k\log_{10}(2)}\in\pa{\log_{10}(7),\log_{10}(8)}$ oppure $\set{k\log_{10}(2)}\in\pa{\log_{10}(8),\log_{10}(9)}$
+(usiamo gli intervalli aperti perché per $k>3$ gli estremi degli intervalli non verranno mai realizzati). \\
+Sia $\alpha:=\log_{10}(2)$ (irrazionale) e $R_\alpha(x):=x+\alpha$ la solita rotazione
+su $\mathbb{T}^1=\R/\Z$; ci stiamo chiedendo chi è maggiore tra $\nu(0,A_1)$ e $\nu(0,A_2)$, dove $A_1$
+e $A_2$ sono gli intervalli scritti sopra, proiettati su $\mathbb{T}^1$ (v. Birkhoff ?? per la definizione di $\nu(\cdot)$). \\
+Birkhoff non garantisce neppure che queste frequenze asintotiche esistano (il singoletto $\set{0}$ è trascurabile!),
+ma possiamo applicare invece l'ultimo teorema. \\
+Intanto occorre verificare che la misura di Lebesgue è l'unica misura $R_\alpha$-invariante:
+se $\mu$ è una misura di probabilità tale che $\pa{R_\alpha}_*\mu=\mu$ otteniamo
+\[ \widehat{\mu}(k)=\widehat{\pa{R_\alpha}_*\mu}(k)=e^{-2\pi i k\alpha}\widehat{\mu}(k), \]
+da cui $\widehat{\mu}(k)=0$ se $k\neq 0$, mentre $\widehat{\mu}(0)=\mu(\mathbb{T}^1)=1$
+(ricordiamo che $\widehat{\mu}(k):=\int_0^1 e^{-2\pi i kx}\,d\mu(x)$
+e che vale l'unicità: se due misure hanno gli stessi coefficienti di Fourier, allora coincidono). \\
+Quindi i coefficienti di Fourier di $\mu$ sono univocamente determinati, ovvero c'è una sola misura invariante,
+che deve essere quella di Lebesgue. \\
+Siamo nelle ipotesi dell'ultimo teorema; le funzioni $\uno_{A_1}$ e $\uno_{A_2}$ non sono continue, ma possiamo cavarcela
+approssimando dal basso. Siano per esempio $\phi_k\uparrow \uno_{A_1}$ con $0\le\phi_k\le 1$ e $\phi_k\in C(\mathbb{T}^1)$.
+Il teorema ci dice che
+\[ \int_{\mathbb{T}^1} \phi_k\,dx=\ubar{\lim}_{T\to\infty}\frac{(S_T\phi_k)(0)}{T}
+\le\ubar{\lim}_{T\to\infty}\frac{(S_T\uno_{A_1})(0)}{T}=\ubar{\nu}(0,A_1) \]
+e mandando $k\to\infty$ otteniamo $\abs{A_1}\le\ubar{\nu}(0,A_1)\le\obar{\nu}(0,A_1)$.
+Chiamando $J_1$ la parte interna di $\mathbb{T}^1\setminus A_1$,
+analogamente vale $\abs{J_1}\le\ubar{\nu}(0,J_1)$. Sommando le due disuguaglianze arriviamo a
+\[ 1=\abs{A_1}+\abs{J_1}\le\obar{\nu}(0,A_1)+\ubar{\nu}(0,J_1)\le \obar{\lim}_{T\to\infty}\nu(0,T,A_1\cup J_1)\le 1, \]
+per cui devono valere tutte le uguaglianze: in particolare $\ubar{\nu}(0,A_1)=\obar{\nu}(0,A_1)=\abs{A_1}$. \\
+Allo stesso modo $\nu(0,A_2)=\abs{A_2}$. Ma $\abs{A_1}<\abs{A_2}$, dunque il $7$ compare più spesso dell'$8$.
+\end{soluz}
+
+\begin{defi}$(X,\mathcal{A},\mu,f)$ è \emph{mescolante} o \emph{strongly mixing} se
+per ogni $A,B\in\mathcal{A}$ abbiamo $\mu\pa{f^{-n}(A)\cap B}\to\mu(A)\mu(B)$ per $n\to\infty$.
+\end{defi}
+
+Ricordiamo che mescolante $\implica$ ergodico, ma non vale il viceversa:
+
+\begin{esempio}La rotazione irrazionale $R_\alpha\in\homeo(\mathbb{T}^1)$ non è mescolante.
+Infatti, preso un piccolo intervallino $I$ centrato in $x_0$, esistono infiniti $n>0$ tali che $f^{-n}(x_0)\approx x_0+\mz$,
+quindi per questi $n$ abbiamo $f^{-n}(I)\cap I=\emptyset$, contraddicendo la definizione di mescolanza con $A,B:=I$.
+\end{esempio}
+
+Sia $U_f:L^2(X)\to L^2(X)$, $U_f(\phi):=\phi\circ f$ l'operatore
+di Koopman già definito prima.
+
+\begin{prop}$(X,\mathcal{A},\mu,f)$ è mescolante $\sse$ $\forall\phi,\psi\in L^2(X)\ \ang{U_f^n\phi,\psi}\to\ang{\phi,1}\ang{1,\psi}$.
+(Scritto in questo modo, l'enunciato funziona anche per funzioni a valori complessi.)
+\end{prop}
+
+\begin{proof}$(\Leftarrow)$: ovvio restringendosi alle funzioni caratteristiche e ricordando che $U_f(\uno_A)=\uno_{f^{-1}(A)}$. \\
+$(\Rightarrow)$: la proprietà vale per funzioni caratteristiche e per bilinearità anche per funzioni semplici.
+Per $\phi,\psi\in L^2(X)$ generiche, fissato $\epsilon>0$ esistono $\alpha$ e $\beta$ semplici tali che
+$\norm{\phi-\alpha}_2,\norm{\psi-\beta}_2<\epsilon$. Sappiamo che definitivamente
+\[ \abs{\ang{U_f^n\alpha,\beta}-\ang{\alpha,1}-\ang{1,\beta}}<\epsilon \]
+e scrivendo
+\[ \ang{U_f^n\phi,\psi}-\ang{U_f^n\alpha,\beta}
+=\ang{U_f^n\phi,\psi}-\ang{U_f^n\phi,\beta}+\ang{U_f^n\phi,\beta}-\ang{U_f^n\alpha,\beta} \]
+e usando il fatto che $U_f$ è un'isometria si trova che $\abs{\ang{U_f^n\phi,\psi}-\ang{U_f^n\alpha,\beta}}<O(\epsilon)$.
+Le differenze $\abs{\ang{\phi,1}-\ang{\alpha,1}}$ e $\abs{\ang{1,\phi}-\ang{1,\alpha}}$ si stimano entrambe con $\epsilon$. \\
+Quindi definitivamente $\abs{\ang{U_f^n\phi,\psi}-\ang{\phi,1}-\ang{1,\psi}}<O(\epsilon)$.
+\end{proof}
+
+La quantità $c_n(\phi,\psi):=\ang{U_f^n\phi,\psi}-\ang{\phi,1}\ang{1,\psi}$ si chiama $n$-\emph{esimo coefficiente di correlazione}
+tra $\phi$ e $\psi$.
+
+\begin{esempio}Gli automorfismi lineari \emph{iperbolici} di $\mathbb{T}^2=\R^2/\Z^2$, cioè
+gli elementi di $GL(2,\Z)$ con autovalori di modulo $\neq 1$, sono tutti mescolanti. \\
+Sia infatti $A\in GL(2,\Z)$ una matrice iperbolica. Essendo $\abs{\det(A)}=1$, $A$ preserva la misura di Lebesgue su $\mathbb{T}^2$.
+Basta ora vedere che vale l'ipotesi dell'ultima proposizione per funzioni
+$\phi,\psi\in\set{e_k(x):=e^{2\pi i(k_1 x_1+k_2 x_2)}\mid k\in\Z^2}$, perché queste generano un sottospazio denso in $L^2(\mathbb{T}^2)$
+e si conclude come nella dimostrazione della proposizione. \\
+Dobbiamo verificare che $\ang{U_A^n e_k,e_{k'}}\to\ang{e_k,1}\ang{1,e_{k'}}$; per $k=0$ è ovvio, quindi supponiamo $k\in\Z^2\nonzero$.
+Osserviamo che $U_A^n e_k=e_{(A^t)^n k}$ e che $(A^t)^n k=k'$ per al più un valore di $n$,
+altrimenti avremmo $(A^t)^n k=(A^t)^{n'} k$ (con $n<n'$) $\implica$ $(A^t)^{n'-n}-I$ avrebbe nucleo non banale
+$\implica$ $A^t$ avrebbe un autovalore di modulo $1$, assurdo.
+Perciò definitivamente $(A^t)^n k\neq k'$ $\implica$ definitivamente $\ang{U_A^n e_k,e_{k'}}=0=\ang{e_k,1}\ang{1,e_{k'}}$.
+\end{esempio}

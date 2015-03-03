@@ -1,0 +1,34 @@
+\section{Sistemi Dinamici}
+
+\begin{defi}[Sistema dinamico secondo Smale]
+ Un \emph{sistema dinamico} è l'azione di un gruppo o semigruppo $G$ su uno spazio $X$. 
+ Con spazio intendiamo un insieme $X$ con una struttura di spazio, ad esempio topologico, vettoriale, di misura, 
+ \emph{et cetera}, con le relative trasformazioni che ne conservano la struttura $\ndom X$ e $\aut X$, 
+ queste ultime con inversa a sua volta in $\ndom X$. L'azione è dunque un omomorfismo di gruppo (risp. semigruppo) $G\rightarrow \aut X$ (risp. $G\rightarrow \ndom X$).
+\end{defi}
+
+La definizione di sistema dinamico è molto ampia. 
+Il gruppo $G$, normalmente inteso come insieme dei tempi, è di solito $\R$, e in tal caso si parla di sistemi dinamici a tempo continuo, 
+oppure $\Z$ o $\N$ per il tempo discreto. Nulla impedisce però di considerare altri gruppi. Ci occuperemo quesi essenzialmente di sistemi dinamici a tempo discreto, 
+per cui indicheremo con $(X,f)$ il sistema, con $f$ l'immagine del generatore di $Z$ o $N$. 
+Dove non specificato i fatti enunciati vanno intesi nel modo appropriato per entrambe le situazioni: 
+ad esempio per $f^n$, $n$ sarà in $\N$ oppure $\Z$, e nel secondo caso bisognerà considerare anche le iterate di $f^{-1}$. 
+Esempi di questo tipo sono ad esempio le successioni numeriche, come quelle curiose di Collatz, Thue-Morse, Kolakowski. 
+Sistemi a tempo continuo sono invece ad esempio i flussi integrali delle equazioni differenziali ordinarie. 
+Una classe importante di sistemi dinamici è quella dei \emph{biliardi}, che descrivono traiettorie di punti che rimbalzano 
+secondo la legge di riflessione all'interno del bordo di un dominio in $\R^2$.
+
+\begin{defi} L'\emph{orbita} di un punto $x$ è l'insieme $\left\{f^g: g\in G \right\}$. 
+Un'orbita è \emph{periodica} se per un certo $n$ si ha $f^n(x)=x$, e in tal caso $x$ si dice \emph{pre-periodico}. 
+Un punto è \emph{fisso} se $f(x)=x$.\end{defi}
+
+Si potrebbe pensare di studiare lo spazio delle orbite, ovvero il quoziente di $X$ per $x\sim y\sse f^n(x)=y$ per qualche $n$, 
+ma questo risulta impossibile nella maggior parte dei casi. 
+Un'identificazione molto utile è invece quella di sistemi dinamici \emph{coniugati} o equivalenti, 
+ovvero sistemi dati da $f$ e $g$ su spazi dello stesso tipo e con gli stessi tempi tali che esista $h$ isomorfismo con $h\circ f=g\circ h$. 
+Si parla di \emph{dinamica} quando si pensa al sistema dinamico a meno di coniugio piuttosto che a quello particolare. 
+Più in generale se $h$ è un morfismo di spazi che fa commutare
+\[ \xymatrix{ X \ar[r]^f \ar[d]_h & X \ar[d]^h \\ Y \ar[r]_g & Y } \]
+se $h$ è surgettiva si dice che $g$ è un \emph{fattore} di $f$ e $f$ \emph{estende} $g$; 
+se $h$ è iniettiva $f$ è un \emph{sottosistema} di $g$ (in questo caso infatti succede che $Y$ contiene un sottospazio $g$-invariante su cui la restrizione di $g$ è coniugata a $f$). 
+

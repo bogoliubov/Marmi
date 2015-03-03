@@ -1,0 +1,336 @@
+\section{Dinamica Olomorfa}
+
+\subsection{Linearizzazione di germi olomorfi}
+Indicheremo con $\C\{x\}\subset\C[[x]]$ il sottoanello delle serie convergenti, ovvero i \emph{germi olomorfi}, ovvero
+\[\C\{x\}=\{ f=\sum_0^\infty f_n x^n\in \C[[x]]:\limsup_{n\rightarrow \infty}|f_n|^\frac{1}{n}<\infty \}\]
+inoltre ricordiamo che se $\lambda\in\C*$ allora ogni $f=\lambda x+f_2 x^2+\dots \in \C[[x]]$ è invertibile formalmente, ovvero nel senso dell'anello $\C[[x]]$. Definiamo allora
+\[G_\lambda=\{f\in\C\{x\}:f=\lambda x+f_2 x^2+\dots\},\]
+\[\hat G_\lambda=\{f\in\C[[x]]:f=\lambda x+f_2 x^2+\dots\}.\]
+Studieremo le dinamiche a tempo discreto su $\C*$ date dai $G_\lambda$, e il nostro scopo sarà quello di ricondursi per coniugio alla rotazione $R_\lambda(z)=\lambda z$, operazione che diremo \emph{linearizzazione}.
+
+\begin{defi} $f\in \hat G_\lambda$ è \emph{formalmente linearizzabile} se $\exists \hat h_f\in \hat G_1$ tale che $f\circ\hat h_f=\hat h_f\circ R_\lambda$. Analogamente $f\in G_\lambda$ è \emph{linearizzabile} (analiticamente) se $\exists h_f\in G_1$ tale che $f\circ h_f= h_f\circ R_\lambda$. 
+\end{defi}
+
+\begin{teo}Se $\lambda$ è una radice $q$-esima primitiva dell'unità, allora $f\in G_\lambda$ (risp. $f\in \hat G_\lambda$) è linearizzabile (risp. formalmente linearizzabile) se e solo se $f^q=Id$.\end{teo}
+\begin{proof}
+ Da $R_\lambda=h_f^{-1}fh_f$ abbiamo $Id=R_\lambda^q=h_f^{-1}f^qh_f$, per cui $f^q=Id$. Per il viceversa
+ \[h_f^{-1}:=\frac{1}{q}\sum_0^{q-1}\lambda^{-j}f^j\]
+ \[h_f^{-1}f=\frac{1}{q}\sum_0^{q-1}\lambda^{-j}f^{j+1}=\frac{\lambda}{q}\sum_0^{q-1}\lambda^{-j-1}f^{j+1}=R_\lambda h_f^{-1}.\]
+\end{proof}
+
+Il seguente teorema completa lo studio della linearizzazione in $\hat G_\lambda$, fornendo la formula formale ricorsiva per $\hat h_f$ che sarà centrale (per il principio di identità delle serie) anche nello studio di $G_\lambda$.
+
+\begin{teo} Se $\lambda^q\neq 1 \quad \forall q\in\N$ (non risonanza), $f\in \hat G_\lambda$ è formalmente linearizzabile.\end{teo}
+\begin{proof} Esplicitando le scritture in $f\circ\hat h_f=\hat h_f\circ R_\lambda$ si ottiene
+ \[\sum_{n\geq 1} \hat h_n \lambda^nz^n=\lambda\sum_1^\infty\hat h_nz^n+\sum_2^\infty z^n\sum_2^n f_j \sum_{n_1+\dots+n_j=1}\hat h_{n_1}\cdots\hat h_{n_j} \]
+ in cui intenderemo sempre che $n_k\geq 1$. Per il principio di identità, otteniamo la ricorrenza cercata:
+ \[\hat h_n=\frac{1}{\lambda^n-\lambda}\sum_2^n f_j\sum_{n_1+\dots+n_j=1}\hat h_{n_1}\cdots\hat h_{n_j}\]
+ con $\hat h_1=1$, che ha senso per l'ipotesi di non risonanza.
+\end{proof}
+
+\begin{teo}[K\"onigs-Poincarè] Se $|\lambda|\neq 1$ allora $f\in G_\lambda$ è linearizzabile.\end{teo}
+\begin{proof} (ACHTUNG: verifica costanti con pig)
+Mostreremo che in questo caso è analitica la $\hat h_f$ data dal teorema precedente.
+ $f\in G_\lambda$ è analitica, quindi abbiamo le stime
+ \[\exists c_1>1 \quad \exists r<1 : \quad \forall j\geq 2 \quad |f_j|\leq c_1 r^{1-j}\]
+ e inoltre dalle ipotesi su $\lambda$ si ha
+ \[\exists c_2>1: \quad \forall n\geq 2 \quad |\lambda^n-\lambda|^{-1}\leq c_2.\]
+ Se ora definiamo ricorsivamente
+ \[\begin{cases}
+       \sigma_1=1\\
+       \sigma_{n+1}=\sum_2^n f_j\sum_{n_1+\dots+n_j=1}\sigma_{n_1}\cdots\sigma_{n_j} 
+   \end{cases}\]
+ induttivamente si vede che $|\hat h_n|\leq (c_1 c_2 r^{-1})^{n-1}\sigma_n$: per cui $\hat h_f$ se e solo se converge la funzione generatrice $\sigma(z)=\sum_1^\infty \sigma_n z^n$. Poichè
+ \[\begin{split}
+ \sigma(z)&=z+\sum_2^\infty z^n \sum_2^n f_j\sum_{n_1+\dots+n_j=1}\sigma_{n_1}\cdots\sigma_{n_j}\\
+	  &=z+\sum_2^\infty \left(\sum_1^\infty \sigma_k z^k\right)^n=z+\sum_2^\infty \sigma(z)^n\\
+	  &=z+\frac{\sigma(z)^2}{1-\sigma(z)}\\
+	  &\Longrightarrow \sigma(z)=\frac{1+z+\sqrt{1-6z+z^2}}{4}
+ \end{split}\]
+ abbiamo che $\sigma$ è analitica in un intorno di $0$, da cui la tesi. 
+\end{proof}
+
+Il teorema risolve il problema della linearizzabilità fuori dal cerchio unitario, e inoltre ci dà che per $|\lambda|<1$ l'origine è stabile secondo Lyapunov. Nel caso $|\lambda|=1$,
+abbiamo già caratterizzato la linearizzabilità quando $\lambda$ è una radice dell'unità: discuteremo ora il caso in cui $\abs{\lambda}=1$ ma $\lambda$ non è radice dell'unità, arrivando a risolvere completamente il problema nell'ultima sezione. Come vedremo, per q.o. $\lambda$ (nel senso della misura di Lebesgue) tutti i germi di $G_\lambda$ si linearizzano, tuttavia esistono molti $\lambda$ per cui ciò non accade. La dimostrazione di questo fatto, non costruttiva, si basa sul noto
+
+\begin{teo}[lemma di Baire]Se $(X,d)$ è uno spazio metrico completo e $(U_n)$ è una famiglia numerabile di aperti densi,
+allora l'intersezione $\cap_n U_n$ è un $G_\delta$ denso (e in particolare non vuoto). Se inoltre $X$ non contiene punti isolati, l'intersezione $\cap_n U_n$ è più che numerabile.
+\end{teo}
+
+\begin{proof} (Seconda parte dell'enunciato.) Se per assurdo fosse $\cap_n U_n=\set{x_1,x_2,\dots}$ (con finiti o numerabili $x_i$),
+posto $V_i:=X\setminus\set{x_i}$ (aperto denso per ipotesi) avremmo
+\[ \emptyset=\pa{\cap_n U_n}\cap\pa{\cap_i V_i}. \]
+Ma a secondo membro c'è ancora un'intersezione numerabile di aperti densi, assurdo.
+\end{proof}
+
+\begin{teo}[Controesempi di Cremer] Esiste un $G_\delta$ denso di valori di $\lambda\in\T^1$ tali che esiste $f\in G_\lambda$ non linearizzabile. Dunque, per Baire, tale $G_\delta$ non contiene solo radici dell'unità.\end{teo}
+
+
+\begin{proof}[Primo controesempio.]
+Ci sono più che numerabili $\lambda$ tali che $Q_\lambda(z):=\lambda z+z^2$ non è linearizzabile.
+Infatti una condizione necessaria per la linearizzabilità è che l'origine sia lontana dall'unione di tutti
+i punti periodici non nulli (perché $z\mapsto \lambda z$ non ne ha), quindi per avere $\lambda$ come richiesto basta garantire che ci siano punti periodici arbitrariamente piccoli. L'iterata $n$-esima è della forma $Q_\lambda^n(z)=\lambda^n z+\dots+z^{2^n}$, quindi i punti periodici non nulli di periodo (che divide) $n$ sono le radici di
+\[ \frac{Q_\lambda^n(z)-z}{z}=(\lambda^n-1)+\dots+z^{2^n-1}. \]
+Il termine noto $\lambda^n-1$ è il prodotto delle $2^n-1$ radici, quindi ce n'è una di modulo $\le\abs{\lambda^n-1}^{\frac{1}{2^n-1}}$.
+Quindi basta garantire che l'$\inf$ al variare di $n>0$ dell'ultima espressione sia $0$. \\
+L'insieme dei $\lambda$ che soddisfano questa richiesta è
+\[ S:=\cap_{N>0}\set{\lambda\in\mathbb{T}^1:\inf_n\abs{\lambda^n-1}^{\frac{1}{2^n-1}}<\frac{1}{N}}. \]
+Abbiamo espresso l'insieme voluto come intersezione numerabile di aperti; questi aperti sono densi perché ognuno di essi contiene tutte le radici dell'unità, quindi $S$ è un $G_\delta$ denso e più che numerabile. Le radici dell'unità sono numerabili, quindi rimuovendole rimangono più che numerabili $\lambda\in S$ irrazionali.
+\end{proof} 
+
+\begin{proof}[Secondo controesempio.]
+In termini di $\alpha$, l'insieme $S$ del primo metodo corrispondeva alla richiesta
+$\obar{\lim}\pa{-\frac{1}{2^n}\ln\norm{n\alpha}}=\infty$. Indeboliamola chiedendo solo
+\[ \obar{\lim}\pa{-\frac{1}{n}\ln\norm{n\alpha}}=\infty \]
+e cerchiamo germi $f(z)=\lambda z+f_2 z^2+f_3 z^3+\dots$ non linearizzabili (fatto questo, l'insieme dei $\lambda$ cercati
+sarà più che numerabile in quanto sovrainsieme di $S$).
+Ricordiamo la formula dei coefficienti del ``linearizzatore'' formale $h(z)$:
+\[ \begin{split} h_n&=\frac{1}{\lambda^n-\lambda}\sum_{j=2}^n f_j\sum_{\substack{n_1+\dots+n_j=n,\\n_i\ge 1}}h_{n_1}\cdots h_{n_j} \\
+&=\frac{1}{\lambda^n-\lambda}\pa{f_n+\sum_{j=2}^{n-1}f_j\sum_{\substack{n_1+\dots+n_j=n,\\n_i\ge 1}}h_{n_1}\cdots h_{n_j}} \end{split} \]
+(per $n\ge 2$); scegliamo ricorsivamente $f_n$ di modulo $1$ e con lo stesso argomento del risultato della somma.
+In questo modo $f(z)$ converge e d'altro canto
+\[ \abs{h_n}\ge\frac{1}{\abs{\lambda^n-\lambda}}=\frac{1}{\abs{\lambda^{n-1}-\lambda}}, \]
+quindi $h(z)$ diverge perché
+\[ \sqrt[n]{\abs{h_{n+1}}}\ge\abs{\lambda^n-1}^{-\frac{1}{n}}=\exp\pa{-\frac{\ln\pa{2\abs{\sin(\pi n\alpha)}}}{n}}\to\infty \]
+lungo una sottosuccessione (abbiamo usato l'identità $\abs{\lambda^n-1}=\sqrt{2-2\cos\pa{2\pi n\alpha}}=2\abs{\sin(\pi n\alpha)}$).
+\end{proof}
+
+Enunciamo ora i risultati che risolvono il problema della linearizzabilità.
+
+\begin{teo}[Siegel] Se $\alpha$ è irrazionale e diofanteo, ogni germe in $G_\lambda$ è linearizzabile analiticamente.\end{teo}
+
+\begin{teo}[Brjuno] Detti $\frac{p_n}{q_n}$ i convergenti di $\alpha$, se $\alpha$ è irrazionale
+e $\sum\frac{\ln q_{n+1}}{q_n}<\infty$ allora ogni germe in $G_\lambda$ è linearizzabile analiticamente.
+\end{teo}
+
+\begin{teo}[Yoccoz] Se i convergenti di $\alpha$ non soddisfano $\sum\frac{\ln q_{n+1}}{q_n}<\infty$, allora $f(z):=\lambda z+z^2$ non è analiticamente linearizzabile.\end{teo}
+
+I numeri i cui convergenti soddisfano la condizione di Brjuno sono appunto detti \emph{numeri di Brjuno}. Non è difficile vedere che contengono i numeri diofantei (cioè il teorema di Brjuno generalizza quello di Siegel) e quindi hanno misura di Lebesgue $1$, come già annunciato. Tornando al controesempio di Cremer, osserviamo che è uno dei casi in cui un insieme è generico nel senso della topologia (cioè è un $G_\delta$ denso) ma è l'esatto opposto nel senso della misura (è trascurabile). 
+
+Facciamo qualche conto per apprezzare la difficoltà del teorema di Siegel. Ricordiamo la formula per i coefficienti di $h$:
+\[ h_1=1 \qquad h_n=\frac{1}{\lambda^n-\lambda}\sum_{j=2}^n f_j\sum_{\substack{n_1+\dots+n_j=n,\\n_i\ge 1}}h_{n_1}\cdots h_{n_j} \]
+Con un po' di fatica si ottiene 
+
+\[h_2=\frac{f_2}{\lambda^2-\lambda}\]
+\[h_3=\frac{1}{\lambda^3-\lambda}\pa{\frac{2f_2^2}{\lambda^2-\lambda}+f_3}\]
+\[\begin{split}
+   h_4 &=\frac{1}{\lambda^4-\lambda}\pa{f_4+3f_3h_2+2f_2h_3+f_2h_2^2} \\
+       &=\frac{1}{\lambda^4-\lambda}\pa{f_4+\frac{3f_3f_2}{\lambda^2-\lambda}+\frac{4f_2^3}{(\lambda^3-\lambda)(\lambda^2-\lambda)} +\frac{2f_2f_3}{\lambda^3-\lambda}+\frac{f_2^3}{(\lambda^2-\lambda)^2}}
+  \end{split}\]
+
+In generale in $h_n$ compare il termine $\frac{2^{n-2}f_2^{n-1}}{(\lambda^n-\lambda)\cdots(\lambda^2-\lambda)}$,
+quindi una stima brutale dei moduli di tutti i termini di $h_n$ difficilmente funzionerebbe: ad esempio stimando
+$\abs{\lambda^n-\lambda}\sim\norm{(n-1)\alpha}\ge\gamma(n-1)^{-(1+\tau)}$ otteniamo
+\[ \abs{\frac{2^{n-2}f_2^{n-1}}{(\lambda^n-\lambda)\cdots(\lambda^2-\lambda)}}\le C^n (n-1)!^{1+\tau} \]
+che è troppo poco per garantire la convergenza di $h$.
+
+Prima di passare alla dimostrazione del teorema di Brjuno (non mostreremo invece quello di Yoccoz), ambientiamo il problema in un contesto un poco più generale, per motivare ulteriormente lo sforzo e legare il problema della stabilità topologica a quello della linearizzabilità anche nel caso $|\lambda|=1$.
+
+\subsection{Stabilità e linearizzabilità}
+
+Ricordiamo anzitutto alcune nozioni sulla sfera di Riemann $\obar{\C}$. 
+\begin{itemize}
+ \item Dato $U\subseteq\obar{\C}$ aperto, sia $\mathcal{F}_U$ l'insieme delle funzioni meromorfe su $U$
+      (cioè l'insieme delle funzioni olomorfe $U\to\obar{\C}$, compresa la funzione costante $\infty$).
+      Una famiglia $\mathcal{F}\subseteq\mathcal{F}_U$ è \emph{normale} se ogni successione di funzioni in $\mathcal{F}$
+      ha una sottosuccessione convergente uniformemente sui compatti.
+ \item Un noto teorema di Weierstrass garantisce che se una successione di funzioni
+      in $\mathcal{F}_U$ converge uniformemente sui compatti il suo limite è ancora in $\mathcal{F}_U$.
+ \item $\obar{\C}$ è uno spazio compatto e metrizzabile (è omeomorfo a $S^2$);
+      possiamo definire esplicitamente una metrica riemanniana tramite le due carte standard $z:\C\to\C$
+      e $w:\obar{\C}\nonzero\to\C$ ($w=\frac{1}{z}$), ponendo
+      \[ ds=\frac{2\abs{dz}}{1+\abs{z}^2}=\frac{2\abs{dw}}{1+\abs{w}^2}, \]
+      che equivale a dire che la lunghezza di una curva $\gamma:[0,T]\to\obar{\C}$ è
+      (prendendo come esempio il caso in cui l'immagine di $\gamma$ sia inclusa in $\obar{\C}\nonzero$)
+      \[ \ell(\gamma)=\int_0^T \frac{2\abs{(w\circ\gamma)'(t)}}{1+\abs{(w\circ\gamma)'(t)}^2}\,dt. \]
+      Questa metrica coincide con quella di $S^2$ letta tramite le proiezioni stereografiche.
+ \item $\aut(\obar{\C})=\set{\frac{az+b}{cz+d}\mid ad-bc\neq 0}$
+ \item $\ndom(\obar{\C})=\set{\frac{p(z)}{q(z)}\mid p(z),q(z)\in\C[z]}\cup\set{\infty}$
+\end{itemize}
+
+Studiamo gli endomorfismi: poniamo $R(z):=\frac{p(z)}{q(z)}$ e definiamo due insiemi complementari.
+
+\begin{defi}L'\emph{insieme di Fatou} di $R$, che indichiamo con $F(R)$, è
+l'insieme dei punti $z\in\obar{\C}$ tali che $\set{R^n\mid n\ge 0}$ è normale in un intorno di $z$
+(qui $R^n$ è l'iterata $n$-esima). L'\emph{insieme di Julia} di $R$ è $J(R):=\obar{\C}\setminus F(R)$.
+\end{defi}
+
+\begin{oss}L'insieme di Fatou è aperto per definizione, mentre Julia è chiuso (e quindi compatto).
+\end{oss}
+
+\begin{esempio}Sia $R(z):=z^2$. In questo caso $F(R)=\obar{\C}\setminus S^1$, mentre $J(R)=S^1$
+(infatti, se $z\in S^1$ e $U$ è un suo intorno, ogni elemento di $\C\nonzero$ sta definitivamente in $R^n(U)$:
+questo si vede bene supponendo che $U$ sia della forma $\set{u:r<\abs{u}<R,\ \alpha<\arg(u)<\beta}$). \\
+In generale, se $R(z)$ è un polinomio di grado $\ge 2$, $\infty\in F(R)$.
+\end{esempio}
+
+Nel caso di un polinomio $P(z)$ di grado $\ge 2$, il complementare della componente connessa di $F(P)$ contenente $\infty$
+viene chiamato \emph{insieme di Julia riempito} e si indica con $K(P)$ (nel caso di $P(z)=z^2$, $K(P)=\obar{\disco}$).
+
+\begin{prop}Se il grado di $R$ (come funzione razionale) è $d\ge 2$, $J(R)\neq\emptyset$.
+\end{prop}
+
+\begin{proof}Il grado di $R$ come funzione razionale coincide con il grado di $R$ come funzione liscia da $\obar{\C}$ in sé.
+Quindi l'iterata $R^n$ ha grado $d^n$. Se per assurdo fosse $F(R)=\obar{\C}$, per la compattezza di $\obar{\C}$
+una sottosuccessione $R^{n_i}$ convergerebbe uniformemente su tutto $\obar{\C}$; ma allora il grado
+di $R^{n_i}$ sarebbe definitivamente costante, assurdo.
+\end{proof}
+
+\begin{defi}Dati $(X,d)$ spazio metrico e $f:X\to X$, $x_0$ è \emph{stabile}
+se per ogni $\epsilon>0$ esiste un intorno $V$ di $x_0$ tale che $\forall x\in V\ \forall n\ge 0$
+$\pa{f^n(x_0),f^n(x)}\le\epsilon$ (cioè le iterate $f^n$ sono equicontinue in $x_0$).
+\end{defi}
+
+Consideriamo su $\obar{\C}$ la distanza $d$ definita prima tramite la metrica riemanniana
+(ma una qualsiasi distanza che induca la topologia di $\obar{\C}$ va bene).
+
+\begin{prop}$z_0\in\obar{\C}$ è \emph{stabile} per $R$ $\sse$ $z_0\in F(R)$.
+\end{prop}
+
+\begin{proof}$(\Rightarrow)$: data una successione $(R^{n_i})$, a meno di sottosuccessioni possiamo supporre che
+$R^{n_i}(z_0)$ converga a un punto $p\in\obar{\C}$ (compattezza della sfera). Esiste un automorfismo $h\in\aut(\obar{\C})$
+con $h(p)=0$ e per stabilità (e la continuità uniforme di $h$) esiste un intorno $V$ di $z_0$ tale che,
+per ogni $z\in V$ e ogni $i$ grande, $h\circ R^{n_i}(z)\in\C$ e anzi $\abs{h\circ R^{n_i}(z)}\le 1$. \\
+Un risultato noto di analisi complessa (che è una conseguenza di Ascoli-Arzelà) afferma che una successione di funzioni olomorfe
+(da un aperto di $\obar{\C}$ a $\C$) e limitate ammette una sottosuccessione convergente sui compatti.
+Quindi (a meno di ulteriori sottosuccessioni) $h\circ R^{n_i}$ converge sui compatti di $V$ e così anche $R^{n_i}$. \\
+$(\Leftarrow)$: se per assurdo $z_0$ non fosse stabile, esisterebbero due successioni $n_k$ e $z_k$ tali che
+$d(z_0,z_k)<\frac{1}{k}$ e $d\pa{R^{n_k}(z_0),R^{n_k}(z_k)}\ge\epsilon$.
+Essendo $z_0\in F(R)$, troveremmo una sottosuccessione convergente uniformemente su un intorno compatto $\obar{V}$ di $z_0$;
+perciò le funzioni che la compongono sarebbero equicontinue su $\obar{V}$, assurdo.
+\end{proof}
+
+Diamo ora per buoni tre risultati; il primo è un lemma topologico, mentre gli altri vengono dall'analisi complessa.
+
+\begin{lemma}Sia $W\subseteq\C$ un aperto connesso. $W$ è semplicemente connesso se e solo se,
+per ogni curva semplice chiusa $\gamma\subset W$, la componente connessa limitata di $\C\setminus\gamma$ è inclusa in $W$.
+\end{lemma}
+
+\begin{lemma}[Schwarz]Data $f:\disco_r\to\disco_r$ olomorfa con $f(0)=0$, abbiamo $\abs{f(z)}\le\abs{z}$
+e $\abs{f'(0)}\le 1$. Se vale una delle due uguaglianze (cioè $\abs{f(z')}=\abs{z'}$ per qualche $z'$ o $\abs{f'(0)}=1$),
+allora $f(z)=\lambda z$ con $\abs{\lambda}=1$.
+\end{lemma}
+
+\begin{teo}[Riemann]Ogni aperto di $\C$ semplicemente connesso (eccetto tutto $\C$) è biolomorfo al disco.
+Più precisamente, per ogni $z_0\in W$ esistono unici $r>0$ e $h:\disco_r\to W$ con $h$ biolomorfismo
+che soddisfa $h(0)=z_0$ e $h'(0)=1$.
+\end{teo}
+
+Usiamo questi strumenti per dedurre un'altra caratterizzazione della linearizzabilità:
+
+\begin{teo}Sia $\abs{\lambda}\le 1$. Dato $f\in G_\lambda$, $f$ è stabile in $0$ se e solo se è linearizzabile.
+\end{teo}
+
+La stabilità significa che, per ogni $V$ intorno di $0$, esiste un intorno più piccolo $U$ tale che
+le iterate $f^n$ sono tutte definite su $U$ e $f^n(U)\subseteq V$ per ogni $n$.
+
+\begin{proof}Abbiamo già visto che per $\abs{\lambda}<1$ sono vere entrambe le condizioni,
+quindi supponiamo $\abs{\lambda}=1$. \\
+Se $f$ è linearizzabile, chiaramente è anche stabile. Viceversa, se $f$ è stabile, esiste un disco $D$
+centrato nell'origine su cui sono definite tutte le iterate $f^n$. \\
+Per la stabilità c'è anche un intorno $V$ di $0$ tale che $f^n(V)\subseteq D$ per ogni $n\ge 0$.
+Poniamo $L:=\cap_{n\ge 0}f^{-n}(D)$: $L$ è a sua volta un intorno di $0$ perché $L\supseteq V$. \\
+Inoltre $f(L)\subseteq L$, quindi (essendo $f$ aperta) $f\pa{\interna{L}}\subseteq\interna{L}$.
+Chiamando $W$ la componente connessa di $\interna{L}$ che contiene $0$, vale pure $f(W)\subseteq W$. \\
+Basta dimostrare che $W$ è semplicemente connesso: fatto questo, il teorema di Riemann ci dà
+il biolomorfismo $h:\disco_r\to W$ con $h(0)=0$ e $h'(0)=0$; la composizione $g:=h^{-1}\circ f\circ h:\disco_r\to\disco_r$
+soddisfa $g(0)=0$ e $\abs{g'(0)}=\abs{\lambda}=1$, quindi per il lemma di Schwarz $g(z)=\lambda z$:
+abbiamo linearizzato $f$! \\
+Applichiamo il lemma topologico: sia $\gamma\subset W$ una curva semplice chiusa. Poiché $W\subseteq D$,
+chiamando $B$ la componente limitata di $\C\setminus\gamma$, è $\obar{B}\subseteq D$.
+Ma allora, per ogni $n\ge 0$, $f^n$ è definita su $\obar{B}$ e per il principio del massimo
+il modulo di $f^n$ ha massimo su $\de\obar{B}=\gamma$. Per definizione di $L$, $f^n(\gamma)\subseteq D$;
+dunque $\max_{z\in\obar{B}}\abs{f^n(z)}<1$, cioè $f^n(\obar{B})\subseteq D$.
+Questo dà $\obar{B}\subseteq\interna{L}$; essendo $\obar{B}$ connesso e $\de\obar{B}\subset W$, arriviamo a $\obar{B}\subseteq W$.
+\end{proof}
+
+\subsection{Il teorema di Siegel-Brjuno}
+
+Come annunciato, dimostriamo in questa sezione il teorema di Brjuno. Seguiremo da vicino l'articolo originale, abbandonando le notazioni usate fino a questo punto in favore di quelle di Brjuno. Iniziamo con l'enunciato.
+
+\begin{teo}[Siegel-Brjuno] Sia $\lambda\in\irr$ con convergenti $p_k/q_k$ tali che 
+   \[\sum_o^\infty \frac{\ln q_{k+1}}{q_k}<\infty,\]
+  e sia $\Lambda=e^{2\pi i\lambda}$; allora la dinamica data da
+   \[F:x\mapsto \Lambda x + f_1 x^2+f_2 x^3+\dots=\Lambda x+xf(x)\]
+  sulla sfera di Riemann, con $f$ olomorfa in $0$ e $f(0)=0$, è coniugata alla dinamica $R_\Lambda:y\mapsto \Lambda y$ tramite
+   \[H:y\mapsto y+h_1 y^2+h_2 y^3+\dots =y(1+h(y))=x\]
+  con $h$ olomorfa e nulla in $0$.
+\end{teo}
+
+L'idea è sempre quella di esplicitare ricorsivamente i coefficienti $h_n$ e verificare che la serie di potenze relativa converge, tramite stime opportune, che si ricondurranno all'ipotesi sui convergenti. Imponendo il coniugio $F\circ H=H\circ R_\Lambda$ si ottiene l'equazione (\emph{di Schr\"oder})
+\[\Lambda h(\Lambda y)=\Lambda h(y) +(1+h(y))f(y+yh(y))\]
+da cui, indicando con $[\cdot]_n$ il coefficiente $n$-esimo di una serie, si ha
+\[h_n=\underbrace{\frac{1}{\Lambda^{n+1}-\Lambda}}_{(1)}\underbrace{\left[(1+h(y))f(y+yh(y))\right]_n}_{(2)}.\]
+Controlliamo il fattore risonante $(1)$ con 
+\[\omega(n)=\min_{m\in \Z} |n\lambda-m| \quad \Rightarrow \quad |\Lambda^n-1|\geq 4\omega(n)\]
+mentre per il termine ricorsivo $(2)$ usiamo che per opportune costanti $c_1,c_2$ i coefficienti dello sviluppo in serie di $\frac{c_1 x}{c_2-x}$ maggiorano quelli dello sviluppo di una funzione analitica, nel nostro caso $f$, ottenendo in definitiva
+\[|h_n|\leq \frac{1}{4\omega(n)} \left[\frac{c_1 y (1+h(y)^2)}{c_2-y(1+h(y))}\right]_n.\]
+A questo punto definiamo ricorsivamente, posto $g=\sum_1^\infty g_n x^n$,
+\[\omega(n) g_n=\frac{1}{4} \left[\frac{c_1 y (1+g(y)^2)}{c_2-y(1+g(y))}\right]_n\geq 0;\]
+si verifica per induzione che $g_n\geq|h_n|$, per cui siamo ricondotti alla convergenza di $g$. Sommando su $n$ l'ultima equazione si ottiene
+\[\sum_1^\infty \omega(n) g_n y^n=\frac{c_1 y (1+g(y)^2)}{4(c_2-y(1+g(y)))} \]
+da cui, usando che $\omega(n)<1/2$, con semplici stime si ottiene
+\[g_n<\frac{C}{\omega(n)}\underset{n_1+n_2+1=n}{\sum_{n_1,n_2\geq 0}}g_{n_1}g_{n_2}\]
+dove $C$ è una costante opportuna. Ancora una volta dobbiamo stimare un termine risonante e uno ricorsivo, e lo facciamo rispettivamente con le successioni
+\begin{eqnarray*}
+  \sigma_0=1 \qquad
+  \sigma_n=C \underset{n_1+n_2+1=n}{\sum_{n_1,n_2\geq 0}}\sigma_{n_1}\sigma_{n_2}
+ \\
+  \delta_0=1 \qquad
+  \delta_n=\frac{1}{\omega(n)}\underset{n_1+n_2+1=n}{\max_{n_1,n_2\geq 0}}\delta_{n_1}\delta_{n_2}
+\end{eqnarray*}
+in modo che $g_n\leq \sigma_n \delta_n$. Siamo ricondotti allo studio della convergenza delle relative serie di potenze.
+Per la prima il calcolo è analogo a quello fatto per K\"onigs-Poincarè: 
+\[\sigma(y)-1=\sum_1^\infty \sigma_n y^n=Cy\sigma(y)^2 \quad \Rightarrow \quad \sigma(y)=\frac{1-\sqrt{1-4Cy}}{2Cy}\]
+per cui $\sigma$ è analitica in $0$.
+La difficoltà sta tutta nel fattore risonante: come avevamo visto in precedenza nel caso diofanteo, non funzionano stime semplici, per cui dobbiamo raffinare il conteggio dei piccoli divisori. Osserviamo infatti che dalla definizione dei $\delta_n$ si ha che ognuno si scrive come prodotto di fattori $1/\omega(j)$ (con molteplicità): basta infatti nella definizione considerare $n_1$ e $n_2$ che realizzano il minimo e iterare il ragionamento. Siamo interessati a stimare quanti di questi fattori sono ``grandi''.\newline\indent
+Iniziamo definendo $\omega_k=\omega(q_k)$ i minimi successivi di $\omega:\N\rightarrow\R$, ovvero mettiamo $\omega_0=\omega(1)$ e induttivamente $q_{k+1}$ il primo numero dopo $q_k$ tale che $\omega_{k+1}=\omega(q_{k+1})$ è minimo di $\omega|_{0,\dots,q_{k+1}}$ ovvero di $\omega|_{q_k,\dots,q_{k+1}}$. La notazione $q_k$ è suggestiva del fatto che tali numeri risulteranno essere i denominatori dei convergenti di $\lambda$. Eventualmente useremo $\omega_{-1}=1$. \newline
+Suddividiamo ora la retta in ``scatole'' successive $[\omega_{k+1}/2,\omega_k/2)$: risulteranno essere di larghezza (più che) esponenzialmente decrescente. Anzitutto costruiamo una funzione che controlla \emph{quali} piccoli divisori stanno in una ``scatola'': per $n\in\N^+$ e $k=-1,0,1,\dots$ poniamo
+\[\psi_k(n)=\begin{cases}
+   1 \qquad \omega(n)<\omega_k/2\\
+   0 \qquad \omega(n)\geq \omega_k/2
+  \end{cases}\]
+\begin{lemma} Se $\psi_k(n)=1$, allora $\psi_k(n-l)=0$ per tutti gli $0<l<q_{k+1}$. In altre parole, nelle scatole oltre la $k$-esima si cade al più ogni $q_{k+1}$ numeri.\end{lemma}
+\begin{proof}
+ Indichiamo con $m_n$ l'intero che realizza il minimo nella definizione di $\omega$;
+ \[\begin{split}
+  \omega(n)+\omega(n-l) &=|n\lambda-m_n|+|(n-l)\lambda-m_{n-l}|\\
+			&\geq |l\lambda+m_{n-l}-m_n|\geq \omega(l)
+\end{split}\]
+e ora però $\omega(l)\geq \omega_k$ e $\omega(n)<\omega_k/2$, per cui
+\[\omega(n-l)\geq \omega(l)-\omega(n)>\omega_k/2.\] 
+\end{proof}
+
+Definiamo ora la funzione $\phi_k(n)$ come il numero di fattori $1/\omega(j)$ nella decomposizione di $\delta_n$ tali che $\omega_{k+1}/2\leq\omega(j)<\omega_k/2$. In altri termini, $\phi$ conta \emph{quanti} piccoli divisori stanno in una ``scatola''. Dalla definizione ricorsiva di $\delta_n$ si ha che per $n\in\N^+$ e $k=-1,0,1,\dots$
+\[0\leq \phi_k(n)\leq\psi_k(n)+\underset{n_1+n_2+1=n}{\max_{n_1,n_2\geq 0}}(\phi_k(n_1)+\phi_k(n_2)).\tag{*}\]
+Nel prossimo risultato ci basterà quest'ultima disuguaglianza, e non ricorreremo alla definizione di $\phi_k$, per cui lo enunciamo nel modo seguente:
+
+\begin{lemma} Se $\phi:\N\rightarrow\N$ soddisfa la \emph{(*)}, per $n\in\N^+$ e $k=-1,0,1,\dots$
+ \[\phi_k(n)\begin{cases} =0 \qquad 0<n<q_{k+1}\\
+    \leq 2\left\lfloor\frac{n}{q_{k+1}}\right\rfloor-1 \qquad n\geq q_{k+1}
+   \end{cases}\]
+   e dunque $\phi_k(n)<\frac{2n}{q_{k+1}}$.
+   \end{lemma}
+ 
+\begin{proof}
+ Se $n<q_{k+1}$, $\psi_k(n)=0$, da (*) la tesi. Se $n=q_{k+1}$, devono essere $n_i<n$ e quindi $\phi(n_i)=0$, inoltre $\psi(n)\leq 1$ e perciò ancora per (*) vale la tesi. \newline
+ Per il caso $n>q_{k+1}$ procediamo per induzione, e assumiamo la tesi fino a $n$. Siano $n_1\geq n_2$ che realizzano l'uguaglianza in (*). Se $\psi(n)=0$ si conclude facilmente studiando i tre casi $q_{k+1}\leq n_2$, $n_2<q_{k+1}\leq n_1$ e $n_1<q_{k+1}$. Se invece $\psi(n)=1$, come prima sono facili i casi laterali $q_{k+1}\leq n_2$ e $n_1<q_{k+1}$, come anche il caso $n_2<q_{k+1}\leq n_1$ se vale anche $\left\lfloor\frac{n_1}{q_{k+1}} \right\rfloor<\left\lfloor\frac{n}{q_{k+1}} \right\rfloor$. Se invece $\left\lfloor\frac{n_1}{q_{k+1}} \right\rfloor=\left\lfloor\frac{n}{q_{k+1}} \right\rfloor$, allora dev'essere $n-n_1<q_{k+1}$, e quindi $\psi_k(n_1)=0$, per cui applicando la (*) a $\phi(n_1)$ otteniamo, poichè era $\phi(n_2)=0$,
+ \[\phi\leq 1+\phi(n_3)+\phi(n_4)\]
+ con $n_3+n_4+1=n_1$. Ripetendo lo studio dei tre casi per i nuovi $n_i$, si giunge ancora alla situazione $n_4<q_{k+1}\leq n_3$ e $\left\lfloor\frac{n_3}{q_{k+1}} \right\rfloor=\left\lfloor\frac{n_1}{q_{k+1}} \right\rfloor=\left\lfloor\frac{n}{q_{k+1}} \right\rfloor$, da cui si procede in modo analogo, giungendo dopo $l$ passi a
+ \begin{eqnarray*}
+  \phi(n)\leq 1+\phi(n_{2l-1})+\phi(n_{2l})\\
+  n_{2l-1}+n_{2l}=n_{2l-3}<n_{2l-5}<\dots<n_1<n\\
+  q>n_{2l} \qquad \left\lfloor\frac{n_{2l-1}}{q_{k+1}} \right\rfloor=\left\lfloor\frac{n}{q_{k+1}} \right\rfloor.
+ \end{eqnarray*}
+Iterando la $n_{2l+1}\leq n_{2l-1}-1$ si ottiene che $n-n_{2l-1}\geq l$, e tuttavia l'ultima equazione elencata può verificarsi solo fichè $n-n_{2l-1}\leq q_{k+1}-1$, per cui il caso sfortunato non può presentarsi per più di $q_{k+1}-1$ volte di fila. A questo punto, è facile condludere l'induzione. 
+\end{proof}
+ 
+Abbiamo ora tutti gli strumenti per stimare $\delta_n$: sia $K$ tale che $q_K\leq n<q_{K+1}$ ($n$ sta nella $K$-esima ``scatola''), allora per quanto visto
+\begin{eqnarray*}
+ \delta_n\leq\prod_{k=-1}^K \left(\frac{2}{\omega_{k+1}}\right)^{\phi_k(n)}\\
+ \ln\delta_n\leq \sum_{k=-1}^K \frac{2n}{q_{k+1}}\ln\left(\frac{2}{\omega_{k+1}}\right)<2n\sum_{k=0}^\infty \frac{1}{q_k}\ln\left(\frac{2}{\omega_k}\right).
+\end{eqnarray*}
+
+A questo punto, come anticipato, osserviamo che i nostri $q_k$ e i relativi interi $p_k$ che realizzano la definizione di $\omega(k)$, sono buone approssimazioni di $\lambda$ nel senso precisato nella parte sulle Frazioni Continue, e dunque, per il teorema di buona approssimazione, coincidono con i convergenti della frazione continua di $\lambda$. Allora, ricordando che $q_k>(\sqrt{2})^{k-1}$ e che $\omega_k=|q_k\lambda-p_k|>\frac{1}{2q_{k+1}}$, dalla formula sopra abbiamo
+\[\ln\delta_n <2n\left(\ln(4)\sum_{k=0}^\infty \frac{1}{q_k}+\sum_{k=0}^\infty \frac{\ln q_{k+1}}{q_k} \right)\]
+in cui la prima serie converge (esercizio visto in precedenza) e la seconda è quella dell'ipotesi del teorema. Per cui abbiamo finalmente concluso la nostra dimostrazione, avendo provato che per una costante $C$ vale $\delta_n<C^{2n}$.

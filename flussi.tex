@@ -1,0 +1,168 @@
+\section{Flussi e Equazione Coomologica}
+
+Consideriamo il toro $d$-dimensionale $\T^d=\R^d/\Z^d$ per $d\geq 2$, $\alpha\in\R^d\smallsetminus \{0\}$. In $\T^d$ abbiamo la dinamica continua data dal flusso integrale 
+\[S^t_\alpha x=x+t\alpha \qquad \mbox{dell'equazione} \qquad \dot x=\alpha\]
+in $\R^d$ al quoziente sul toro, e la dinamica discreta ad essa strettamente collegata data dalla traslazione 
+$S_\alpha: x\mapsto x+\alpha$ in $\R^d$ al quoziente sul toro (in entrambi i casi parleremo di traslazioni sul toro). 
+Osserviamo che la misura di Haar è invariante per entrambe, e se non meglio specificato ci riferiremo a quella.
+
+\begin{defi} $\alpha=(\alpha_1,\dots,\alpha_d)$ è \emph{non risonante} se i reali $1,\alpha_1,\dots,\alpha_d$ sono linearmente indipendenti su $\Q$, ovvero
+ \[\forall k\in \Z^{d+1} \qquad (1,\alpha)\cdot k=0 \Rightarrow k=0,\]
+ diremo altrimenti che $\alpha$ è \emph{risonante}, e in tal caso sarà non nullo $R=\{k\in\Z^d:(1,\alpha)\cdot k=0\}$
+\end{defi}
+
+\begin{teo} Le dinamiche $S^t_\alpha$ e $S_\alpha$ sono minimali se e solo se $\alpha$ è non risonante. 
+Inoltre sono ergodiche se e solo se $\alpha$ è non risonante, e in tal caso sono anche unicamente ergodiche.\end{teo}
+
+\begin{proof}[Dimostrazione (facoltativa).]
+ Proveremo il teorema solo per tempo discreto: la controparte a tempo continuo è analoga o ne discende immediatamente. 
+ Anzitutto mostriamo con un unico esempio che se $\alpha$ è risonante la dinamica non è transitiva nè ergodica: 
+ infatti in tal caso esiste $(k_1,\dots k_d)\in\Z^d$ tale che $\sum\alpha_j k_j=k_0\in\Z$, e allora abbiamo l'osservabile continuo integrabile non costante
+ \[\phi:\T^d\rightarrow \T^d \qquad \phi(x)=\sin 2\pi(k_1x_1+\dots+k_dx_d).\]
+ Supponiamo $S_\alpha$ non minimale, ovvero (per un esercizio nella parte di Dinamica Topologica) non transitivo, 
+ allora abbiamo due aperti disgiunti invarianti $U,V\subset \T^d$. L'indicatrice $\f=\uno_U$ allora non è q.c. costante, ma allora i suoi coefficienti di Fourier
+ non sono tutti nulli, e quindi da
+ \[f(x)=\sum_{m\in \Z^d} f_m e^{2\pi i (m\cdot x)}\]
+ \[f(S_\alpha x )=\sum_{m\in \Z^d} f_m e^{2\pi i (m\cdot x)} e^{2\pi i (m\cdot \alpha)}\]
+ (intendendo $x\in \T^d$) imponendo l'invarianza per $S_\alpha$ si ha che esiste $m\in\Z^d$ tale che $e^{2\pi i (m\cdot \alpha)}=1$, da cui $\alpha$ risonante.
+ Se $\alpha$ è non risonante, è facile mostrare, sviluppando ancora in serie di Fourier, che le funzioni integrabili invarianti sono quasi certamente costanti,
+ e quindi che il sistema è ergodico.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Lo stesso risultato vale se riparametrizziamo il tempo, ovvero se consideriamo invece il flusso dato da $\dot x=\phi(x)\alpha$ con $\phi\in C^1(\T^d,\R^+)$, che ha le stesse orbite di $S^t$. La misura invariante è però ora $\phi(x)dx$, con $dx$ la misura di Haar.
+
+Sia ora $\beta=(\alpha,1)\in \R^{d+1}$ non risonante e $\psi\in C^1(\T^d,\R^+)$: consideriamo il flusso in $\T^{d+1}$ dato da 
+\[(x,s)\mapsto(x,s+t) \qquad \mbox{in }\T^d\times \R\]
+al quoziente su $(x,s+\psi(x))~(S_\alpha,s)$. Questo flusso $S^t_{\alpha,\psi}$ è detto \emph{flusso speciale} su $\T^{d+1}$, e conserva la misura $\frac{dxds}{\int_{\T^d}\psi(x)dx}$ ($dx$ su $\T^d$ e $ds$ su $\T^1$).
+
+\begin{teo}Il flusso speciale $S^t_{\alpha,\psi}$ è $C^r$-coniugato a $S^t_\beta$, ovvero
+ \[\exists h\in C^r(\T^{d+1},\T^{d+1}):\quad \forall t \quad S^t_{\alpha,\psi}h=hS^t_\beta\]
+ se e solo se esiste una soluzione $\chi\in C^r(\T^d,\R^+)$ dell'\emph{equazione coomologica}
+ \[\psi(x)-\int_{\T^d}\psi(x)dx=\chi(x)-\chi(x+\alpha)\]
+ (soluzione che sarà unica se $\chi$ ha media nulla).
+\end{teo}
+
+Studieremo per $d=1$ il legame tra l'equazione coomologica e le proprietà di $\alpha$. Premettiamo un lemma sulle serie di Fourier.
+
+\begin{teo}Sia $\chi\in L^2\T^1$, $\hat\chi_n=\int_0^1\chi(x)e^{-2\pi inx}dx$ i suoi coefficienti di Fourier. Allora
+\begin{lista}
+ \item $\chi\in C^\infty$ se e solo se i suoi coefficienti sono \emph{a decrescenza rapida}, ovvero
+      \[\forall N\in \N\quad \exists C_N>0: \quad \forall n \quad \left|\hat\chi_n\right|\leq\frac{C_N}{(1+|n|)^N}\]
+ \item $\chi$ è analitica, ovvero esiste un intorno di $T^1=\R/\Z$ in $\C/\Z$ su cui $\chi$ si estende a una funzione olomorfa, se e solo se esistono $M,\delta>0$ tali che $\forall n \quad \left|\hat\chi_n\right|\leq Me^{-\delta |n|}$.
+\end{lista}
+\end{teo}
+\begin{proof}
+ Per il primo punto, se $\chi\in C^\infty$ integrando per parti si ottiene
+ \[\hat\chi_n=\frac{1}{2\pi in}\int_0^1\chi'(x)e^{-2\pi inx}dx \quad \Rightarrow \quad \left|\hat\chi_n\right|\leq \frac{1}{2\pi |n|}\left|\widehat{\chi_n'}\right|\]
+ da cui la tesi iterando; il viceversa è immediato perchè le stime sui $\hat\chi_n$ danno convergenza uniforme per le derivate.
+ Il secondo punto. Se $\chi$ è analitica, sia $\chi(z)$ olomorfa sul rettangolo di vertici $0, 1,1+i\delta,i\delta$: orientiamo il bordo $\Gamma$ in senso antiorario e applichiamo il teorema di Cauchy ottenendo
+ \[\int_\Gamma \chi(z)e^{-2\pi inz}dz=0 \quad \Rightarrow \quad \hat\chi_n=\int_0^1\chi(x)e^{-2\pi inx}dx=\int_0^1\chi(x+i\delta)e^{-2\pi in(x+i\delta)}dx\]
+ ricordando che in $\C/\Z$ i bordi verticali del rettangolo coincidono, da cui il controllo cercato. Per gli $n$ pari invece si prende il rettangolo \emph{sotto} il segmento $[0,1]$, orientandolo in senso orario. Per il viceversa basta osservare che dalle stime si ha che $\chi$ è somma convergente di funzioni olomorfe. 
+\end{proof}
+
+Usiamo questa caratterizzazione per dare due criteri aritmetici su $\alpha$ che garantiscono
+che l'equazione coomologica $\psi-\psi\circ R_\alpha$ ha soluzione,
+nelle categorie $C^\infty(\mathbb{T}^1)$ e $C^\omega(\mathbb{T}^1)$.
+
+\begin{teo}Per $\alpha$ irrazionale valgono i seguenti criteri.
+\begin{lista}
+\item $\alpha$ diofanteo $\sse$ per ogni $\psi\in\C^\infty(\mathbb{T}^1)$ a media nulla
+l'equazione coomologica ha una (unica) soluzione $\chi\in C^\infty(\mathbb{T}^1)$.
+\item Se $\lim_{n\to\infty}\frac{\ln q_{n+1}}{q_n}<\infty$ (dove $\frac{p_n}{q_n}$ sono i convergenti di $\alpha$),
+per ogni $\psi\in C^\omega(\mathbb{T}^1)$ a media nulla
+l'equazione coomologica ha una (unica) soluzione $\chi\in C^\omega(\mathbb{T}^1)$ a media nulla.
+\end{lista}
+\end{teo}
+
+\begin{proof}Vediamo solo il primo punto. $(\Rightarrow)$: trasformando l'equazione coomologica troviamo
+$\pa{1-e^{2\pi i k\alpha}}\widehat{\chi}(k)=\widehat{\psi}(k)$. Inoltre per ipotesi
+$\norm{k\alpha}\ge\gamma k^{-(1+\tau)}$, quindi
+\[ \abs{\widehat{\chi}(k)}=\frac{\abs{\widehat{\psi}(k)}}{\abs{1-e^{2\pi i k\alpha}}}=\abs{\widehat{\psi}(k)}O(k^{1+\tau}) \]
+e la decrescenza rapida di $\widehat{\psi}(k)$ implica quella di $\widehat{\chi}(k)$;
+dunque la funzione $\chi$ avente questi coefficienti di Fourier è $C^\infty$ e risolve l'equazione. \\
+$(\Leftarrow)$: supponiamo per assurdo $\alpha$ non diofanteo, ovvero esista una successione $k_j\uparrow\infty$
+per cui $\abs{1-e^{2\pi i k_j\alpha}}^{-1}\ge k_j^j$. Costruiamo una $\psi$ con una serie di Fourier ``lacunare'': sia
+\[ \psi(x):=\sum_j \pa{1-e^{2\pi i k_j\alpha}}e^{2\pi i k_j x}+\sum_j \pa{1-e^{-2\pi i k_j\alpha}}e^{-2\pi i k_j x}. \]
+$\psi$ ha valori reali ed è $C^\infty$ grazie alla decrescenza rapida dei coefficienti.
+Però non può esistere una $\chi\in C^\infty$ che risolve l'equazione coomologica perché come visto prima
+dovrebbe avere tutti i coefficienti di indice $k_j$ pari a $1$.
+\end{proof}
+
+L'equazione coomologica $\psi-\psi\circ f=\phi$ si può risolvere in una situazione molto più generale.
+Consideriamo un sistema dinamico topologico $(X,d,f)$.
+
+\begin{defi}Dato $(X,d)$ spazio metrico compatto, $f\in\homeo(X)$ è \emph{minimale} se tutte le orbite sono dense.
+\end{defi}
+
+\begin{oss}Ovviamente la minimalità implica la transitività.
+\end{oss}
+
+Poniamo $d\psi:=\psi-\psi\circ f$. Vedendo $d$ come un operatore lineare continuo,
+$d:C(X)\to C(X)$, osserviamo che $\ker d=\set{\text{integrali primi}}$ e l'ortogonale all'immagine è $(dC(X))^\perp
+=\mathcal{M}_f(X)$, lo spazio delle misure reali $f$-invarianti.
+
+Cerchiamo di risolvere l'equazione coomologica almeno formalmente:
+$\psi=\phi+\psi\circ f$ e sostituendo $\psi$ a secondo membro otteniamo
+\[ \psi=\phi+\phi\circ f+\psi\circ f^2 \]
+e iterando
+\[ \psi=\phi+\phi\circ f+\dots+\phi\circ f^{n-1}+\psi\circ f^n, \]
+cioè formalmente $\psi=\sum_{j=0}^\infty \phi\circ f^j$. Torniamo a fare discorsi rigorosi. \\
+Supponendo che una soluzione $\psi$ esista, come abbiamo visto deve valere
+$\sum_{j=0}^{n-1}\phi\circ f^j=\psi-\psi\circ f^n$. Quindi una condizione necessaria è che le somme parziali
+di Birkhoff siano equilimitate. Se $f$ è minimale vale anche il viceversa, anzi vale addirittura:
+\begin{teo}[Gottshalk-Hedlund]Se $f\in\homeo(X)$ è minimale, $\phi\in C(X)$ e per qualche $x_0\in X$, $C>0$
+è $\abs{\sum_{j=0}^{n-1}\pa{\phi\circ f^j}(x_0)}\le C$ per tutti gli $n\ge 0$, allora l'equazione coomologica
+$\psi-\psi\circ f=\phi$ ha soluzione.
+\end{teo}
+
+Cioè basta l'equilimitatezza in un solo punto $x_0$! Cambiando segno a $\psi$, scriviamo l'equazione coomologica
+in questa forma: $\psi\circ f-\psi=\phi$.
+
+\begin{proof}Lavoriamo sullo \emph{skew-product} $X\times\R$: definiamo $F\in\homeo(X\times\R)$
+con $F(x,u):=\pa{f(x),u+\phi(x)}$. $(X,\phi)$ è un fattore di $(X\times\R,F)$.
+Nelle iterate di $F$ compaiono proprio le somme di Birkhoff:
+\[ F^n(x,u)=\pa{f^n(x),u+\sum_{j=0}^{n-1}(\phi\circ f^j)(x)}. \]
+L'ipotesi dice che la chiusura dell'orbita positiva di $(x_0,0)$, in simboli
+$M:=\obar{\set{F^n(x_0,0)\mid n\ge 0}}$, è un insieme compatto e $F$-invariante (nel senso che $F(M)\subseteq M$). \\
+Per il lemma di Zorn esiste un $K\subseteq M$ compatto, non vuoto e $F$-invariante che è \emph{minimale} tra gli insiemi
+con queste proprietà. La minimalità di $K$ ha diverse conseguenze:
+\begin{itemize}
+	\item $F(K)=K$, altrimenti $F(K)$ sarebbe compatto invariante e più piccolo di $K$;
+	\item $\pi_X(K)=X$: infatti da $\pi_X\circ F=f\circ\pi_X$ segue che $\pi_X(K)$ è $f$-invariante (e compatto),
+	quindi è tutto $X$ per la minimalità di $f$;
+	\item $T_t(x,u):=(x,u+t)$ (il flusso verticale) commuta con $F$ per ogni $t$ fissato, dunque
+	$T_t(K)$ è $F$-invariante. Se $t\neq 0$ abbiamo $T_t(K)\nsupseteq K$ (perché $\pi_\R\pa{T_t(K)}=\pi_\R(K)+t$),
+	quindi $T_t(K)\cap K\subsetneq K$, da cui (per minimalità di $K$) $T_t(K)\cap K=\emptyset$.
+\end{itemize}
+In questo modo abbiamo dimostrato che $K$ è il grafico di una funzione $\psi:X\to\R$. La compattezza di $K$
+implica la continuità di $\psi$: se per assurdo $x_n\to x$ e $\abs{\psi(x_n)-\psi(x)}\ge\epsilon$,
+a meno di sottosuccessioni $\pa{x_n,\psi(x_n)}\to (x,u)\in K$ con $u\neq\psi(x)$, per cui
+$(x,u),(x,\psi(x))\in K$, contraddicendo l'ultimo punto. \\
+Infine l'$F$-invarianza di $K$ dice che $F(x,\psi(x))=\pa{f(x),\psi(x)+\phi(x)}\in K$, cioè (per definizione di $\psi$)
+$\psi\pa{f(x)}=\psi(x)+\phi(x)$.
+\end{proof}
+
