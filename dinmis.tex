@@ -1,6 +1,10 @@
 \section{Dinamica Misurabile}
 
-\begin{teo}[Krylov-Bogoliubov] Dati $X$ spazio metrico compatto e $f:X\to X$ continua, esiste sempre una misura $f$-invariante.
+Sia $(X,\A,\mu)$ uno spazio di probabilità. Un sistema dinamico misurabile è dato da una mappa $f:X\rightarrow X$ che preserva la misura, 
+ovvero tale che $f^{-1}\A\subseteq \A$ (misurabile) e per ogni $A\in\A$ vale $\mu(f^{-1}A)=\mu(A)$. (Scegliamo questa definizione con $f^{-1}$ coerentemente con la nozione di misura immagine.)
+I sistemi dinamici topologici considerati finora sono anche sistemi misurabili, come prova il seguente
+
+\begin{teo}[Krylov-Bogoliubov] Dati $X$ spazio metrico compatto e $f:X\to X$ continua, esiste sempre una probabilità $f$-invariante.
 \end{teo}
 
 \begin{proof}Sia $C(X)$ lo spazio (di Banach) delle funzioni continue a valori reali su $X$. Sappiamo che il suo duale è lo spazio $C(X)'=\mathcal{M}(X)$ delle misure finite con segno.
@@ -18,8 +22,27 @@ essendo $\abs{\int_X\frac{\phi-\phi\circ f^n}{n}\,d\mu_n}\le\frac{2}{n}\norm{\ph
 quindi (siccome $C(X)'=\mathcal{M}(X)$) le misure $\nu$ e $f_*\nu$ coincidono.
 \end{proof}
 
-Lavoriamo d'ora in poi con un \emph{sistema dinamico misurabile} $(X,\mathcal{A},\mu,f)$,
-cioè uno spazio di probabilità $(X,\mathcal{A},\mu)$ con una trasformazione $f:X\to X$ misurabile.
+Una bigezione che coniuga un sistema misurabile con uno qualsiasi induce una misura invariante: è questo il caso dei seguenti esempi.
+
+\begin{esempio} La mappa tenda $T$ preserva la misura di Lebesgue. \Eacc coniugata alla mappa logistica $Q_4(x)=4x(1-x)$ tramite $\sin^2\left(\frac{\pi x}{2}\right)$,
+ e da ciò si ricava la misura invariante $\frac{dx}{\pi\sqrt{x(1-x)}}$. 
+\end{esempio}
+
+\begin{esempio} La mappa logistica $Q_4$ è coniugata alla \emph{mappa di Ulam} 
+ \[U:\R\rightarrow\R \qquad x\mapsto \ln \left(\frac{4 e^x}{(1-e^x)^2}\]
+tramite 
+ \[k:[0,1]\rightarrow \R \qquad x\mapsto \ln\left(\frac{x}{1-x} \]
+ 
+\end{esempio}
+
+
+
+
+
+
+
+
+
 
 \begin{defi}Dato $A\in\mathcal{A}$ e $T$ intero positivo poniamo $\nu_T(x,T,A):=\frac{1}{T}\sum_{j=0}^{T-1}\chi_A\pa{f^j(x)}$.
 Questa è la \emph{frequenza media delle visite} ad $A$ dell'orbita di $x$ tra $0$ e $T$. \\

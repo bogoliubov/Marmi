@@ -10,7 +10,7 @@ e per omeomorfismi si dice \emph{totalmente invariante} se lo è anche negativam
 Gli insiemi di $\alpha$ e $\omega$-limite ($\alpha$ solo per omeo) sono
 \[\alpha(x)=\bigcap_{n<0}\obar{\bigcup_{m\leq n}f^m(x)}\qquad \omega(x)=\bigcap_{n>0}\obar{\bigcup_{m\geq n}f^m(x)} \]
 ovvero un $\omega$-limite è un punto $y$ limite di una sottosuccessione di $f^n(x)$. 
-Se $x\in\omega(x)$ (risp. $x\in\alpha(x)$) si dice positivamente (risp. negativamente) ricorrente, e nel caso accadano entrambe le cose si dice che $x$ è ricorrente, 
+Se $x\in\omega(x)$ (risp. $x\in\alpha(x)$) si dice positivamente (risp. negativamente) ricorrente, e nel caso accadano entrambe le cose si dice che $x$ è \emph{ricorrente}, 
 il che equivale a dire $x$ non errante. I punti ricorrenti sono quindi l'insieme non errante.
 \end{defi}
 
@@ -18,42 +18,19 @@ il che equivale a dire $x$ non errante. I punti ricorrenti sono quindi l'insieme
  Gli insiemi $\omega(x)$, $\alpha(x)$ e l'insieme non errante sono chiusi e invarianti.
 \end{esercizio}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Transitività}
+
 \begin{defi} $(X,d,f)$ si dice \emph{topologicamente transitivo} se un punto $x\in X$ ha orbita densa, si dice \emph{minimale} se tutte le orbite sono dense.
 \end{defi}
 
-\begin{esempio}[Rotazioni Irrazionali] Consideriamo le rotazioni su $\T^1=\R/\Z$: $f(x)=x+\alpha$. 
-Non è difficile vedere che se $\alpha\in\Q$ tutti i punti sono periodici, mentre se $\alpha\in\irr$ ogni orbita è densa, ovvero il sistema è minimale. 
-Questo non è un caso, come mostra il risultato seguente. \end{esempio}
-\begin{lemma}[facoltativo] Sia $G$ un gruppo topologico: se $g_0\in G$ è tale che l'applicazione $g\mapsto g_0\cdot g$ (oppure $g\mapsto g\cdot g_0$) è topologicamente transitiva, 
-allora è anche minimale. Se inoltre $G$ è metrizzabile, è un gruppo abeliano. 
-\end{lemma}
-\begin{proof}
- Se $\{g_0^kg_1\}_k$ è densa, poichè $g_0^kg=(g_0^kg_1)(g_1^{-1}g)$ si ha che l'orbita di $g$ si ottiene con una traslazione, che per ipotesi è un omeomorfismo, di un'orbita densa. Per il secondo punto, abbiamo che il sottogruppo ciclico $G'=\{g_0^kg_1\}_k$ è denso, quindi poichè lo spazio è metrico si usa il criterio di continuità per successioni: se $g_n\rightarrow g$ e $h_n\rightarrow h$ con $g_n, h_n \in G'$, si ha $[g,h]\leftarrow [g_n,h_n]=e$, e quindi per continuità $[g,h]=e$.
-\end{proof}
-
-\begin{esempio}[Raddoppiamento e Dinamica Simbolica] Le dinamiche date da successioni di numeri sono importanti perchè sono un oggetto a cui 
-spesso ci si riconduce nello studio dei sistemi dinamici. Consideriamo
-\[ \xymatrix{ \{0,1\}^\N \ar[r]^\sigma \ar[d]_\pi & \{0,1\}^\N \ar[d]^\sigma \\ [0,1] \ar[r]_S & [0,1] } \]
- dove $S(x)=2x(\mbox{mod } 1)$ è il \emph{raddoppiamento}, $\sigma(a_1,a_2,\dots)=(a_2,a_3,\dots)$ è lo \emph{shift} e 
- \[\pi(a_1,a_2,\dots)=\sum_1^\infty a_k 2^{-k}.\]
- La mappa $\pi$ è iniettiva e dunque $S$ risulta essere un sottosistema di $\sigma$. In questo modo si vede subito che il raddoppiamento è transitivo non minimale: 
- lavorando in $\{0,1\}^\N$, la successione ottenuta concatenando tutte le possibili parole finite di soli $0$ e $1$ (che sono numerabili) corrisponde a un punto con orbita densa; 
- invece le successioni periodiche corrispondono a punti periodici (se ne trovano di ogni ordine). 
- \Eacc importante osservare che i due sistemi non possono essere coniugati perchè $[0,1]$ e $\{0,1\}^\N$ sono rispettivamente omeomorfi a $\R$, connesso, e all'insieme di Cantor, 
- totalmente sconnesso.
-\end{esempio}
-
-\begin{esempio}[Tenda e Logistic Map] Un altro esempio di dinamiche coniugate: su $[0,1]$ sono coniugate tramite $h(x)=\sin^2\left(\frac{2\pi}{2}\right)$ la mappa \emph{a tenda} $f(x)=\begin{cases}2x \quad x\leq 1/2 \\ 2-2x \quad x\geq 1/2\end{cases}$ e la \emph{mappa logistica} $Q_4(x)=4x(1-x)$, $Q_4\circ h=h\circ f$.
-\end{esempio}
-
-
 \begin{prop}Se $f\in\homeo (X)$ sono equivalenti:
-\begin{enumerate}
-	\item $f$ topologicamente transitivo
-	\item per ogni aperto $U$ $f$-invariante (cioè con $U=f(U)=f^{-1}(U)$) è $U=\emptyset$ oppure $\obar{U}=X$
-	\item per ogni $U,V$ aperti non vuoti esiste $N\in\Z$ tale che $f^N(U)\cap V\neq\emptyset$
+\begin{lista}
+	\item $f$ topologicamente transitivo;
+	\item se $U$ è un aperto $f$-invariante (ovvero $U=f(U)=f^{-1}(U)$), allora $U=\emptyset$ oppure $\obar{U}=X$;
+	\item se $U,V$ sono aperti non vuoti, esiste $N\in\Z$ tale che $f^N(U)\cap V\neq\emptyset$;
 	\item $\set{x:\obar{O_f(x)}=X}$ è un $G_\delta$ denso, ovvero è \emph{generico}.
-\end{enumerate}
+\end{lista}
 \end{prop}
 
 \begin{proof}$(1)\implica (2)$: sia $x$ un punto con l'orbita densa e $U$ un aperto $f$-invariante, che supponiamo non vuoto.
@@ -68,78 +45,124 @@ Quindi $\set{x:\obar{O_f(x)}=X}$ è un $G_\delta$ e per il teorema di Baire è a
 $(4)\implica (1)$: ovvio perché l'insieme $\set{x:\obar{O_f(x)}=X}$, essendo denso, è anche non vuoto.
 \end{proof}
 
-\begin{oss}
-\begin{itemize}
- \item Se $f:X\to X$ è solo continua (cioè è un endomorfismo), è facile dimostrare che le condizioni $(1)$ e $(3)$ sono
-  ancora equivalenti se assumiamo che $X$ non abbia punti isolati.
- \item Nel caso $f\in\homeo (X)$ la terza condizione del teorema è equivalente alla \emph{decomponibilità}: 
- $f$ non transitiva se e solo se esistono due aperti disgiunti (totalmente)invarianti.
-\end{itemize}
-
-
-
+\begin{oss} Se $f:X\to X$ è solo continua (cioè è un endomorfismo), è facile dimostrare che le condizioni $(1)$ e $(3)$ sono
+  ancora equivalenti se assumiamo che $X$ non abbia punti isolati.\newline
+  Osserviamo inoltre che nel caso $f\in\homeo (X)$ la terza condizione del teorema è equivalente alla \emph{decomponibilità}: 
+  $f$ non transitiva se e solo se esistono due aperti disgiunti (totalmente) invarianti.
 \end{oss}
 
-
-
-
 \begin{prop}Se $f:X\to X$ è topologicamente transitivo, gli unici \emph{integrali primi} continui (cioè
-funzioni $F:X\to\R$ continue tali che $F\circ f=F$) sono le costanti.
+funzioni $F:X\to\R$ continue tali che $F\circ f=F$) sono le costanti. Il viceversa, in generale, è falso (cfr. gli Esempi).
 \end{prop}
 
 \begin{proof}Una tale $f$ deve essere costante sull'orbita di $x$ (il solito punto con orbita densa), quindi per continuità anche
 sulla chiusura $\obar{O_f(x)}=X$.
 \end{proof}
 
-\begin{esempio}Il viceversa in generale è falso! Sia $T:=\R^2/\Z^2$ il $2$-toro e $A\in SL(2,\Z)$ una trasformazione ergodica
-su $T$ (ad esempio il \emph{gatto di Arnold},
-cioè $A=\begin{pmatrix} 2 & 1 \\ 1 & 1 \end{pmatrix}$). Costruiamo $X$ partendo da due copie del toro, $T$ e $T'$,
-e identificando i loro elementi neutri. La mappa su $T\sqcup T'$ che si ottiene accostando $A:T\to T$
-e $A:T'\to T'$ induce una mappa $f:X\to X$. \\
-$f$ non è topologicamente transitiva essendo i sottospazi $T$ e $T'$ invarianti (stiamo identificando $T$ con la sua proiezione a quoziente,
-come pure $T'$).
-Un integrale primo $F:X\to \R$ però è costante: infatti $\restr{f}{T}:T\to T$ è topologicamente transitivo (v. ??),
-perciò $F$ è costante su $T$ e lo stesso vale per $T'$. Siccome (in $X$) $T$ e $T'$ si intersecano, deduciamo che $F$ è costante su tutto $X$.
-\end{esempio}
+\begin{defi} $(X,d,f)$ è \emph{topologicamente mescolante} se dati aperti $U,V$ esiste $N\in\Z$ tale che per ogni $n\geq N$ vale $f^n(U)\cap V\neq \emptyset$.\end{defi}
 
-\begin{esempio}La tenda $T:[0,1]\to [0,1]$, $T(x):=\begin{cases}2x &\text{se }0\le x\le\mz \\ 2-2x &\text{se }\mz\le x\le 1\end{cases}$
-è transitiva. Infatti per gli intervalli della forma $\bra{\frac{i}{2^k},\frac{i+1}{2^k}}$ l'immagine
-tramite $T^n$ è definitivamente tutto $[0,1]$ (si dice che $T$ è \emph{espansiva}).
-\end{esempio}
-
-\begin{oss}Se $g$ è un fattore di $f$ e $f$ è topologicamente transitiva, allora lo è anche $g$.
-\[ \xymatrix{ X \ar[r]^f \ar[d]_h & X \ar[d]^h \\ Y \ar[r]_g & Y } \]
-Infatti per qualche $h:X\to Y$ surgettiva è $gh=hf$ (omettiamo il $\circ$), quindi $g^k h=h f^k$, perciò
-se $x\in X$ ha orbita densa abbiamo $O_g(h(x))=h(O_f(x))$, che è un insieme denso essendo $h$ surgettiva.
+\begin{oss} Per la caratterizzazione vista, mescolante implica transitivo. Non vale il viceversa, e un esempio sono le rotazioni di $S^1$. 
+ 
 \end{oss}
 
-\begin{esempio}Siano $X:=[0,1]$ e
-$S(x):=\begin{cases}2x &\text{se }0\le x<\mz \\ 2x-1 &\text{se }\mz\le x\le 1\end{cases}$
-il ``dente di sega''\footnote{Questo esempio è un po' improprio perché $S$ è discontinua}.
-Il seguente diagramma commuta:
-\[ \xymatrix{X \ar[r]^S \ar[d]_T & X \ar[d]^T \\ X \ar[r]_T & X} \]
-e questo mostra che $T$ è un fattore di $S$.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Esempi}
+
+I seguenti esempi di sistemi dinamici sono qui presentati come dinamiche topologiche, ma torneranno anche nello studio di quelle misurabili.
+
+\begin{esempio}[Rotazioni Irrazionali] Consideriamo le rotazioni su $\T^1=\R/\Z$: $f(x)=x+\alpha$. 
+Non è difficile vedere che se $\alpha\in\Q$ tutti i punti sono periodici, mentre se $\alpha\in\irr$ ogni orbita è densa, ovvero il sistema è minimale 
+(cfr. la versione generalizzata al toro $d$-dimensionale nella parte sui Flussi). 
+Questo non è un caso, come mostra il risultato seguente. \end{esempio}
+\begin{lemma}[facoltativo] Sia $G$ un gruppo topologico: se $g_0\in G$ è tale che l'applicazione $g\mapsto g_0\cdot g$ (oppure $g\mapsto g\cdot g_0$) è topologicamente transitiva, 
+allora è anche minimale. Se inoltre $G$ è metrizzabile, è un gruppo abeliano. 
+\end{lemma}
+\begin{proof}
+ Se $\{g_0^kg_1\}_k$ è densa, poichè $g_0^kg=(g_0^kg_1)(g_1^{-1}g)$ si ha che l'orbita di $g$ si ottiene con una traslazione, che per ipotesi è un omeomorfismo, di un'orbita densa. 
+ Per il secondo punto, abbiamo che il sottogruppo ciclico $G'=\{g_0^kg_1\}_k$ è denso, quindi poichè lo spazio è metrico si usa il criterio di continuità per successioni: 
+ se $g_n\rightarrow g$ e $h_n\rightarrow h$ con $g_n, h_n \in G'$, si ha $[g,h]\leftarrow [g_n,h_n]=e$, e quindi per continuità $[g,h]=e$.
+\end{proof}
+
+
+
+
+\begin{esempio}[Raddoppiamento e Dinamica Simbolica] Le dinamiche date da successioni di numeri sono importanti perchè sono un oggetto a cui 
+spesso ci si riconduce nello studio dei sistemi dinamici. Consideriamo
+\[ \xymatrix{ \{0,1\}^\N \ar[r]^\sigma \ar[d]_\pi & \{0,1\}^\N \ar[d]^\pi \\ [0,1] \ar[r]_S & [0,1] } \]
+ dove $S(x)=2x(\mbox{mod } 1)$ è il \emph{raddoppiamento} o \emph{dente di sega}, $\sigma(a_1,a_2,\dots)=(a_2,a_3,\dots)$ è lo \emph{shift} e 
+ \[\pi(a_1,a_2,\dots)=\sum_1^\infty a_k 2^{-k}.\]
+ La mappa $\pi$ è iniettiva e dunque $S$ risulta essere un sottosistema di $\sigma$. In questo modo si vede subito che il raddoppiamento è transitivo non minimale: 
+ lavorando in $\{0,1\}^\N$, la successione ottenuta concatenando tutte le possibili parole finite di soli $0$ e $1$ (che sono numerabili) corrisponde a un punto con orbita densa; 
+ invece le successioni periodiche corrispondono a punti periodici (se ne trovano di ogni ordine). 
+ \Eacc importante osservare che i due sistemi non possono essere coniugati perchè $[0,1]$ e $\{0,1\}^\N$ sono rispettivamente omeomorfi a $\R$, connesso, e all'insieme di Cantor, 
+ totalmente sconnesso. \newline
+ Osserviamo inoltre che il raddoppiamento è un esempio di sistema topologicamente mescolante.
 \end{esempio}
 
-?? perché questo esempio?
 
-\begin{defi}Siano $X$ spazio metrico compatto e $f:X\to X$ continua. $f$ è \emph{Devaney-caotica}
-se è topologicamente transitiva e $\obar{\per(f)}=X$.
+
+\begin{esempio}[Tenda e Logistic Map] Un altro esempio di dinamiche coniugate: 
+su $[0,1]$ sono coniugate tramite $h(x)=\sin^2\left(\frac{2\pi}{2}\right)$ la mappa \emph{tenda} 
+$f(x)=\begin{cases}2x \quad x\leq 1/2 \\ 2-2x \quad x\geq 1/2\end{cases}$ e la \emph{mappa logistica} $Q_4(x)=4x(1-x)$, $Q_4\circ h=h\circ f$.
+La mappa tenda è transitiva, infatti per gli intervalli della forma $\bra{\frac{i}{2^k},\frac{i+1}{2^k}}$ l'immagine
+tramite $T^n$ è definitivamente tutto $[0,1]$ (si dice che $T$ è \emph{espansiva}). Per cui anche la mappa logistica è transitiva (vedi anche il prossimo esempio).
+\end{esempio}
+
+
+
+\begin{esempio}[Transitività e fattori] Se $g$ è un fattore di $f$ e $f$ è topologicamente transitiva, allora lo è anche $g$.
+Infatti per qualche $h:X\to Y$ surgettiva è $gh=hf$, quindi $g^k h=h f^k$, perciò
+se $x\in X$ ha orbita densa abbiamo $O_g(h(x))=h(O_f(x))$, che è un insieme denso essendo $h$ surgettiva.\newline
+Un esempio (un po' improprio perchè $S$ è discontinua) è il seguente: se
+\[S(x):=\begin{cases}2x &\text{se }0\le x<\mz \\ 2x-1 &\text{se }\mz\le x\le 1\end{cases}\]
+allora commuta il diagramma
+\[ \xymatrix{X \ar[r]^S \ar[d]_T & X \ar[d]^T \\ X \ar[r]_T & X} \]
+per cui $T$ è un fattore di $S$, e dunque abbiamo un'altra dimostrazione che $T$ è transitivo. 
+\end{esempio}
+
+
+
+\begin{esempio} Avere solo integrali primi costanti non implica transitività. Sia $T:=\R^2/\Z^2$ il $2$-toro e $A\in SL(2,\Z)$ una trasformazione ergodica
+su $T$, ad esempio il \emph{gatto di Arnold},
+\[A=\begin{pmatrix} 2 & 1 \\ 1 & 1 \end{pmatrix}\]
+Costruiamo $X$ partendo da due copie del toro, $T$ e $T'$ e identificando (quoziente topologico) i loro elementi neutri. 
+La mappa su $T\sqcup T'$ che si ottiene accostando $A:T\to T$ e $A:T'\to T'$ induce una mappa $f:X\to X$.
+$f$ non è topologicamente transitiva essendo i sottospazi $T$ e $T'$ invarianti (stiamo identificando $T$ con la sua proiezione a quoziente,
+come pure $T'$).
+Un integrale primo $F:X\to \R$ però è costante: si può verificare infatti che $\restr{f}{T}:T\to T$ è topologicamente transitivo 
+(dimostrazione analoga a quella per i Flussi sul toro, nel relativo capitolo),
+perciò $F$ è costante su $T$ e lo stesso vale per $T'$. Siccome (in $X$) $T$ e $T'$ si intersecano, deduciamo che $F$ è costante su tutto $X$. 
+\end{esempio}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Sistemi Caotici}
+
+
+\begin{defi} $(X,d,f)$ è \emph{caotico secondo Devaney} se è topologicamente transitiva e l'insieme dei punti periodici $\per(f)$ è denso.
 \end{defi}
 
-In questa definizione $\per(f)$ è l'insieme dei punti periodici.
+% DEFINIZIONE RIMPIAZZATA DA QUELLA SEGUENTE
+% \begin{defi}$f$ ha \emph{dipendenza sensibile} dalle condizioni iniziali se c'è un $\delta>0$ tale che
+% per ogni $x\in X$ e per ogni suo intorno $U$ si possano sempre trovare un $y\in U$ e un $n\ge 0$ per cui
+% $d\pa{f^n(x),f^n(y)}>\delta$. In altre parole, pensando l'intorno $U$ come un errore di approssimazione di $x$,
+% per quanto sia buona l'approssimazione c'è sempre un $y\approx x$ la cui orbita (a qualche istante $n$) si separa da quella di $x$
+% più della tolleranza $\delta$ fissata.
+% \end{defi}
 
-\begin{defi}$f$ ha \emph{dipendenza sensibile} dalle condizioni iniziali se c'è un $\delta>0$ tale che
-per ogni $x\in X$ e per ogni suo intorno $U$ si possano sempre trovare un $y\in U$ e un $n\ge 0$ per cui
-$d\pa{f^n(x),f^n(y)}>\delta$. In altre parole, pensando l'intorno $U$ come un errore di approssimazione di $x$,
-per quanto sia buona l'approssimazione c'è sempre un $y\approx x$ la cui orbita (a qualche istante $n$) si separa da quella di $x$
-più della tolleranza $\delta$ fissata.
+\begin{defi}$(X,d,f)$ ha \emph{dipendenza sensibile dai dati in} $x_0\in X$ se 
+ \[\exists \epsilon>0:\quad \forall U \mbox{ intorno di } x_0 \quad \exists y_0\in U:\quad\exists n\geq 0: \quad d(f^nx_0,f^ny_0)>\epsilon\]
+ e se questo vale $\forall x\in X$ diremo che la dinamica ha \emph{dipendenza sensibile}.
+ Viceversa $(X,d,f)$ è \emph{stabile secondo Lyapunov} in $x_0\in X$ se
+ \[\forall \epsilon>0 \quad \exists U \mbox{ intorno di } x_0: \quad \forall y_0\in U\quad\forall n\geq 0 \quad d(f^nx_0,f^ny_0)<\epsilon\]
+ (contronominale della precedente) ovvero se le iterate $\{f^n\}$ sono equicontinue.
 \end{defi}
 
 \begin{teo}Se $f$ è caotica e $X$ non ha punti isolati, $f$ ha dipendenza sensibile dalle condizioni iniziali.
 \end{teo}
-
-Prima della dimostrazione vediamo un lemma molto semplice.
 
 \begin{lem}Se ci sono due orbite periodiche distinte, esiste una costante $c>0$ tale che per ogni $x\in X$
 c'è un punto periodico $p$ la cui orbita dista tutta più di $c$ da $x$. In altre parole
@@ -152,12 +175,11 @@ Sia $c>0$ tale che $d\pa{O_f(y),O_f(z)}>2c$. Per ogni $x\in X$ abbiamo
 quindi almeno uno tra $d\pa{x,O_f(y)}$ e $d\pa{x,O_f(z)}$ è $>c$.
 \end{proof}
 
-\begin{proof}[Dimostrazione del teorema]Se ci fosse una sola orbita periodica,
-da $\obar{\per(f)}=X$ seguirebbe che $X$ è finito e quindi tutti i punti sarebbero isolati, assurdo.
-Perciò siamo nelle ipotesi del lemma. Poniamo $\delta:=\frac{c}{4}$ ($c$ è la costante che ci fornisce il lemma). \\
-Sia $x\in X$ e $U'$ un suo intorno; definiamo $U:=U'\cap B(x,\delta)$. Per la densità di $\per(f)$ esiste $q\in U$ periodico,
-diciamo di periodo $n$. \\
-Sappiamo (lemma) che c'è un punto $p$ periodico con $d\pa{x,O_f(p)}>c=4\delta$. Inoltre per transitività
+\begin{proof}[Dimostrazione del teorema]Se esiste una sola orbita periodica,
+da $\obar{\per(f)}=X$ segue che $X$ è finito e quindi tutti i punti sarebbero isolati, assurdo.\newline
+Perciò siamo nelle ipotesi del lemma: poniamo $\delta:=\frac{c}{4}$, con $c$ la costante che il lemma ci fornisce.
+Sia $x\in X$ e $U'$ un suo intorno; definiamo $U:=U'\cap B(x,\delta)$. Per densità di $\per(f)$ esiste $q\in U$ periodico,
+diciamo di periodo $n$. Per il lemma esiste un punto $p$ periodico con $d\pa{x,O_f(p)}>c=4\delta$. Inoltre per transitività
 esiste un $z\in U$ che nella sua vita resta vicino all'orbita di $p$ per almeno $n$ passi consecutivi:
 infatti posto $W_i:=B\pa{f^i(p),\delta}$ (per $i=1,\dots,n$) e $V:=\cap_{i=1}^n f^{-i}(W_i)$ (non vuoto perché $p\in V$)
 sappiamo che esistono $z\in U$ e $k\ge 0$ tali che $f^k(z)\in V$ (v. Osservazione ??). $z$ soddisfa
@@ -172,10 +194,3 @@ essendo $q,z\in U$.
 
 
 
-\begin{defi}$(X,d,f)$ ha \emph{dipendenza sensibile dai dati in} $x_0\in X$ se 
- \[\exists \epsilon>0:\quad \forall U \mbox{ intorno di } x_0 \quad \exists y_0\in U:\quad\exists n\geq 0: \quad d(f^nx_0,f^ny_0)>\epsilon\]
- e se questo vale $\forall x\in X$ diremo che la dinamica ha \emph{dipendenza sensibile}.
- Viceversa $(X,d,f)$ è \emph{stabile secondo Lyapunov} in $x_0\in X$ se
- \[\forall \epsilon>0 \quad \exists U \mbox{ intorno di } x_0: \quad \forall y_0\in U\quad\forall n\geq 0 \quad d(f^nx_0,f^ny_0)<\epsilon\]
- (contronominale della precedente) ovvero se le iterate $\{f^n\}$ sono equicontinue.
-\end{defi}
