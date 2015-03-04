@@ -30,37 +30,50 @@ Una bigezione che coniuga un sistema misurabile con uno qualsiasi induce una mis
 
 \begin{esempio} La mappa logistica $Q_4$ è coniugata alla \emph{mappa di Ulam} 
  \[U:\R\rightarrow\R \qquad x\mapsto \ln \left(\frac{4 e^x}{(1-e^x)^2}\right)\]
-tramite la
- \[k:[0,1]\rightarrow \R \qquad x\mapsto \ln\left(\frac{x}{1-x}\right) \]
- 
+tramite la \emph{logic map}
+ \[k:[0,1]\rightarrow \R \qquad x\mapsto \ln\left(\frac{x}{1-x}\right). \]
+Otteniamo in questo modo una misura inveriante per la mappa di Ulam, $\frac{dx}{\pi \pa{e^{\frac{x}{2}}+e^{-\frac{x}{2}}}}$.
 \end{esempio}
 
+\begin{esempio} Consideriamo la mappa $f:\R\ni x\mapsto \frac{1}{2}\pa{x-\frac{1}{x}}$, che è la mappa del metodo di Newton per il polinomio $1+x^2$. 
+Si verifica facilmente che ha come misura invariante la distribuzione di Cauchy $\frac{dx}{\pi (1+x^2)}$, nota per non avere momenti di nessun ordine. 
+Vogliamo ottenere questo risultato tramite un coniugio. 
+In generale, dato un polinomio reale di grado $2$ con radici distinte, la mappa del metodo di Newton $f(x)=x-\frac{p(x)}{p'(x)}$ 
+si può vedere come mappa sulla sfera di Riemann, $\widehat \C\rightarrow\widehat\C$, e come tale è coniugata a $Q(x)=x^2$ tramite la trasformazione di M\"obius che porta i due punti
+fissi (le radici del polinomio) in $0$ e $\infty$. Nel nostro caso la trasformazione è $h(x)=\frac{x-i}{x+i}$, che mappa il semipiano superiore nel disco unitario, e l'asse reale
+nella circonferenza unitaria. Restringendo il coniugio al bordo di questi due domìni, stiamo coniugando la nostra $f$ originale con il raddoppiamento su $S^1$, 
+e con un semplice calcolo si ricava che il coniugio è $S^1\ni\theta\mapsto -\cot \frac{\theta}{2}\in\R$; trasportando la misura di Lebesgue su $S^1$ si ha quanto detto. 
+\end{esempio}
+
+Se ci mettiamo nel caso $f:[0,1]\rightarrow [0,1]$ a tratti monotona e $C^1$ (ammettendo partizioni in intervalli al più numerabili), grazie alla formula di cambio di variabili
+non è difficile controllare se una misura assolutamente continua rispetto Lebesgue $\rho dx$ è invariante: con un facile conto si ottiene che $\rho$ deve soddisfare
+\[\rho(x)=\LL\rho(x)=\sum_{x\in f^{-1}y} \frac{\rho(x)}{|f'(x)|}\]
+in cui $\LL$ è detto \emph{operatore di trasferimento} o di Perron-Frobenius.
+
+\begin{esercizio} Con il metodo appena introdotto, è facile verificare che la mappa di Gauss $G(x)=\left\{\frac{1}{x}\right\}$ in $(0,1)$ ammette come misura invariante
+ $\frac{dx}{(1+x)\ln 2}$.\end{esercizio}
 
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Ergodicità}
 
-
-
-
-
-
-\begin{defi}Dato $A\in\mathcal{A}$ e $T$ intero positivo poniamo $\nu_T(x,T,A):=\frac{1}{T}\sum_{j=0}^{T-1}\chi_A\pa{f^j(x)}$.
-Questa è la \emph{frequenza media delle visite} ad $A$ dell'orbita di $x$ tra $0$ e $T$. \\
-Poniamo anche $\obar{\nu}(x,A):=\obar{\lim}_{T\to\infty}\nu(x,T,A)$ e $\ubar{\nu}(x,A):=\ubar{\lim}_{T\to\infty}\nu(x,T,A)$.
+\begin{defi} Se $A\in\mathcal{A}$, $T\in\N^+$, la \emph{frequenza media delle visite} ad $A$ dell'orbita di $x$ tra $0$ e $T$ è
+\[\nu(x,T,A):=\frac{1}{T}\sum_{j=0}^{T-1}\chi_A\pa{f^j(x)},\]
+scriveremo inoltre $\obar{\nu}(x,A):=\obar{\lim}_{T\to\infty}\nu(x,T,A)$ e $\ubar{\nu}(x,A):=\ubar{\lim}_{T\to\infty}\nu(x,T,A)$.
+Più in generale, data un'osservabile $\phi\in L^1(X)$, ovvero una mappa $X\rightarrow \R$ misurabile, definiamo la \emph{somma di Birkhoff} $T$-esima
+\[(S_T\phi)(x):=\sum_{j=0}^{T-1}(\phi\circ f^j)(x)\]
+e la relativa media temporale $\frac{1}{T}S_T\phi(x)$.
 \end{defi}
 
-\begin{defi}Più in generale, data un'osservabile $\phi\in L^1(X)$, definiamo la \emph{somma di Birkhoff} $(S_T\phi)(x):=\sum_{j=0}^{T-1}(\phi\circ f^j)(x)$
-e la \emph{media temporale} $\frac{(S_T\phi)(x)}{T}$.
-\end{defi}
-
-Dimostreremo questo risultato, che per ora diamo per buono:
+Dimostreremo più avanti il seguente risultato, che ci permette di motivare la definizione di sistema ergodico.
 
 \begin{teo}[Birkhoff]Per ogni $A\in\mathcal{A}$ esiste q.o. $\nu(x,A):=\lim_{T\to\infty}\nu(x,T,A)$. \\
 Più in generale per ogni $\phi\in L^1(X)$ esiste q.o. il $\lim_{T\to\infty}\frac{(S_T\phi)(x)}{T}$.
 \end{teo}
 
 \begin{defi}$(X,\mathcal{A},\mu,f)$ è \emph{ergodico} se per ogni $A\in\mathcal{A}$ vale $\nu(x,A)=\mu(A)$ q.o.
-Cioè \lcap la statistica delle orbite coincide con la probabilità a priori\rcap.
+In altre parole, la statistica delle orbite coincide con la probabilità a priori.
 \end{defi}
 
 \begin{teo}Sono equivalenti:
@@ -114,26 +127,19 @@ basta porre $N':=\cup_{j=0}^\infty$ e $A':=A\setminus N'$. Ora se $x\in A'$ abbi
 $f(x)\in A\cup N$ e $f(x)\nin N'$ (perché $f^{-1}(N')\subseteq N'$), quindi $f(A')\subseteq (A\cup N)\setminus N'=A\setminus N'=A'$.
 \end{oss}
 
-?? sarebbe meglio mettere l'oss dopo la def. dei s.d. misurabili
-
 \begin{oss}Se il sistema dinamico è \emph{strongly mixing}, ovvero per ogni $A,B\in\mathcal{A}$ vale
 $\lim_{j\to\infty}\mu\pa{f^{-j}(A)\cap B}=\mu(A)\mu(B)$ (\lcap decadimento delle correlazioni\rcap),
-la condizione $(5)$ del teorema è banalmente verificata. \\
-Quindi strongly mixing $\implica$ ergodico.
+la condizione $(5)$ del teorema è banalmente verificata, e quindi il sistema è ergodico.
 \end{oss}
 
-\begin{oss}Sia $(X,d,f)$ uno spazio metrico compatto con una trasformazione $f:X\to X$ continua che preserva
-una misura $\mu$. $X$ ha contemporaneamente le strutture di sistema dinamico topologico
-e misurabile. Ci chiediamo se ci sono relazioni tra la transitività topologica e l'ergodicità. \\
+\begin{oss}[facoltativa]Sia $(X,d,f)$ uno spazio metrico compatto con una trasformazione $f:X\to X$ continua che preserva
+una misura $\mu$: $X$ ha contemporaneamente le strutture di sistema dinamico topologico
+e misurabile, ed è naturale chiedersi se ci sono relazioni tra la transitività topologica e l'ergodicità.
 Assumendo che ogni aperto non vuoto abbia misura positiva, l'ergodicità implica la transitività:
 dati $U,V$ aperti non vuoti è $\lim_{n\to\infty}\frac{1}{n}\sum_{j=0}^{n-1}\mu\pa{f^{-j}(U)\cap V}=\mu(U)\mu(V)>0$,
-quindi per qualche $N\ge 0$ abbiamo $\mu\pa{f^{-N}(U)\cap V}>0$. \\
-%Dato un aperto $W$ vale sempre $\mu\pa{f(W)}\ge\mu(W)$: infatti $f(W)$ è un boreliano (essendo $W$ $\sigma$-compatto)
-%e $\mu\pa{f(W)}=\mu\pa{f^{-1}\pa{f(W)}}\ge\mu(W)$ (dato che $f^{-1}\pa{f(W)}\supseteq W$). \\
-%Applicando questo a $f^{-N}(U)\cap V$ e alla mappa $f^N$ (che preserva $\mu$) otteniamo
-%\[ \mu\pa{U\cap f^N(V)}\ge\mu\pa{f^N\pa{f^{-N}(U)\cap V}}\ge\mu\pa{f^{-N}(U)\cap V}>0, \]
+quindi per qualche $N\ge 0$ abbiamo $\mu\pa{f^{-N}(U)\cap V}>0$.
 Dunque $f^{-N}(U)\cap V\neq\emptyset$ e la sua immagine tramite $f^N$ è inclusa in $U\cap f^N(V)$, perciò
-quest'ultimo insieme è non vuoto e questa è la tesi (v. anche l'Osservazione ??).
+quest'ultimo insieme è non vuoto e questa è la tesi.
 \end{oss}
 
 \begin{esempio}Sia $\alpha\in\R\setminus\Q$ un irrazionale. Il toro $\mathbb{T}^1$
@@ -146,6 +152,13 @@ per ogni $k\in\Z$. Ma se $k\neq 0$ abbiamo $e^{2\pi i k\alpha}\neq 1$ (perché $
 $\widehat{\phi}(k)=0$ per $k\neq 0$ e questo dice che $\phi$ è costante q.o.
 \end{esempio}
 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Teoremi Ergodici}
+
+I teoremi di questa sezione garantiscono la convergenza delle somme di Birkhoff in $L^2$ (von Neumann) e quasi ovunque (Birkhoff).
 
 \begin{teo}[ergodico di von Neumann] Sia $U$ un'isometria di $H$ spazio di Hilbert, allora
  \[\forall\phi\in H \quad \exists \lim_{n\rightarrow\infty}\frac{1}{n}\sum_{j=0}^{n-1}U^j\phi:=\hat\phi\]
@@ -217,6 +230,8 @@ per cui concludiamo esattamente come sopra sommando sulla successione e integran
 \[\mu(A)+\epsilon\geq\mu(\bar A)\geq \int_X \bar\nu(x,A)-\epsilon.\]
 \end{proof}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Unica Ergodicità}
 
 \begin{esercizio}Sia $(X,\mathcal{A},\mu,S)$ ergodico e $\mu_1$ un'altra misura di probabilità $S$-invariante.
 Sono equivalenti:
@@ -244,8 +259,7 @@ cascano frequentemente in $A$). $A$ è $S$-invariante e $\mu(A)=0$, $\mu_1(A)\ne
 \end{oss}
 
 \begin{oss}Se $\mu_1\neq\mu$ è anch'essa ergodica, tornando all'ultima parte della soluzione dell'esercizio
-otteniamo $\mu_1(P')=1$, quindi $\mu\perp\mu_1$.\footnote{Questo risponde a una domanda fatta da Andrea Bianchi
-a lezione}
+otteniamo $\mu_1(P')=1$, quindi $\mu\perp\mu_1$.
 \end{oss}
 
 \begin{defi}$(X,\mathcal{A},\mu,S)$ è \emph{unicamente ergodico} se $\mu$ è l'unica misura di probabilità
