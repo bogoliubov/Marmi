@@ -29,35 +29,13 @@ Inoltre sono ergodiche se e solo se $\alpha$ è non risonante, e in tal caso son
  e quindi che il sistema è ergodico.
 \end{proof}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Lo stesso risultato vale se riparametrizziamo il tempo, ovvero se consideriamo invece il flusso dato da $\dot x=\phi(x)\alpha$ con $\phi\in C^1(\T^d,\R^+)$, che ha le stesse orbite di $S^t$. La misura invariante è però ora $\phi(x)dx$, con $dx$ la misura di Haar.
+Lo stesso risultato vale se riparametrizziamo il tempo, ovvero se consideriamo invece il flusso dato da $\dot x=\phi(x)\alpha$ con $\phi\in C^1(\T^d,\R^+)$, 
+che ha le stesse orbite di $S^t$. La misura invariante è però ora $\phi(x)dx$, con $dx$ la misura di Haar.
 
 Sia ora $\beta=(\alpha,1)\in \R^{d+1}$ non risonante e $\psi\in C^1(\T^d,\R^+)$: consideriamo il flusso in $\T^{d+1}$ dato da 
 \[(x,s)\mapsto(x,s+t) \qquad \mbox{in }\T^d\times \R\]
-al quoziente su $(x,s+\psi(x))~(S_\alpha,s)$. Questo flusso $S^t_{\alpha,\psi}$ è detto \emph{flusso speciale} su $\T^{d+1}$, e conserva la misura $\frac{dxds}{\int_{\T^d}\psi(x)dx}$ ($dx$ su $\T^d$ e $ds$ su $\T^1$).
+al quoziente su $(x,s+\psi(x))~(S_\alpha,s)$. Questo flusso $S^t_{\alpha,\psi}$ è detto \emph{flusso speciale} su $\T^{d+1}$, 
+e conserva la misura $\frac{dxds}{\int_{\T^d}\psi(x)dx}$ ($dx$ su $\T^d$ e $ds$ su $\T^1$).
 
 \begin{teo}Il flusso speciale $S^t_{\alpha,\psi}$ è $C^r$-coniugato a $S^t_\beta$, ovvero
  \[\exists h\in C^r(\T^{d+1},\T^{d+1}):\quad \forall t \quad S^t_{\alpha,\psi}h=hS^t_\beta\]
@@ -88,12 +66,12 @@ Usiamo questa caratterizzazione per dare due criteri aritmetici su $\alpha$ che 
 che l'equazione coomologica $\psi-\psi\circ R_\alpha$ ha soluzione,
 nelle categorie $C^\infty(\mathbb{T}^1)$ e $C^\omega(\mathbb{T}^1)$.
 
-\begin{teo}Per $\alpha$ irrazionale valgono i seguenti criteri.
+\begin{teo}Per $\alpha\in\irr$ valgono
 \begin{lista}
-\item $\alpha$ diofanteo $\sse$ per ogni $\psi\in\C^\infty(\mathbb{T}^1)$ a media nulla
+\item $\alpha$ è diofanteo se e solo se per ogni $\psi\in\C^\infty(\mathbb{T}^1)$ a media nulla
 l'equazione coomologica ha una (unica) soluzione $\chi\in C^\infty(\mathbb{T}^1)$.
-\item $\alpha$ soddisfa $\lim_{n\to\infty}\frac{\ln q_{n+1}}{q_n}<\infty$ (dove $\frac{p_n}{q_n}$ sono i suoi convergenti)
-$\sse$ per ogni $\psi\in C^\omega(\mathbb{T}^1)$ a media nulla
+\item $\alpha$ soddisfa $\lim_{n\to\infty}\frac{\ln q_{n+1}}{q_n}<\infty$, con $\frac{p_n}{q_n}$ i convergenti della frazione continua,
+se e solo se per ogni $\psi\in C^\omega(\mathbb{T}^1)$ a media nulla
 l'equazione coomologica ha una (unica) soluzione $\chi\in C^\omega(\mathbb{T}^1)$ a media nulla.
 \end{lista}
 \end{teo}
@@ -128,37 +106,30 @@ otteniamo una funzione analitica a valori reali. Una soluzione $\chi$ dell'equaz
 $\widehat{\chi}(q_{k_j})=1$ per ogni $j$, assurdo.
 \end{proof}
 
-L'equazione coomologica $\psi-\psi\circ f=\phi$ si può risolvere in una situazione molto più generale.
-Consideriamo un sistema dinamico topologico $(X,d,f)$.
+L'equazione coomologica $\psi-\psi\circ f=\phi$ si può risolvere in una situazione molto più generale: considereremo un sistema dinamico topologico $(X,d,f)$.
 
-\begin{defi}Dato $(X,d)$ spazio metrico compatto, $f\in\homeo(X)$ è \emph{minimale} se tutte le orbite sono dense.
-\end{defi}
-
-\begin{oss}Ovviamente la minimalità implica la transitività.
-\end{oss}
-
-Poniamo $d\psi:=\psi-\psi\circ f$. Vedendo $d$ come un operatore lineare continuo,
-$d:C(X)\to C(X)$, osserviamo che $\ker d=\set{\text{integrali primi}}$ e l'ortogonale all'immagine è $(dC(X))^\perp
-=\mathcal{M}_f(X)$, lo spazio delle misure reali $f$-invarianti.
+\begin{oss} Possiamo definire il \emph{cobordo} $d\psi:=\psi-\psi\circ f$; vedendo $d$ come un operatore lineare continuo, $d:C(X)\to C(X)$, 
+osserviamo che $\ker d$ è l'insieme degli integrali primi, e l'ortogonale all'immagine è $(dC(X))^\perp
+=\mathcal{M}_f(X)$, lo spazio delle misure reali $f$-invarianti.\end{oss}
 
 Cerchiamo di risolvere l'equazione coomologica almeno formalmente:
 $\psi=\phi+\psi\circ f$ e sostituendo $\psi$ a secondo membro otteniamo
 \[ \psi=\phi+\phi\circ f+\psi\circ f^2 \]
 e iterando
 \[ \psi=\phi+\phi\circ f+\dots+\phi\circ f^{n-1}+\psi\circ f^n, \]
-cioè formalmente $\psi=\sum_{j=0}^\infty \phi\circ f^j$. Torniamo a fare discorsi rigorosi. \\
-Supponendo che una soluzione $\psi$ esista, come abbiamo visto deve valere
+cioè formalmente $\psi=\sum_{j=0}^\infty \phi\circ f^j$. Tornando a ragionamenti rigorosi, supponendo che una soluzione $\psi$ esista, deve valere
 $\sum_{j=0}^{n-1}\phi\circ f^j=\psi-\psi\circ f^n$. Quindi una condizione necessaria è che le somme parziali
-di Birkhoff siano equilimitate. Se $f$ è minimale vale anche il viceversa, anzi vale addirittura:
-\begin{teo}[Gottshalk-Hedlund]Se $f\in\homeo(X)$ è minimale, $\phi\in C(X)$ e per qualche $x_0\in X$, $C>0$
-è $\abs{\sum_{j=0}^{n-1}\pa{\phi\circ f^j}(x_0)}\le C$ per tutti gli $n\ge 0$, allora l'equazione coomologica
-$\psi-\psi\circ f=\phi$ ha soluzione.
+di Birkhoff siano equilimitate. Se $f$ è minimale vale anche il viceversa, anzi basta richiedere l'equilimitatezza in un solo punto.
+
+
+\begin{teo}[Gottshalk-Hedlund]Se $f\in\homeo(X)$ è minimale, $\phi\in C(X)$ e 
+\[\exists x_0\in X, \quad \exists C>0: \qquad \abs{\sum_{j=0}^{n-1}\pa{\phi\circ f^j}(x_0)}\le C \quad \forall n\in\N\]
+allora l'equazione coomologica $\psi-\psi\circ f=\phi$ ha soluzione.
 \end{teo}
 
-Cioè basta l'equilimitatezza in un solo punto $x_0$! Cambiando segno a $\psi$, scriviamo l'equazione coomologica
-in questa forma: $\psi\circ f-\psi=\phi$.
 
-\begin{proof}Lavoriamo sullo \emph{skew-product} $X\times\R$: definiamo $F\in\homeo(X\times\R)$
+
+\begin{proof} Lavoriamo sullo \emph{skew-product} $X\times\R$: definiamo $F\in\homeo(X\times\R)$
 con $F(x,u):=\pa{f(x),u+\phi(x)}$. $(X,\phi)$ è un fattore di $(X\times\R,F)$.
 Nelle iterate di $F$ compaiono proprio le somme di Birkhoff:
 \[ F^n(x,u)=\pa{f^n(x),u+\sum_{j=0}^{n-1}(\phi\circ f^j)(x)}. \]
