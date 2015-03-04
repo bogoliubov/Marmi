@@ -2,13 +2,14 @@
 
 Supponiamo di fare un esperimento con $n$ possibili esiti mutualmente esclusivi.
 Modelliamo la situazione con uno spazio di probabilità (spazio dei campioni) $(X,\mu)$
-e una partizione $X=A_1\sqcup \dots\sqcup A_n$ (il tutto anche mod $0$), con $\mu(A_i)=p_i$. \\
-Con l'esperimento non conosceremo il preciso elemento $x\in X$ ma solo l'esito $A_i$; vogliamo
-trovare un modo di misurare a priori la quantità media di \emph{informazione} su $x$ che si ottiene eseguendo l'esperimento. \\
-\Eacc naturale supporre che questa informazione media, che chiamiamo \emph{entropia}, dipenda solo da $n$ e da $p_1,\dots,p_n$.
+e una partizione $X=A_1\sqcup \dots\sqcup A_n$ (il tutto anche mod $0$), con $\mu(A_i)=p_i$. 
 
-Se la situazione è un sistema fisico che si evolve (ad esempio una particella di gas in una scatola di cui
-in ogni istante possiamo sapere in quale metà della scatola si trova), spesso c'è anche una trasformazione $f:X\to X$
+Con l'esperimento non conosceremo il preciso elemento $x\in X$ ma solo l'esito $A_i$; vogliamo
+trovare un modo di misurare a priori la quantità media di \emph{informazione} su $x$ che si ottiene eseguendo l'esperimento. 
+\Eacc naturale supporre che questa informazione media guadagnata, che chiamiamo \emph{entropia}, dipenda solo da $n$ e da $p_1,\dots,p_n$.
+
+Se la situazione è un sistema fisico in evoluzione (ad esempio una scatola divisa in due contenente una particella di gas, di cui
+in ogni istante possiamo sapere in quale metà si trova), spesso c'è anche una trasformazione $f:X\to X$
 che preserva $\mu$: lavorando a tempo discreto, $f$ dice come si sposta un punto nello spazio delle fasi
 all'istante successivo. Eseguendo l'esperimento negli istanti $0,\dots,T$ troveremo ancora più informazione su $x$:
 in sostanza conosceremo $\uno_{A_i}\pa{f^k(x)}=\uno_{f^{-k}(A_i)}$, perciò l'entropia sarà quella associata
@@ -78,7 +79,7 @@ ad ogni istante $k$ l'insieme $A_i$ in cui finisce $f^k(x)$): questa è $\frac{1
 dove $\mathcal{P}_T:=\mathcal{P}\vee\cdots\vee f^{-(T-1)}(\mathcal{P})$ (vista come partizione composta
 da $n^T$ insiemi). Osserviamo che abbiamo mediato anche nel tempo, cioè abbiamo diviso per $T$.
 
-\begin{lemma}[Fekete]\label{fekete} Se $a:\N\nonzero\to\R$ è subadditiva, ovvero $a(m+n)\le a(m)+a(n)$, esiste sempre
+\begin{lemma}[Fekete, facoltativo]\label{fekete} Se $a:\N\nonzero\to\R$ è subadditiva, ovvero $a(m+n)\le a(m)+a(n)$, esiste sempre
 $\lim_{n\to\infty}\frac{a(n)}{n}$ e coincide con $\inf_n\frac{a(n)}{n}$.
 \end{lemma}
 
@@ -116,17 +117,22 @@ $h_{KS}(f):=\sup_{\mathcal{P}}h(f,\mathcal{P})$, al variare delle partizioni mis
 \begin{oss}Si vede facilmente che $h_{KS}$ è invariante per isomorfismo di sistemi dinamici misurabili.
 \end{oss}
 
-\begin{esempio}Consideriamo l'insieme delle successioni biinfinite su un alfabeto di $N$ simboli: poniamo $X:=\set{1,\dots,N}^{\Z}$.
-Questo diventa uno spazio metrico definendo, per $x,y\in X$, $a(x,y):=\min\set{\abs{i}:x_i\neq y_i}$ (che vale per convenzione $+\infty$
-se $x=y$) e $d(x,y)=2^{-a(x,y)}$. \\
-$(X,d)$ è anzi uno spazio metrico compatto. Lo shift sinistro $\sigma:X\to X$ dato da $\pa{\sigma(x)}_i:=x_{i+1}$ è un omeomorfismo di $X$. \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Schemi di Bernoulli}
+
+
+Consideriamo $X:=\set{1,\dots,N}^{\Z}$: questo diventa uno spazio metrico definendo, per $x,y\in X$, $a(x,y):=\min\set{\abs{i}:x_i\neq y_i}$ 
+(che vale per convenzione $+\infty$ se $x=y$) e $d(x,y)=2^{-a(x,y)}$. $(X,d)$ è compatto, e lo shift sinistro $\sigma:X\to X$ dato da $\pa{\sigma(x)}_i:=x_{i+1}$ 
+è un omeomorfismo di $X$.
+
 Data una misura di probabilità arbitraria su $\set{1,\dots,N}$ che vale $p_i$ su $\set{i}$, possiamo mettere su $X$
-la probabilità prodotto $\mu$. $\mu$ è ovviamente $\sigma$-invariante. \\
-Chiamiamo \emph{schema di Bernoulli} il sistema dinamico misurabile che abbiamo costruito; lo indichiamo con $BS(p_1,\dots,p_N)$. \\
-Con due simboli, che chiamiamo $0$ e $1$ per comodità, abbiamo una mappa $\tilde{\pi}:\set{0,1}^{\Z}\to [0,1]^2$
-che manda $(x_i)\mapsto (\xi,\eta)$, dove $\xi=\sum_{i\ge 0}x_i 2^{-(i+1)}$ e $\eta=\sum_{i<0}x_i 2^{-\abs{i}}$.
+la probabilità prodotto $\mu$, che è ovviamente $\sigma$-invariante. 
+Chiamiamo \emph{schema di Bernoulli} il sistema dinamico misurabile che abbiamo costruito, e lo indicheremo con $BS(p_1,\dots,p_N)$.
+
+Nel caso di due simboli, che chiamiamo $0$ e $1$ per comodità, abbiamo una mappa 
+\[\tilde{\pi}:\set{0,1}^{\Z}\to [0,1]^2  \qquad (x_i)\mapsto (\xi,\eta) \mbox{ con }  \begin{cases} \xi=\sum_{i\ge 0}x_i 2^{-(i+1)} \\ \eta=\sum_{i<0}x_i 2^{-\abs{i}}\end{cases}.\] 
 $\tilde{\pi}$ ha inversa definita q.o. e coniuga $\sigma$ nella ``mappa del panettiere'' $f(x,y):=\pa{\pa{2x},\frac{y+\floor{2x}}{2}}$,
-che graficamente è
+che graficamente agisce come
 
 \begin{center}\begin{tikzpicture}[scale=0.70]
 \draw (0,0) -- (2,0);
@@ -153,7 +159,7 @@ che graficamente è
 \draw[dashed] (13,1) -- (13,2);
 \draw[dashed] (15,0) -- (15,1);
 \end{tikzpicture}\end{center}
-\end{esempio}
+
 
 L'entropia di uno schema di Bernoulli si calcola facilmente se diamo per buono questo fatto:
 
@@ -162,11 +168,10 @@ Se $\mathcal{P}$ è una partizione \emph{generante}, cioè tale che $\bigvee_{n=
 (il primo membro è la $\sigma$-algebra generata da $T^n(\mathcal{P})$ per $n\in\Z$), allora $h_{KS}(f)=h(f,\mathcal{P})$.
 \end{teo}
 
-Torniamo agli schemi di Bernoulli.
 Sia $A_k:=\set{x\in X:x_0=k}$ per $k=1,\dots,N$; la partizione $\mathcal{P}:=\set{A_1,\dots,A_N}$ è generante.
 Inoltre le partizioni $\sigma^n(\mathcal{P})$ sono tutte indipendenti congiuntamente, quindi per l'ultima osservazione
-$H(\mathcal{P}_n)=nH(\mathcal{P})$, per cui $h(\sigma,\mathcal{P})=H(\mathcal{P})$. \\
-Dunque (Kolmogorov-Sinai) l'entropia di $BS(p_1,\dots,p_N)$ è $h(\sigma,\mathcal{P})=H(\mathcal{P})=-\sum_{i=1}^N p_i\ln p_i$.
+$H(\mathcal{P}_n)=nH(\mathcal{P})$, per cui $h(\sigma,\mathcal{P})=H(\mathcal{P})$. Dunque, per Kolmogorov-Sinai, l'entropia di 
+$BS(p_1,\dots,p_N)$ è $h(\sigma,\mathcal{P})=H(\mathcal{P})=-\sum_{i=1}^N p_i\ln p_i$.
 
 Sappiamo che due sistemi misurabili isomorfi hanno la stessa entropia. Sorprendentemente, per gli schemi di Bernoulli vale anche il viceversa
 (che non dimostriamo):
@@ -217,7 +222,7 @@ ci sia un $y\in S$ con $d(x,y)<\epsilon$. $S$ è $(n,\epsilon)$-spanning per ogn
 Perciò $\limsup_{n\to\infty}\frac{1}{n}\ln r(n,\epsilon)\le\limsup_{n\to\infty}\frac{\ln\abs{S}}{n}=0$. \\
 $(2)$: se $S$ è $(n,\epsilon)$-spanning per $f$, $f^n(S)$ è $(n,\epsilon)$-spanning per $f^{-1}$. \\
 $(3)$: chiaramente $r(n,\epsilon,f^m)\le r(mn,\epsilon,f)$ perché un insieme $(mn,\epsilon)$-spanning per $f$
-è $(n,\epsilon)$-spanning per $f^m$. Quindi $h_{top}(f^m)\le m h_{top}(f)$. \\
+è $(n,\epsilon)$-spanning per $f^m$. Quindi $h_{top}(f^m)\le m h_{top}(f)$.
 Per l'altra disuguaglianza: dato $\epsilon$ sia $\delta<\epsilon$ tale che per $d(x,y)<\delta$ si abbia $d\pa{f^j(x),f^j(y)}<\epsilon$,
 per ogni $j=0,\dots,m-1$. Ora un insieme $(n,\delta)$-spanning per $f^m$ è $(mn,\epsilon)$-spanning per $f$:
 basta scrivere ogni $0\le k\le mn$ come $k=qm+r$ e usare le definizioni.
@@ -235,11 +240,11 @@ infatti $d_n(x,y)\ge\max_{0\le k\le n}\abs{\pa{f^k(x)}_0-\pa{f^k(y)}_0}=\max_{0\
 quindi, se $S$ è $\pa{n,\frac{1}{k}}$-spanning, scegliendo
 \[ x=\sum_{k=0}^n\alpha_k 2^{-k}e_k \]
 (con $\abs{\alpha_k}\le 1$) deve esistere un $y\in S$ tale che $\abs{x_k-y_k}<\frac{1}{2^k\cdot k}$,
-cioè $\abs{\alpha_k-(2^k y_k)}<\frac{1}{k}$ per $0\le k\le n$. \\
+cioè $\abs{\alpha_k-(2^k y_k)}<\frac{1}{k}$ per $0\le k\le n$.
 Ma gli $\alpha_k$ variano in modo arbitrario su $[-1,1]$, quindi
 \[ [-1,1]^{n+1}\subseteq \cup_{y\in S}B\pa{\pi(y),\frac{1}{k}}, \]
 dove $\pi(y)=(y_0,2y_1,\dots,2^n y_n)\in \R^{n+1}$ e le palle sono rispetto alla norma $\norm{\fantasma{a}}_\infty$.
-Confrontando le misure, $2^{n+1}\le \abs{S}\cdot\pa{\frac{2}{k}}^{n+1}$ $\implica$ $\abs{S}\ge k^{n+1}$, che è la tesi. \\
+Confrontando le misure, $2^{n+1}\le \abs{S}\cdot\pa{\frac{2}{k}}^{n+1}$ $\implica$ $\abs{S}\ge k^{n+1}$, che è la tesi. 
 Dunque $h_{top}(f)=\lim_{k\to\infty}\limsup_{n\to\infty}\frac{1}{n}\ln r\pa{n,\frac{1}{k}}\ge\lim_{k\to\infty}\ln k=\infty$.
 \end{esempio}
 
@@ -279,7 +284,7 @@ Dunque, ponendo temporaneamente $a(n):=\ln N\pa{\bigvee_{i=0}^{n-1}f^{-i}(\alpha
 Perciò, per \hyperref[fekete]{Fekete}, esiste sempre $\lim_{n\to\infty}\frac{1}{n}\ln N\pa{\bigvee_{i=0}^{n-1}f^{-i}(\alpha)}$.
 \end{oss}
 
-Diamo senza dimostrazione una definizione alternativa di entropia topologica, che rende manifesta la somiglianza con l'entropia
+Diamo ora una definizione alternativa di entropia topologica, che rende manifesta la somiglianza con l'entropia
 di Kolmogorov-Sinai:
 
 \begin{teo}$h_{top}(f)=\sup_\alpha\lim_{n\to\infty}\frac{1}{n}\ln N\pa{\bigvee_{i=0}^{n-1}f^{-i}(\alpha)}$.
@@ -308,7 +313,7 @@ Ma allora $s(n,\epsilon)\le N\pa{\bigvee_{k=0}^n f^{-k}(\alpha)}$, da cui
 e passando al limite per $\epsilon\to 0$ otteniamo $H\ge h_{top}(f)$.
 \end{proof}
 
-Ecco il teorema più importante sull'entropia topologica:
+Concludiamo con il teorema più importante sull'entropia topologica:
 
 \begin{teo}L'entropia topologica non dipende dalla metrica che induce la topologia di $X$.
 Dunque è anche invariante per coniugazione.
@@ -419,7 +424,7 @@ Infatti $(A^k)_{ij}>0$ se e solo se si può andare dal nodo $i$ al nodo $j$ con 
 \end{itemize}
 \end{teo}
 
-Non dimostriamo Perron-Frobenius; vediamo piuttosto come si deduce questo
+Non dimostriamo Perron-Frobenius; vediamo piuttosto come si deduce il seguente
 
 \begin{cor}Se $A\ge 0$ (coefficienti nonnegativi), esiste $\lambda_A\ge 0$ autovalore tale che
 $\abs{\lambda}\le \lambda_A$ per ogni altro autovalore $\lambda$. Inoltre $\lambda_A$ ha un autovettore destro e un autovettore sinistro
