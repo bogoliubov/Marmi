@@ -1,8 +1,10 @@
 \section{Frazioni Continue}
 
-Osserviamo che un $\alpha\in\R$ è irrazionale se e solo se esistono tutte le iterate della mappa di Gauss $G(x)=\{\frac{1}{x}\}$ (ovvero $G^n(\alpha)$ non è mai nulla). Prendiamo allora $\alpha\in\irr$ e definiamo l'$n$\emph{-esimo quoziente completo}
+\section{Frazioni Continue}
+
+Osserviamo che un $\alpha\in\R$  \`e irrazionale se e solo se esistono tutte le iterate della mappa di Gauss $G(x)=\{\frac{1}{x}\}$ (ovvero $G^n(\alpha)$ non  \`e mai nulla). Prendiamo allora $\alpha\in\irr$ e definiamo l'$n$\emph{-esimo quoziente completo}
 \[\alpha_n=G(\alpha_{n-1}) \quad\mbox{con}\quad \alpha_0=G\left(\frac{1}{\alpha}\right)\]
-e l'$n$\emph{-esimo quoziente parziale}, che sarà sempre un intero,
+e l'$n$\emph{-esimo quoziente parziale}, che sar\`a sempre un intero,
 \[a_n=\frac{1}{\alpha_{n-1}}-\alpha_n=\frac{1}{\alpha_{n-1}}-G(\alpha_{n-1})=\left[\frac{1}{\alpha_{n-1}}\right] \quad \mbox{con} \quad a_0=\alpha-\alpha_0\]
 per cui abbiamo una scrittura di $\alpha$ detta \emph{frazione continua}:
 \[\begin{split}
@@ -12,9 +14,9 @@ per cui abbiamo una scrittura di $\alpha$ detta \emph{frazione continua}:
 \end{split}\]
 Di fatto abbiamo stabilito una bigezione tra gli irrazionali e le successioni (unilatere) di interi, per molti versi analoga agli sviluppi in base. Possiamo far corrispondere in modo naturale (non unico) le successioni troncate a dei razionali, che diremo \emph{convergenti}:
 \[\frac{p_n}{q_n}=[a_0,a_1,a_2,\dots,a_n]=a_0+\frac{1}{a_1+}\frac{1}{a_2+}\cdots\frac{1}{a_{n-1}+}\frac{1}{a_n}\]
-Il problema della rappresentazione non unica di numeri razionali in frazione continua, per cui ad esempio $[2,2,3]=[2,2,2,1]$, si può risolvere semplicemente imponendo che il numero di termini della frazione continua sia sempre pari o sempre dispari, ovvero che l'ultimo denominatore sia sempre 1, o non sia mai 1. Per il momento non adotteremo convenzioni, essendo interessati invece a passare dalle frazioni ai razionali.
+Il problema della rappresentazione non unica di numeri razionali in frazione continua, per cui ad esempio $[2,2,3]=[2,2,2,1]$, si pu\`o risolvere semplicemente imponendo che il numero di termini della frazione continua sia sempre pari o sempre dispari, ovvero che l'ultimo denominatore sia sempre 1, o non sia mai 1. Per il momento non adotteremo convenzioni, essendo interessati invece a passare dalle frazioni ai razionali.
 
-\begin{teo}[Proprietà dei convergenti] Per ogni $n$ valgono le seguenti
+\begin{teo}[Propriet\`a dei convergenti] Per ogni $n$ valgono le seguenti
 \[\begin{cases}
    p_0=a_0 \quad p_1=a_1a_0+1 \quad p_{n}=a_np_{n-1}+p_{n-2}\\
    q_0=1 \quad q_1=a_1 \quad q_{n}=a_nq_{n-1}+q_{n-2}
@@ -24,9 +26,9 @@ Il problema della rappresentazione non unica di numeri razionali in frazione con
 \end{teo}
 
 \begin{esempio}
- Con le proprietà suddette, non è difficile vedere che $\alpha\in\irr$ è quadratico (su $\Q$) se e solo se la sua frazione continua è periodica. Si può mostrare inoltre che se $\alpha,\alpha'\in\irr$, esistono $h,k$ tali che
+ Con le propriet\`a suddette, non \`e difficile vedere che $\alpha\in\irr$ \`e quadratico (su $\Q$) se e solo se la sua frazione continua  \`e periodica. Si pu\`o mostrare inoltre che se $\alpha,\alpha'\in\irr$, esistono $h,k$ tali che
  \[\alpha=[a_0,\dots,a_k,c_1,\dots,c_n,\dots] \qquad \alpha'=[a'_0,\dots,a'_h,c_1,\dots,c_n,\dots]\]
- se e solo se esiste $M\in PSL(2,\Z)$ tale che $\alpha=A\alpha'$, ovvero 
+ se e solo se esiste $M\in PSL(2,\Z)$ tale che $\alpha=M\alpha'$, ovvero 
  \[\alpha=\frac{A\alpha'+B}{C\alpha'+D}\quad \mbox{con}\quad |AD-BC|=1.\]
 \end{esempio}
 
@@ -34,16 +36,182 @@ I convergenti approssimano $\alpha$ molto bene, come vediamo con i seguenti risu
 \[\beta_{-1}=1\qquad \beta_n=(-1)^n(q_n\alpha-p_n)>0 \quad \Rightarrow \quad \beta_n=\alpha_0\alpha_1\cdots \alpha_n\]
 
 \begin{teo}[Migliore approssimazione]\begin{enumerate} Se $\alpha\in\irr$, valgono
-  \item $|q_n\alpha-p|=(q_{n+1}+q_n\alpha_{n+1})^{-1}$ da cui $1/2<\beta_nq_{n+1}<1$
+  \item $|q_n\alpha-p_n|=(q_{n+1}+q_n\alpha_{n+1})^{-1}$ da cui $1/2<\beta_nq_{n+1}<1$
   \item $\beta_n\leq g^n$ e $q_n\geq G^{n-1}$, dove $G,g=\frac{\sqrt 5\pm 1}{2}$ sono i numeri d'oro
   \item se $0<q<q_n$ allora per ogni $p\in\Z$ si ha $|q\alpha-p|\geq |q_n\alpha-p_n|$, e se vale l'uguaglianza $p=p_n$ e $q=q_n$
-  \item se $\left|\alpha-\frac{p}{q}\right|<\frac{1}{2q^2}$ allora $p/q$ è un convergente.
+  \item se $\left|\alpha-\frac{p}{q}\right|<\frac{1}{2q^2}$ allora $p/q$  \`e un convergente.
   \end{enumerate}\end{teo}
 
-La prova di questo importante teorema non è difficile, ma laboriosa. Le frazioni continue permettono anche di caratterizzare i numeri diofantei come segue:
+La prova di questo importante teorema non  \`e difficile, ma laboriosa. Le frazioni continue permettono anche di caratterizzare i numeri diofantei come segue:
 \[\begin{split} CD(\tau)&=\{\alpha\in\irr:q_{n+1}=O(q_n^{1+\tau})\}\\
 			&=\{\alpha\in\irr:a_{n+1}=O(q_n^{\tau})\}\\
 			&=\{\alpha\in\irr:\alpha_n^{-1}=O(\beta_{n-1}^{-\tau})\}\\
 			&=\{\alpha\in\irr:\beta_n^{-1}=O(\beta_{n-1}^{-1-\tau})\}
 \end{split}\]
-Un altro esercizio non difficile è provare che convergono $\sum^\infty\frac{\ln q_k}{q_k}$ e $\sum^\infty\frac{1}{q_k}$.
+Un altro esercizio non difficile  \`e provare che convergono $\sum^\infty\frac{\ln q_k}{q_k}$ e $\sum^\infty\frac{1}{q_k}$.
+
+
+
+\subsection{La mappa punto interrogativo di Minkowski}
+
+Consideriamo la mappa a tenda e la mappa di Farey, entrambe definite sull'intervallo $[0,1]$:
+
+$$T(x):=\begin{sist}[cc] 2x & 0\leq x\leq 1/2 \\ 2-2x & 1/2\leq x\leq 1 \end{sist} \qquad F(x):=\begin{sist}[cc] x/(1-x) & 0\leq x\leq 1/2 \\ (1-x)/x & 1/2\leq x\leq 1 \end{sist}$$
+
+\begin{prop} Esiste un unico omeomorfismo $h:[0,1]\fun[] [0,1]$ tale che $F\circ h = h\circ T$.\end{prop}
+
+\begin{proof} Dimostriamo per prima cosa l'unicit\`a. Prima di tutto, si nota  che necessariamente $h(0)=0$. Infatti $h(0)$ deve essere un estremo dell'intervallo e un punto fisso per la mappa $F$, dato che $0$ lo \`e per $T$. Dunque vale anche $h(1)=1$ e $h$ deve essere strettamente crescente.
+
+Si verifica inoltre che: 
+$$\biguni_k T^{-k}(0)=\Q_D \inter [0,1] \quad \biguni_k F^{-k}(0)=\Q \inter [0,1] \quad h\left(T^{-n}(0)\right)\subset F^{-n}(0) \text{ per ogni } n\in\N$$
+dove $\Q_D$ sono i razionali diadici.
+
+Per ogni $x\in [0,1]$, $\#T^{-1}(x)=\#F^{-1}(x)<\infty$. Perci\`o $\# T^{-n}(0)=\# F^{-n}(0)<\infty$ per ogni $n\in \N$. Dato che $h$ \`e strettamente crescente e $h\left(T^{-n}(0)\right)\subset F^{-n}(0)$, i valori di $h$ su $T^{-n}(0)$ sono determinati in modo unico. Quindi $h$ \`e determinata in modo unico su $\Q_D \inter [0,1]$ e dunque abbiamo l'unicit\`a.
+
+\begin{oss}\begin{enumerate}
+\item Si verifica facilmente che $\# T^{-n}(0)=\# F^{-n}(0)=2^{n-1}+1$. Gli elementi di $T^{-n}(0)$ sono i razionali diadici con denominatore al pi\`u $2^{n-1}$. 
+\item Si verifica facilmente che $F^{-1}\left(\frac{p}{q}\right)=\set{\frac{p}{p+q},\,\frac{q}{p+q}}$. 
+\item Se $a_1<\dots<a_{2^{n-1}-1}$ sono gli elementi di $F^{-n}(0)\setminus \set{0,1}$, vale che:
+$$a_i=\frac{m_{i-1}+m_{i+1}}{n_{i-1}+n_{i+1}} \text{ dove } m_i,\, n_i\in \N : a_i=\frac{m_i}{n_i}$$
+\item Se inoltre $b_1<\dots<b_{2^{n-1}}$ sono gli elementi di $F^{-n-1}(0)\setminus F^{-n}(0)$, allora:
+$$\frac{1}{n+1}=b_1<a_1<b_2<\dots<a_{2^{n-1}-1}<b_{2^{n-1}}=\frac{n}{n+1}$$
+
+Per esempio i primi termini sono:
+$$\begin{array}{cccccccc} F^{-2}(0)\setminus F^{-1}(0):\:&&&&1/2&&&\\
+F^{-3}(0)\setminus F^{-2}(0):\:&&1/3&&&&2/3&\\
+F^{-4}(0)\setminus F^{-3}(0):\:&1/4&&2/5&&3/5&&3/4\end{array}$$
+\end{enumerate}
+\end{oss}
+
+Dimostriamo ora l'esistenza di $h$. Cominciamo notando che la mappa $T$ si comporta bene con lo sviluppo binario. Infatti si verifica che:
+$$\text{se }x=0.\eps_1\eps_2\eps_3\dots \text{ con } \eps_i\in\set{0,1}, \text{ allora } 
+T(x)=\begin{sist}[lr] 0.\eps_2\eps_3\dots & \text{ se } \eps_1=0 \\ 0.\hat{\eps}_2\hat{\eps}_3\dots & \text{ se } \eps_1=1\end{sist} \; \text{ con } \hat{\eps}_i=1-\eps_i$$
+
+Invece la mappa $F$ si comporta bene con lo sviluppo in frazioni continue. Si verifica che:
+$$\text{se }y=[0; a_1,a_2, a_3, \dots], \text{ allora } 
+F(y)=\begin{sist}[lcr] [0; a_2, a_3, \dots] &\text{ se } a_1=1 & (1/2<y\leq 1) 
+\\ \left[0; a_1 -1, a_2, a_3, \dots \right]  &\text{ se } a_1\geq 2 & (0\leq y\leq 1/2)\end{sist}$$
+
+Sia $Q:[0,1]\fun[] [0,1]$ la mappa:
+$$y=[0;a_1,a_2,a_3,\dots] \map Q(y):=0.\underbrace{0\dots 0}_{a_1-1}\underbrace{1\dots 1}_{a_2 }\underbrace{0\dots 0}_{a_3 \text{ volte}}1\dots$$
+con gli $0$ e gli $1$ che si alternano in blocchi lunghi $a_1-1, a_2, a_3, \dots$.
+
+C\`e un piccolo ostacolo nella definizione si $Q(y)$ quando $y\in\Q$. Infatti lo sviluppo in frazioni continue non \`e unico per i numeri razionali: ci sono due possibili rappresentazioni. Tuttavia le due rappresentazioni $y$ in frazioni continue vengono mandate attraverso $Q$ nelle due diverse rappresentazioni binarie dello stesso razionale diadico. Per esempio:
+
+$$\frac{2}{5}=[0;2,2,\infty]=[0;2,1,1,\infty] \quad Q[0;2,2,\infty]=0.011 \quad Q[0;2,1,1,\infty]=0.010\bar{1}$$
+
+Dunque $Q$ \`e ben definita. Inoltre si verifica che $Q$ \`e biunivoca, continua e $Q\circ F=T\circ Q$.
+Si definisce $h=Q^{-1}$.
+\end{proof}
+
+\begin{defi} $Q:[0,1]\fun[] [0,1]$ \`e  la mappa punto interrogativo di Minkoski.\end{defi}
+
+
+\subsection{Sistemi dinamici esatti}
+
+\begin{defi} Un sistema dinamico misurabile $(X,\mathcal{A},\mu,T)$ \`e mixing se:
+$$\int_X \left(f\circ T^k \right) \cdot g \, d\mu \longrightarrow 0 \quad\text{per ogni } f,g\in L^2_0(X)$$
+dove $L^2_0(X,\mathcal{A})$ \`e l'insieme delle funzioni in $L^2$ a media nulla.
+
+Un sistema dinamico misurabile $(X,\mathcal{A},\mu,T)$ \`e esatto se $\biginter_n T^{-n}\mathcal{A}\subset \mathcal{N}$, dove $\mathcal{N}$ \`e la $\sigma$-algebra composta dagli insiemi di misura $0$ o $1$.
+\end{defi}
+
+\begin{prop} Sia $(X,\mathcal{A},\mu,T)$ un sistema dinamico misurabile. 
+$$X \text{ esatto } \imp X \text{ mixing } \imp X \text{ ergodico }$$\end{prop}
+\begin{proof} Dimostriamo per prima cosa che mixing $\imp$ ergodico. Sia $A\in\mathcal{A}$ un insieme invariante. Applichiamo la definizione di mixing a $f=g=\chi_A-\mu(A)$.
+$$\int_X \left(f\circ T^k \right) \cdot g \, d\mu=\int_X \left(\chi_A\circ T^k \right) \cdot \chi_A \, d\mu-\mu(A)^2=\mu(A)-\mu(A)^2\rightarrow 0$$
+Dunque $\mu(A)=0$ o $\mu(A)=1$ e il sistema \`e ergodico.
+
+Dimostriamo ora che esatto $\imp$ mixing.
+
+Siano $f,g\in L^2_0(X,\mathcal{A})$. Sia $U:L^2(X,\mathcal{A})\fun L^2(X,\mathcal{A})$, $f\map f\circ T$. Dobbiamo mostrare che $\scal{U^k f}{g}\rightarrow 0$. Prima di tutto notiamo alcune propriet\`a di $U$:\begin{enumerate}
+\item \`e un isometria, dato che $T$ preserva la misura. In particolare $U^*U=I$, $P_k:=U^k(U*)^k$ \`e autoaggiunto e idempotente;
+\item $\imm U^k=L^2(X,T^{-k}\mathcal{A})$, per il criterio di misurabilit\`a di Doob;
+\item $P_k$ \`e una proiezione di $L^2(X,\mathcal{A})$ su $\imm U^k=L^2(X,T^{-k}\mathcal{A})$.
+\end{enumerate}
+
+Sfruttiamo queste propriet\`a:
+$$\scal{U^k f}{g}=\scal{P_k U^k f}{g}=\scal{U^k f}{P_k g}\leq \norma{f} \cdot\norma{P_k g}$$
+
+Ci basta ora dimostrare che $\norma{P_k g}\rightarrow 0$. 
+
+$P_k g$ converge in $L^2$. Infatti $g-P_k g=\sum_{i=0}^{k-1} P_i g - P_{i+1} g$  converge poich\'e gli addendi della somma sono ortogonali e la serie delle norme al quadrato $\sum_i \norma{P_i g - P_{i+1} g}^2\leq\norma{g}^2$ \`e finita. 
+
+Sia $\hat{g}=\lim_k P_k g$. Abbiamo:\begin{enumerate}
+\item $P_k g\in L^2_0(X,\mathcal{A})$, infatti $L^2_0(X,\mathcal{A})$ \`e lo spazio ortogonale alle costanti e $\scal{P_k g}{1}=\scal{g}{P_k 1}=\scal{g}{1}=0$. Dunque $\hat{g}\in L^2_0(X,\mathcal{A})$. 
+\item $\hat{g}\in \biginter_k L^2(X,T^{-k}\mathcal{A})\subset L^2(X,\mathcal{N})$, dato che, per ogni $k$,  $P_j g$ sta definitivamente in $L^2(X,T^{-k}\mathcal{A})$.
+\end{enumerate}
+Mettendo insieme le cose, $\hat{g}\in L^2_0(X,\mathcal{N})$, cio\`e $\hat{g}=0$.
+\end{proof}
+
+
+\subsection{Esattezza della mappa di Gauss}
+Consideriamo nuovamente su $[0,1]$ la mappa di Gauss $G(x)=\left\{\frac{1}{x}\right\}$. Vediamo ora un po' di cose su $G$ con l'obiettivo di mostrare che \`e una mappa esatta rispetto alla sua misura invariante $d\mu(x)=\frac{1}{\log 2 (1+x)}d\lambda(x)$.
+
+Definiamo la seguente azione di $\mathrm{PSL}(2,\Z)$ su $\R$:
+$$\begin{mice}{cc} a&b\\c&d\end{mice} \cdot x=\frac{ax+b}{cx+d}$$
+
+Siano ora $a_1,\dots,a_n\in \N_+$. Possiamo pensarli come i primi $n$ quozienti parziali di un $\alpha\in \R\setminus \Q$. Siano $p_i/q_i:=[0;a_1,\dots,a_i]$ per ogni $i\leq n$. Siano:
+$$S_n:=S_n(a_1,\dots,a_n)=\begin{mice}{cc} 0&1\\1&a_1\end{mice}\dots \begin{mice}{cc} 0&1\\1&a_n\end{mice}$$
+$$\Delta_n:=\Delta_n(a_1,\dots,a_n)=\set{x\in [0,1]: \text{ i primi $n$ quozienti parziali di $x$ sono } a_1,\dots, a_n}$$
+Al variare degli $a_i$ in $\N_+$, a $n$ fissato, i $\Delta_n$ partizionano quasi tutto $[0,1]$ (possono mancare infatti alcuni razionali).
+
+Valgono i seguenti fatti: \begin{enumerate}
+\item Se $\beta=[0;b_1,b_2,\dots]$, allora $S_n\cdot \beta =[0;a_1,\dots,a_n,b_1,b_2,\dots]$. Si pu\`o verificare direttamente. In particolare $S_n\left([0,1)\right)=\Delta_n$.
+\item Per quanto appena detto, $G^n\circ S_n=\id$ su tutto $[0,1)$ e $S_n\circ G^n=\id$ su $\Delta_n$. Quindi $S_n=(G^n|_{\Delta_n})^{-1}$
+\item $S_n=\begin{mice}{cc} p_{n-1}&p_n\\q_{n-1}&q_n\end{mice}$. Si pu\`o verificare per induzione.
+\item La mappa su $[0,1]$ $x\map S_n\cdot x$ \`e decrescente se $n$ \`e dispari e crescente se $n$ \`e pari. Infatti la mappa su $[0,1]$ $x\map 1/(a+x)$ \`e decrescente (se $a>0$) e $S_n$ \`e la composizione di $n$ mappe di questo tipo.
+\item $S_n \cdot 0=\frac{p_n}{q_n}$ e $S_n \cdot 1=\frac{p_n+p_{n-1}}{q_n+q_{n-1}}$. Dunque, dato che $S_n$ \`e monotona:
+$$\Delta_n=\imm S_n=\begin{sist}[cc] \left[\frac{p_n}{q_n}, \frac{p_n+p_{n-1}}{q_n+q_{n-1}} \right) & \text{per $n$ pari}\\ \left(\frac{p_n+p_{n-1}}{q_n+q_{n-1}}, \frac{p_n}{q_n} \right] & \text{per $n$ dispari}\end{sist}$$
+
+\item Si calcola che il diametro di $\Delta_n$ \`e $\abs{\Delta_n}=\frac{1}{\abs{q_n(q_{n-1}+q_n)}}$.
+\end{enumerate}
+
+\begin{lem} Sia $B\subset [0,1]$ boreliano e sia $\Delta$ un cilindro di rango $n$ qualsiasi. Allora:
+
+$$\frac{1}{C}\mu(B)\mu(\Delta)\leq \mu(G^{-n}(B)\inter\Delta)\leq C \mu(B)\mu(\Delta).$$
+
+Si pu\`o prendere $C=8\log 2$.
+\end{lem}
+
+\begin{proof} Dimostriamo il lemma in tre passi: \begin{enumerate}
+\item Vediamo che se $B=[x,y]$, allora 
+$$\frac{1}{2}\lambda(B)\lambda(\Delta)\leq \lambda(G^{-n}(B)\inter\Delta)\leq 2 \lambda(B)\lambda(\Delta).$$
+
+Sia $\Phi:[0,1]\fun \Delta$ tale che $\Phi=(G^n|_{\Delta})^{-1}$. Facendo un po' di conti:
+$$\lambda(G^{-n}(B)\inter\Delta)=\lambda(\Phi(B))=\abs{\Phi(x)-\Phi(y)}=\abs{x-y}\cdot \abs{\Delta}\frac{q_n(q_{n-1}+q_n)}{(q_{n-1}x+q_n)(q_{n-1}y+q_n)}$$
+ Consideriamo la frazione. Ponendo $x=y=1$ essa raggiunge il minimo, che \`e minorabile con $1/2$. Ponendo $x=y=0$ essa raggiunge il massimo, che \`e maggiorabile con $2$. Si hanno cos\`i le disuguaglianze.
+
+\item Le disuguaglianze del punto (1) valgono anche per $B$ boreliano: basta approssimare $B$ con degli intervalli.
+
+\item Si giunge alla tesi utilizzando le semplice disuguaglianze $\frac{1}{2\log 2}\lambda\leq\mu\leq\frac{1}{\log 2}\lambda$.
+
+\end{enumerate}
+\end{proof}
+
+\begin{prop} Il sistema dinamico misurabile $([0,1],\mathcal{B},\mu,G)$ \`e esatto.\end{prop}
+
+\begin{proof} Sia $E\in\biginter_n G^{-n}(\mathcal{B})$. Fissiamo per un momento $n$. Sia $B\in\mathcal{B}$ tale che $E=G^{-n}(B)$. Allora, usando il lemma e il fatto che $\mu$ \`e $G$-invariante, si ottiene:
+$$\mu(E)\mu(\Delta)=\mu(B)\mu(\Delta)\leq C\,\mu(T^{-n}(B)\inter \Delta)=C\,\mu(E\inter \Delta)$$
+per ogni $\Delta$ cilindro di rango $n$.
+Abbiamo dunque che la disuguaglianza $\mu(E)\mu(\Delta)\leq C\,\mu(E\inter \Delta)$ vale per ogni $\Delta$ cilindro, di rango qualsiasi. Dato che i cilindri generano i boreliani, la disuguaglianza vale per ogni $\Delta\in\mathcal{B}$. Ponendo infine $\Delta=E^c$, si ha che $\mu(E)\mu(E^c)=0$, cio\`e $E\in\mathcal{N}$.
+\end{proof}
+
+Sia $a(x)=\left[\frac{1}{x}\right]$. Si ha che $x=G(x)+a(x)$. Inoltre $a_n(x)=a(G^{n-1}(x))$ \`e l'$n$-esimo quoziente parziale di $x$.
+
+\begin{prop} Per quasi ogni $x\in [0,1]$, vale che: \begin{enumerate}
+\item $\displaystyle\lim_n \frac{a_1(x)+\dots+a_n(x)}{n}=\infty$
+\item $\displaystyle\lim_n \sqrt[n]{a_1(x)\cdot\dots\cdot a_n(x)}=K$ costante, detta costante di Khinchin.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}\leavevmode\begin{enumerate}
+\item Intuitivamente per il teorema di Birkhoff:
+$$\frac{a_1(x)+\dots+a_n(x)}{n}=\frac{1}{n}\sum_{k=0}^n a(T^k(x))\longrightarrow \int_0^1 a(x) d\mu(x)=\infty$$
+dato che $a\sim \frac{1}{x}$ non \`e $L^1$. Proprio perch\'e $a\not\in L^1$, il teorema di Birkhoff non si pu\`o applicare. Il problema si risolve applicando il teorema a delle $\phi_n\uparrow a$ integrabili e usando il teorema di convergenza monotona.
+\item Applichiamo il teorema di Birkhoff a $\log a(x)$:
+$$\log \sqrt[n]{a_1(x)\cdot\dots\cdot a_n(x)}=\frac{1}{n}\sum_{k=0}^n \log a(T^k(x))=\int_0^1 \log a(x) d\mu(x)$$
+che \`e finito poich\'e $\log a(x) \sim -\log(x)\in L^1$.
+
+\end{enumerate}
+\end{proof}
