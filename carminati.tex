@@ -1,6 +1,4 @@
-\section{Frazioni Continue}
-
-\section{Frazioni Continue}
+\section{Frazioni Continue e Mappa di Gauss}
 
 Osserviamo che un $\alpha\in\R$  \`e irrazionale se e solo se esistono tutte le iterate della mappa di Gauss $G(x)=\{\frac{1}{x}\}$ (ovvero $G^n(\alpha)$ non  \`e mai nulla). Prendiamo allora $\alpha\in\irr$ e definiamo l'$n$\emph{-esimo quoziente completo}
 \[\alpha_n=G(\alpha_{n-1}) \quad\mbox{con}\quad \alpha_0=G\left(\frac{1}{\alpha}\right)\]
@@ -12,9 +10,13 @@ per cui abbiamo una scrittura di $\alpha$ detta \emph{frazione continua}:
       &:=[a_0,a_1,a_2,a_3,\dots]\\
       &:=a_0+\frac{1}{a_1+}\frac{1}{a_2+}\frac{1}{a_3+}\cdots
 \end{split}\]
-Di fatto abbiamo stabilito una bigezione tra gli irrazionali e le successioni (unilatere) di interi, per molti versi analoga agli sviluppi in base. Possiamo far corrispondere in modo naturale (non unico) le successioni troncate a dei razionali, che diremo \emph{convergenti}:
+Di fatto abbiamo stabilito una bigezione tra gli irrazionali e le successioni (unilatere) di interi, per molti versi analoga agli sviluppi in base. 
+Possiamo far corrispondere in modo naturale (non unico) le successioni troncate a dei razionali, che diremo \emph{convergenti}:
 \[\frac{p_n}{q_n}=[a_0,a_1,a_2,\dots,a_n]=a_0+\frac{1}{a_1+}\frac{1}{a_2+}\cdots\frac{1}{a_{n-1}+}\frac{1}{a_n}\]
-Il problema della rappresentazione non unica di numeri razionali in frazione continua, per cui ad esempio $[2,2,3]=[2,2,2,1]$, si pu\`o risolvere semplicemente imponendo che il numero di termini della frazione continua sia sempre pari o sempre dispari, ovvero che l'ultimo denominatore sia sempre 1, o non sia mai 1. Per il momento non adotteremo convenzioni, essendo interessati invece a passare dalle frazioni ai razionali.
+Il problema della rappresentazione non unica di numeri razionali in frazione continua, per cui ad esempio $[2,2,3]=[2,2,2,1]$, 
+si pu\`o risolvere semplicemente imponendo che il numero di termini della frazione continua sia sempre pari o sempre dispari, 
+ovvero che l'ultimo denominatore sia sempre 1, o non sia mai 1. 
+Per il momento non adotteremo convenzioni, essendo interessati invece a passare dalle frazioni ai razionali.
 
 \begin{teo}[Propriet\`a dei convergenti] Per ogni $n$ valgono le seguenti
 \[\begin{cases}
@@ -26,7 +28,8 @@ Il problema della rappresentazione non unica di numeri razionali in frazione con
 \end{teo}
 
 \begin{esempio}
- Con le propriet\`a suddette, non \`e difficile vedere che $\alpha\in\irr$ \`e quadratico (su $\Q$) se e solo se la sua frazione continua  \`e periodica. Si pu\`o mostrare inoltre che se $\alpha,\alpha'\in\irr$, esistono $h,k$ tali che
+ Con le propriet\`a suddette, non \`e difficile vedere che $\alpha\in\irr$ \`e quadratico (su $\Q$) se e solo se la sua frazione continua  \`e periodica. 
+ Si pu\`o mostrare inoltre che se $\alpha,\alpha'\in\irr$, esistono $h,k$ tali che
  \[\alpha=[a_0,\dots,a_k,c_1,\dots,c_n,\dots] \qquad \alpha'=[a'_0,\dots,a'_h,c_1,\dots,c_n,\dots]\]
  se e solo se esiste $M\in PSL(2,\Z)$ tale che $\alpha=M\alpha'$, ovvero 
  \[\alpha=\frac{A\alpha'+B}{C\alpha'+D}\quad \mbox{con}\quad |AD-BC|=1.\]
@@ -38,7 +41,7 @@ I convergenti approssimano $\alpha$ molto bene, come vediamo con i seguenti risu
 \begin{teo}[Migliore approssimazione]\begin{enumerate} Se $\alpha\in\irr$, valgono
   \item $|q_n\alpha-p_n|=(q_{n+1}+q_n\alpha_{n+1})^{-1}$ da cui $1/2<\beta_nq_{n+1}<1$
   \item $\beta_n\leq g^n$ e $q_n\geq G^{n-1}$, dove $G,g=\frac{\sqrt 5\pm 1}{2}$ sono i numeri d'oro
-  \item se $0<q<q_n$ allora per ogni $p\in\Z$ si ha $|q\alpha-p|\geq |q_n\alpha-p_n|$, e se vale l'uguaglianza $p=p_n$ e $q=q_n$
+  \item se $0<q<q_{n+1}$ allora per ogni $p\in\Z$ si ha $|q\alpha-p|\geq |q_n\alpha-p_n|$, e se vale l'uguaglianza $p=p_n$ e $q=q_n$
   \item se $\left|\alpha-\frac{p}{q}\right|<\frac{1}{2q^2}$ allora $p/q$  \`e un convergente.
   \end{enumerate}\end{teo}
 
@@ -54,19 +57,23 @@ Un altro esercizio non difficile  \`e provare che convergono $\sum^\infty\frac{\
 
 \subsection{La mappa punto interrogativo di Minkowski}
 
-Consideriamo la mappa a tenda e la mappa di Farey, entrambe definite sull'intervallo $[0,1]$:
+Consideriamo la mappa a tenda e la mappa di Farey, definite sull'intervallo $[0,1]$:
 
 $$T(x):=\begin{sist}[cc] 2x & 0\leq x\leq 1/2 \\ 2-2x & 1/2\leq x\leq 1 \end{sist} \qquad F(x):=\begin{sist}[cc] x/(1-x) & 0\leq x\leq 1/2 \\ (1-x)/x & 1/2\leq x\leq 1 \end{sist}$$
 
 \begin{prop} Esiste un unico omeomorfismo $h:[0,1]\fun[] [0,1]$ tale che $F\circ h = h\circ T$.\end{prop}
 
-\begin{proof} Dimostriamo per prima cosa l'unicit\`a. Prima di tutto, si nota  che necessariamente $h(0)=0$. Infatti $h(0)$ deve essere un estremo dell'intervallo e un punto fisso per la mappa $F$, dato che $0$ lo \`e per $T$. Dunque vale anche $h(1)=1$ e $h$ deve essere strettamente crescente.
+\begin{proof} Dimostriamo per prima cosa l'unicit\`a. Prima di tutto, si nota  che necessariamente $h(0)=0$. 
+Infatti $h(0)$ deve essere un estremo dell'intervallo e un punto fisso per la mappa $F$, dato che $0$ lo \`e per $T$. 
+Dunque vale anche $h(1)=1$ e $h$ deve essere strettamente crescente.
 
 Si verifica inoltre che: 
 $$\biguni_k T^{-k}(0)=\Q_D \inter [0,1] \quad \biguni_k F^{-k}(0)=\Q \inter [0,1] \quad h\left(T^{-n}(0)\right)\subset F^{-n}(0) \text{ per ogni } n\in\N$$
 dove $\Q_D$ sono i razionali diadici.
 
-Per ogni $x\in [0,1]$, $\#T^{-1}(x)=\#F^{-1}(x)<\infty$. Perci\`o $\# T^{-n}(0)=\# F^{-n}(0)<\infty$ per ogni $n\in \N$. Dato che $h$ \`e strettamente crescente e $h\left(T^{-n}(0)\right)\subset F^{-n}(0)$, i valori di $h$ su $T^{-n}(0)$ sono determinati in modo unico. Quindi $h$ \`e determinata in modo unico su $\Q_D \inter [0,1]$ e dunque abbiamo l'unicit\`a.
+Per ogni $x\in [0,1]$, $\#T^{-1}(x)=\#F^{-1}(x)<\infty$. Perci\`o $\# T^{-n}(0)=\# F^{-n}(0)<\infty$ per ogni $n\in \N$. 
+Dato che $h$ \`e strettamente crescente e $h\left(T^{-n}(0)\right)\subset F^{-n}(0)$, i valori di $h$ su $T^{-n}(0)$ sono determinati in modo unico. 
+Quindi $h$ \`e determinata in modo unico su $\Q_D \inter [0,1]$ e dunque abbiamo l'unicit\`a.
 
 \begin{oss}\begin{enumerate}
 \item Si verifica facilmente che $\# T^{-n}(0)=\# F^{-n}(0)=2^{n-1}+1$. Gli elementi di $T^{-n}(0)$ sono i razionali diadici con denominatore al pi\`u $2^{n-1}$. 
@@ -104,12 +111,14 @@ Dunque $Q$ \`e ben definita. Inoltre si verifica che $Q$ \`e biunivoca, continua
 Si definisce $h=Q^{-1}$.
 \end{proof}
 
-\begin{defi} $Q:[0,1]\fun[] [0,1]$ \`e  la mappa punto interrogativo di Minkoski.\end{defi}
+\begin{defi} $Q:[0,1]\fun[] [0,1]$ \`e  la mappa \emph{punto interrogativo} di Minkoski.\end{defi}
 
 
 \subsection{Sistemi dinamici esatti}
 
-\begin{defi} Un sistema dinamico misurabile $(X,\mathcal{A},\mu,T)$ \`e mixing se:
+L'obbiettivo di questa sezione e della prossima è dimostrare l'ergodicità della mappa di Gauss. Per farlo, torniamo a parlare di dinamica misurabile.
+
+\begin{defi} Un sistema dinamico misurabile $(X,\mathcal{A},\mu,T)$ \`e \emph{mixing} se:
 $$\int_X \left(f\circ T^k \right) \cdot g \, d\mu \longrightarrow 0 \quad\text{per ogni } f,g\in L^2_0(X)$$
 dove $L^2_0(X,\mathcal{A})$ \`e l'insieme delle funzioni in $L^2$ a media nulla.
 
@@ -164,7 +173,7 @@ Valgono i seguenti fatti: \begin{enumerate}
 \item $S_n \cdot 0=\frac{p_n}{q_n}$ e $S_n \cdot 1=\frac{p_n+p_{n-1}}{q_n+q_{n-1}}$. Dunque, dato che $S_n$ \`e monotona:
 $$\Delta_n=\imm S_n=\begin{sist}[cc] \left[\frac{p_n}{q_n}, \frac{p_n+p_{n-1}}{q_n+q_{n-1}} \right) & \text{per $n$ pari}\\ \left(\frac{p_n+p_{n-1}}{q_n+q_{n-1}}, \frac{p_n}{q_n} \right] & \text{per $n$ dispari}\end{sist}$$
 
-\item Si calcola che il diametro di $\Delta_n$ \`e $\abs{\Delta_n}=\frac{1}{\abs{q_n(q_{n-1}+q_n)}}$.
+\item Si calcola che il diametro di $\Delta_n$ \`e $|\Delta_n|=\frac{1}{\abs{q_n(q_{n-1}+q_n)}}$.
 \end{enumerate}
 
 \begin{lem} Sia $B\subset [0,1]$ boreliano e sia $\Delta$ un cilindro di rango $n$ qualsiasi. Allora:
