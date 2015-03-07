@@ -45,7 +45,7 @@ Quindi $\set{x:\obar{O_f(x)}=X}$ è un $G_\delta$ e per il teorema di Baire è a
 $(4)\implica (1)$: ovvio perché l'insieme $\set{x:\obar{O_f(x)}=X}$, essendo denso, è anche non vuoto.
 \end{proof}
 
-\begin{oss} Se $f:X\to X$ è solo continua (cioè è un endomorfismo), è facile dimostrare che le condizioni $(1)$ e $(3)$ sono
+\begin{oss}\label{osstransitivita} Se $f:X\to X$ è solo continua (cioè è un endomorfismo), è facile dimostrare che le condizioni $(1)$ e $(3)$ sono
   ancora equivalenti se assumiamo che $X$ non abbia punti isolati.\newline
   Osserviamo inoltre che nel caso $f\in\homeo (X)$ la terza condizione del teorema è equivalente alla \emph{decomponibilità}: 
   $f$ non transitiva se e solo se esistono due aperti disgiunti (totalmente) invarianti.
@@ -182,7 +182,7 @@ Sia $x\in X$ e $U'$ un suo intorno; definiamo $U:=U'\cap B(x,\delta)$. Per densi
 diciamo di periodo $n$. Per il lemma esiste un punto $p$ periodico con $d\pa{x,O_f(p)}>c=4\delta$. Inoltre per transitività
 esiste un $z\in U$ che nella sua vita resta vicino all'orbita di $p$ per almeno $n$ passi consecutivi:
 infatti posto $W_i:=B\pa{f^i(p),\delta}$ (per $i=1,\dots,n$) e $V:=\cap_{i=1}^n f^{-i}(W_i)$ (non vuoto perché $p\in V$)
-sappiamo che esistono $z\in U$ e $k\ge 0$ tali che $f^k(z)\in V$ (v. Osservazione ??). $z$ soddisfa
+sappiamo che esistono $z\in U$ e $k\ge 0$ tali che $f^k(z)\in V$ (cfr. Osservazione \ref{osstransitivita}). $z$ soddisfa
 $f^{k+i}(z)\in W_i$ per $i=1,\dots,n$. Per uno di questi indici $i$, $k+i$ è multiplo di $n$,
 perciò $f^{k+i}(q)=q$, da cui otteniamo
 \[ \begin{split} &d\pa{f^{k+i}(q),f^{k+i}(z)}\ge d\pa{q,f^i(p)}-d\pa{f^{k+i}(z),f^i(p)}\ge \\
