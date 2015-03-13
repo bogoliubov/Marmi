@@ -103,7 +103,7 @@ spesso ci si riconduce nello studio dei sistemi dinamici. Consideriamo
 
 
 \begin{esempio}[Tenda e Logistic Map] Un altro esempio di dinamiche coniugate: 
-su $[0,1]$ sono coniugate tramite $h(x)=\sin^2\left(\frac{2\pi}{2}\right)$ la mappa \emph{tenda} 
+su $[0,1]$ sono coniugate tramite $h(x)=\sin^2\left(\frac{\pi x}{2}\right)$ la mappa \emph{tenda} 
 $f(x)=\begin{cases}2x \quad x\leq 1/2 \\ 2-2x \quad x\geq 1/2\end{cases}$ e la \emph{mappa logistica} $Q_4(x)=4x(1-x)$, $Q_4\circ h=h\circ f$.
 La mappa tenda è transitiva, infatti per gli intervalli della forma $\bra{\frac{i}{2^k},\frac{i+1}{2^k}}$ l'immagine
 tramite $T^n$ è definitivamente tutto $[0,1]$ (si dice che $T$ è \emph{espansiva}). Per cui anche la mappa logistica è transitiva (vedi anche il prossimo esempio).
@@ -123,7 +123,7 @@ per cui $T$ è un fattore di $S$, e dunque abbiamo un'altra dimostrazione che $T
 
 
 
-\begin{esempio} Avere solo integrali primi costanti non implica transitività. Sia $T:=\R^2/\Z^2$ il $2$-toro e $A\in SL(2,\Z)$ una trasformazione ergodica
+\begin{esempio}[facoltativo] Avere solo integrali primi costanti non implica transitività. Sia $T:=\R^2/\Z^2$ il $2$-toro e $A\in SL(2,\Z)$ una trasformazione ergodica
 su $T$, ad esempio il \emph{gatto di Arnold},
 \[A=\begin{pmatrix} 2 & 1 \\ 1 & 1 \end{pmatrix}\]
 Costruiamo $X$ partendo da due copie del toro, $T$ e $T'$ e identificando (quoziente topologico) i loro elementi neutri. 
@@ -177,9 +177,9 @@ quindi almeno uno tra $d\pa{x,O_f(y)}$ e $d\pa{x,O_f(z)}$ è $>c$.
 \begin{proof}[Dimostrazione del teorema]Se esiste una sola orbita periodica,
 da $\obar{\per(f)}=X$ segue che $X$ è finito e quindi tutti i punti sarebbero isolati, assurdo.\newline
 Perciò siamo nelle ipotesi del lemma: poniamo $\delta:=\frac{c}{4}$, con $c$ la costante che il lemma ci fornisce.
-Sia $x\in X$ e $U'$ un suo intorno; definiamo $U:=U'\cap B(x,\delta)$. Per densità di $\per(f)$ esiste $q\in U$ periodico,
-diciamo di periodo $n$. Per il lemma esiste un punto $p$ periodico con $d\pa{x,O_f(p)}>c=4\delta$. Inoltre per transitività
-esiste un $z\in U$ che nella sua vita resta vicino all'orbita di $p$ per almeno $n$ passi consecutivi:
+Sia $x\in X$ e $U$ un suo intorno, che possiamo supporre contenuto in $B(x,\delta)$. Per densità di $\per(f)$ esiste $q\in U$ periodico,
+sia $n$ il periodo. Per il lemma esiste un punto $p$ periodico con $d\pa{x,O_f(p)}>c=4\delta$. Inoltre per transitività
+esiste un $z\in U$ che nella sua vita resta vicino almeno $\delta$ all'orbita di $p$ per almeno $n$ passi consecutivi:
 infatti posto $W_i:=B\pa{f^i(p),\delta}$ (per $i=1,\dots,n$) e $V:=\cap_{i=1}^n f^{-i}(W_i)$ (non vuoto perché $p\in V$)
 sappiamo che esistono $z\in U$ e $k\ge 0$ tali che $f^k(z)\in V$ (cfr. Osservazione \ref{osstransitivita}). $z$ soddisfa
 $f^{k+i}(z)\in W_i$ per $i=1,\dots,n$. Per uno di questi indici $i$, $k+i$ è multiplo di $n$,
