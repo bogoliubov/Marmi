@@ -1,5 +1,7 @@
 \documentclass[italian,course]{Notes}
 
+%Pacchetti
+
 %\usepackage[utf8]{inputenc}
 \usepackage[italian]{babel}
 \usepackage{amsthm}
@@ -23,6 +25,8 @@
 %\usepackage[italian]{varioref}
 \usepackage[all]{xy}
 \usepackage[a4paper, left=3.5cm, right=3.5cm, top=4cm, bottom=4cm]{geometry}
+
+%Comandi comuni
 
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\A}{\mathcal{A}}
@@ -74,7 +78,6 @@
 \newcommand{\abs}[1]{\left|#1\right|}
 \newcommand{\norm}[1]{\left\|#1\right\|}
 
-
 %Comandi di Martino
 \newcommand{\eps}{\varepsilon}
 \newcommand{\imm}{\mathrm{Im} \,}
@@ -91,11 +94,18 @@
 \newcommand{\id}{\mathrm{id}}
 \newcommand{\scal}[2]{\langle #1, #2 \rangle}
 
-
-%ambienti
+%ambienti e teoremi
 
 \newenvironment{soluz}{\emph{Soluzione.} }{\hfill\qedsymbol}
-
+\newtheorem{teo}{Teorema}
+\newtheorem{defi}[teo]{Definizione}
+\newtheorem{cor}[teo]{Corollario}
+\newtheorem{lem}[teo]{Lemma}
+\newtheorem{prop}[teo]{Proposizione}
+\newtheorem{oss}[teo]{Osservazione}
+\newtheorem{esempio}[teo]{Esempio}
+\newtheorem{esercizio}[teo]{Esercizio}
+\everymath{\displaystyle}
 
 
 \title{Sistemi Dinamici}
@@ -110,17 +120,6 @@
 
 \begin{document}
 
-\newtheorem{teo}{Teorema}
-\newtheorem{defi}[teo]{Definizione}
-\newtheorem{cor}[teo]{Corollario}
-\newtheorem{lem}[teo]{Lemma}
-\newtheorem{prop}[teo]{Proposizione}
-\newtheorem{oss}[teo]{Osservazione}
-\newtheorem{esempio}[teo]{Esempio}
-\newtheorem{esercizio}[teo]{Esercizio}
-
-
-
 \newpage
 
 \begin{abstract}
@@ -130,12 +129,6 @@
  La parte del corso tenuta da Carlo Carminati si trova, insieme ad altri argomenti che vi fanno riferimento, nella sezione sulle Frazioni Continue.
 \end{abstract}
 
-
-
-
-
-
-
 \input{introduzione}
 \input{dintop}
 \input{dinmis}
@@ -144,31 +137,4 @@
 \input{flussi}
 \input{entropia}
 
-
-
-
-
-
-
 \end{document}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

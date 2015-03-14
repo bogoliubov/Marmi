@@ -29,7 +29,7 @@ Il seguente teorema completa lo studio della linearizzazione in $\hat G_\lambda$
 \end{proof}
 
 \begin{teo}[K\"onigs-Poincarè] Se $|\lambda|\neq 1$ allora $f\in G_\lambda$ è linearizzabile.\end{teo}
-\begin{proof} (ACHTUNG: verifica costanti con pig)
+\begin{proof}
 Mostreremo che in questo caso è analitica la $\hat h_f$ data dal teorema precedente.
  $f\in G_\lambda$ è analitica, quindi abbiamo le stime
  \[\exists c_1>1 \quad \exists r<1 : \quad \forall j\geq 2 \quad |f_j|\leq c_1 r^{1-j}\]
@@ -54,12 +54,12 @@ Il teorema risolve il problema della linearizzabilità fuori dal cerchio unitari
 abbiamo già caratterizzato la linearizzabilità quando $\lambda$ è una radice dell'unità: discuteremo ora il caso in cui $\abs{\lambda}=1$ ma $\lambda$ non è radice dell'unità, arrivando a risolvere completamente il problema nell'ultima sezione. Come vedremo, per q.o. $\lambda$ (nel senso della misura di Lebesgue) tutti i germi di $G_\lambda$ si linearizzano, tuttavia esistono molti $\lambda$ per cui ciò non accade. La dimostrazione di questo fatto, non costruttiva, si basa sul noto
 
 \begin{teo}[lemma di Baire]Se $(X,d)$ è uno spazio metrico completo e $(U_n)$ è una famiglia numerabile di aperti densi,
-allora l'intersezione $\cap_n U_n$ è un $G_\delta$ denso (e in particolare non vuoto). Se inoltre $X$ non contiene punti isolati, l'intersezione $\cap_n U_n$ è più che numerabile.
+allora l'intersezione $\bigcap_n U_n$ è un $G_\delta$ denso (e in particolare non vuoto). Se inoltre $X$ non contiene punti isolati, l'intersezione $\bigcap_n U_n$ è più che numerabile.
 \end{teo}
 
-\begin{proof} (Seconda parte dell'enunciato.) Se per assurdo fosse $\cap_n U_n=\set{x_1,x_2,\dots}$ (con finiti o numerabili $x_i$),
+\begin{proof} (Seconda parte dell'enunciato.) Se per assurdo fosse $\bigcap_n U_n=\set{x_1,x_2,\dots}$ (con finiti o numerabili $x_i$),
 posto $V_i:=X\setminus\set{x_i}$ (aperto denso per ipotesi) avremmo
-\[ \emptyset=\pa{\cap_n U_n}\cap\pa{\cap_i V_i}. \]
+\[ \emptyset=\pa{\bigcap_n U_n}\cap\pa{\bigcap_i V_i}. \]
 Ma a secondo membro c'è ancora un'intersezione numerabile di aperti densi, assurdo.
 \end{proof}
 
@@ -74,7 +74,7 @@ i punti periodici non nulli (perché $z\mapsto \lambda z$ non ne ha), quindi per
 Il termine noto $\lambda^n-1$ è il prodotto delle $2^n-1$ radici, quindi ce n'è una di modulo $\le\abs{\lambda^n-1}^{\frac{1}{2^n-1}}$.
 Quindi basta garantire che l'$\inf$ al variare di $n>0$ dell'ultima espressione sia $0$. \\
 L'insieme dei $\lambda$ che soddisfano questa richiesta è
-\[ S:=\cap_{N>0}\set{\lambda\in\mathbb{T}^1:\inf_n\abs{\lambda^n-1}^{\frac{1}{2^n-1}}<\frac{1}{N}}. \]
+\[ S:=\bigcap_{N>0}\set{\lambda\in\mathbb{T}^1:\inf_n\abs{\lambda^n-1}^{\frac{1}{2^n-1}}<\frac{1}{N}}. \]
 Abbiamo espresso l'insieme voluto come intersezione numerabile di aperti; questi aperti sono densi perché ognuno di essi contiene tutte le radici dell'unità, quindi $S$ è un $G_\delta$ denso e più che numerabile. Le radici dell'unità sono numerabili, quindi rimuovendole rimangono più che numerabili $\lambda\in S$ irrazionali.
 \end{proof} 
 
@@ -229,7 +229,7 @@ quindi supponiamo $\abs{\lambda}=1$. \\
 Se $f$ è linearizzabile, chiaramente è anche stabile. Viceversa, se $f$ è stabile, esiste un disco $D$
 centrato nell'origine su cui sono definite tutte le iterate $f^n$. \\
 Per la stabilità c'è anche un intorno $V$ di $0$ tale che $f^n(V)\subseteq D$ per ogni $n\ge 0$.
-Poniamo $L:=\cap_{n\ge 0}f^{-n}(D)$: $L$ è a sua volta un intorno di $0$ perché $L\supseteq V$. \\
+Poniamo $L:=\bigcap_{n\ge 0}f^{-n}(D)$: $L$ è a sua volta un intorno di $0$ perché $L\supseteq V$. \\
 Inoltre $f(L)\subseteq L$, quindi (essendo $f$ aperta) $f\pa{\interna{L}}\subseteq\interna{L}$.
 Chiamando $W$ la componente connessa di $\interna{L}$ che contiene $0$, vale pure $f(W)\subseteq W$. \\
 Basta dimostrare che $W$ è semplicemente connesso: fatto questo, il teorema di Riemann ci dà

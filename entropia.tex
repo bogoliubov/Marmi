@@ -242,7 +242,7 @@ quindi, se $S$ è $\pa{n,\frac{1}{k}}$-spanning, scegliendo
 (con $\abs{\alpha_k}\le 1$) deve esistere un $y\in S$ tale che $\abs{x_k-y_k}<\frac{1}{2^k\cdot k}$,
 cioè $\abs{\alpha_k-(2^k y_k)}<\frac{1}{k}$ per $0\le k\le n$.
 Ma gli $\alpha_k$ variano in modo arbitrario su $[-1,1]$, quindi
-\[ [-1,1]^{n+1}\subseteq \cup_{y\in S}B\pa{\pi(y),\frac{1}{k}}, \]
+\[ [-1,1]^{n+1}\subseteq \bigcup_{y\in S}B\pa{\pi(y),\frac{1}{k}}, \]
 dove $\pi(y)=(y_0,2y_1,\dots,2^n y_n)\in \R^{n+1}$ e le palle sono rispetto alla norma $\norm{\fantasma{a}}_\infty$.
 Confrontando le misure, $2^{n+1}\le \abs{S}\cdot\pa{\frac{2}{k}}^{n+1}$ $\implica$ $\abs{S}\ge k^{n+1}$, che è la tesi. 
 Dunque $h_{top}(f)=\lim_{k\to\infty}\limsup_{n\to\infty}\frac{1}{n}\ln r\pa{n,\frac{1}{k}}\ge\lim_{k\to\infty}\ln k=\infty$.
@@ -294,7 +294,7 @@ di Kolmogorov-Sinai:
 Dato $\alpha=\set{A_i}$ ricoprimento aperto, chiamiamo $\delta>0$ il numero di Lebesgue
 associato. Sia ora $S\subseteq X$ $(n-1,\delta)$-spanning; per ogni $x\in S$ e ogni $0\le k\le n-1$ esiste $i_k$ per cui
 $B(f^k(x),\delta)\subseteq A_{i_k}$, ovvero
-\[ B(x,\delta,n-1)=\cap_{k=0}^{n-1} f^{-k}\pa{B\pa{f^k(x),\delta}}\subseteq\cap_{k=0}^{n-1} f^{-k}\pa{A_{i_k}}. \]
+\[ B(x,\delta,n-1)=\bigcap_{k=0}^{n-1} f^{-k}\pa{B\pa{f^k(x),\delta}}\subseteq\bigcap_{k=0}^{n-1} f^{-k}\pa{A_{i_k}}. \]
 Dunque $\mathcal{U}:=\set{B(x,\delta,n-1)\mid x\in S}$ è un raffinamento di $\bigvee_{i=0}^{n-1}f^{-i}(\alpha)$,
 da cui segue che $\abs{S}\ge N\pa{\bigvee_{i=0}^{n-1}f^{-i}(\alpha)}$ (per ogni elemento di $\mathcal{U}$
 scelgo un elemento di $\bigvee_{i=0}^{n-1}f^{-i}(\alpha)$ che lo include e, siccome $\mathcal{U}$ è anche un ricoprimento,
@@ -305,7 +305,7 @@ e passando al $\sup$ su $\alpha$ otteniamo $h_{top}(f)\ge H$. \\
 Viceversa, fissiamo $\epsilon>0$ e sia $A\subseteq X$ $(n,\epsilon)$-separato di cardinalità massima.
 Prendiamo un ricoprimento aperto $\alpha=\set{A_i}$ con $\max_i\diam(A_i)<\epsilon$ e osserviamo
 che un elemento di $\bigvee_{k=0}^n f^{-k}(\alpha)$ contiene al più un punto di $A$,
-in quanto $x,y\in\cap_{k=0}^n f^{-k}\pa{A_{i_k}}$ implica $f^k(x),f^k(y)\in A_{i_k}$ e quindi $d\pa{f^k(x),f^k(y)}<\epsilon$
+in quanto $x,y\in\bigcap_{k=0}^n f^{-k}\pa{A_{i_k}}$ implica $f^k(x),f^k(y)\in A_{i_k}$ e quindi $d\pa{f^k(x),f^k(y)}<\epsilon$
 per ogni $0\le k\le n$, da cui $d_n(x,y)<\epsilon$. \\
 Ma allora $s(n,\epsilon)\le N\pa{\bigvee_{k=0}^n f^{-k}(\alpha)}$, da cui
 \[ H\ge\lim_{n\to\infty}\frac{1}{n-1}\ln N\pa{\bigvee_{i=0}^{n-1}f^{-i}(\alpha)}
@@ -327,7 +327,7 @@ Perciò esiste
 \[ \delta'=\delta'(\epsilon):=\min_{(x,y)\in D_\epsilon}d'(x,y)>0 \]
 e osserviamo che $d'(x,y)<\delta'\implica (x,y)\nin D_\epsilon\implica d(x,y)<\epsilon$. \\
 Quindi, per ogni $x\in X$, $B_{d'}(x,\delta')\subseteq B_d(x,\epsilon)$ e deduciamo
-\[ B_{d'_n}(x,\delta')=\cap_{k=0}^n f^{-k}\pa{B_{d'}\pa{f^k(x),\delta'}}\subseteq\cap_{k=0}^n f^{-k}\pa{B_d\pa{f^k(x),\epsilon}}
+\[ B_{d'_n}(x,\delta')=\bigcap_{k=0}^n f^{-k}\pa{B_{d'}\pa{f^k(x),\delta'}}\subseteq\bigcap_{k=0}^n f^{-k}\pa{B_d\pa{f^k(x),\epsilon}}
 =B_{d_n}(x,\epsilon). \]
 Ma allora un insieme $(n,\delta')$-spanning (per $d'$) è $(n,\epsilon)$-spanning (per $d$), da cui
 $r_{d'}(n,\delta')\ge r_d(n,\epsilon)$ e infine

@@ -96,7 +96,7 @@ Più in generale per ogni $\phi\in L^1(X)$ esiste q.o. il $\lim_{T\to\infty}\fra
 	    da cui $\mu(A_\gamma)=\mu\pa{f^{-1}(A_\gamma)}\in\set{0,1}$.
 	    Ma la funzione $\gamma\mapsto\mu(A_\gamma)$ è crescente e ha limiti $0$ per $\gamma\to -\infty$ e $1$ per $\gamma\to +\infty$,
 	    perciò $\obar{\gamma}:=\inf\set{\gamma:\mu(A_\gamma)=1}\in\R$. Essendo anche 
-	    \[A_{\obar{\gamma}}=\cap_n A_{\obar{\gamma}+\frac{1}{n}} \qquad \set{x:\phi(x)<\obar{\gamma}}=\cup_n A_{\obar{\gamma}-\frac{1}{n}}\]
+	    \[A_{\obar{\gamma}}=\bigcap_n A_{\obar{\gamma}+\frac{1}{n}} \qquad \set{x:\phi(x)<\obar{\gamma}}=\bigcup_n A_{\obar{\gamma}-\frac{1}{n}}\]
 	    otteniamo $\mu(A_{\obar{\gamma}})=1$
 	    e $\mu\pa{\set{x:\phi(x)<\obar{\gamma}}}=0$, cioè $\phi\equiv\obar{\gamma}$ quasi ovunque. 
 	    Vediamo ora il caso in cui $\phi=\phi\circ f$ q.o.: sia $B_\gamma:=\set{x:\phi\circ f\le\gamma}$;
@@ -133,7 +133,7 @@ Più in generale per ogni $\phi\in L^1(X)$ esiste q.o. il $\lim_{T\to\infty}\fra
 \begin{oss}\label{ossergodicita} Considerando il teorema appena visto, notiamo che \begin{itemize}
     \item Se un insieme $A\in\mathcal{A}$ è ``quasi invariante'', nel senso che $f(A)\subseteq A\cup N$ per qualche
       $N$ trascurabile, $A$ è equivalente a un insieme $A'$ invariante (cioè $\mu(A\Delta A')=0$ e $f(A')\subseteq A'$):
-      basta porre $N':=\cup_{j=0}^\infty$ e $A':=A\setminus N'$. Ora se $x\in A'$ abbiamo
+      basta porre $N':=\bigcup_{j=0}^\infty$ e $A':=A\setminus N'$. Ora se $x\in A'$ abbiamo
       $f(x)\in A\cup N$ e $f(x)\nin N'$ (perché $f^{-1}(N')\subseteq N'$), quindi $f(A')\subseteq (A\cup N)\setminus N'=A\setminus N'=A'$.
     \item Se il sistema dinamico è \emph{strongly mixing}, ovvero per ogni $A,B\in\mathcal{A}$ vale
       \[\lim_{j\to\infty}\mu\pa{f^{-j}(A)\cap B}=\mu(A)\mu(B)\] 
@@ -264,11 +264,11 @@ Se $\mu\neq\mu_1$ esistono $A$ misurabili con $\mu_1(A)>\mu(A)$. Consideriamo
 questo $\sup$ è in realtà un $\max$ e viene realizzato dal supporto $P$ di $(\mu_1-\mu)^+$ (la parte positiva della decomposizione di Hahn di $\mu_1-\mu$). 
 Se $(\mu_1-\mu)(A)=M$ allora $A$ coincide con $P$ a meno di insiemi $\abs{\mu_1-\mu}$-trascurabili, scriveremo $A\sim P$.
 L'invarianza di $\mu$ e $\mu_1$ dà $(\mu_1-\mu)\pa{S^{-1}(P)}=M$, quindi $S^{-1}(P)\sim P$; analogamente $S^{-n}(P)\sim P$,
-quindi $P':=\cup_{n\ge 0}S^{-n}(P)\sim P$. L'insieme $P'$ è $S$-invariante e $1\ge \mu_1(P')>\mu(P')$, perciò per ergodicità di $\mu$, $\mu(P')=0$.
+quindi $P':=\bigcup_{n\ge 0}S^{-n}(P)\sim P$. L'insieme $P'$ è $S$-invariante e $1\ge \mu_1(P')>\mu(P')$, perciò per ergodicità di $\mu$, $\mu(P')=0$.
 \end{proof}
 
 \begin{oss}$(2)\implica (3)$ si può anche mostrare così: per ipotesi c'è un $N\in\mathcal{A}$ tale che $\mu(N)=0$ e $\mu_1(N)\neq 0$.
-Poniamo $A:=\limsup_{k\to\infty}f^{-k}(N)=\cap_{m\ge 0}\cup_{n\ge m}f^{-n}(N)$ (l'insieme dei punti che
+Poniamo $A:=\limsup_{k\to\infty}f^{-k}(N)=\bigcap_{m\ge 0}\bigcup_{n\ge m}f^{-n}(N)$ (l'insieme dei punti che
 cascano frequentemente in $A$). $A$ è $S$-invariante e $\mu(A)=0$, $\mu_1(A)\neq 0$ grazie all'invarianza di $\mu$ e $\mu_1$.
 \end{oss}
 

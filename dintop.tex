@@ -36,11 +36,11 @@ il che equivale a dire $x$ non errante. I punti ricorrenti sono quindi l'insieme
 \begin{proof}$(1)\implica (2)$: sia $x$ un punto con l'orbita densa e $U$ un aperto $f$-invariante, che supponiamo non vuoto.
 Da $O_f(x)\cap U\neq\emptyset$ segue che per qualche $j\in\Z$ $f^j(x)\in U$, quindi (invarianza di $U$) $O_f(x)\subseteq U$,
 perciò $X=\obar{O_f(x)}\subseteq\obar{U}$. \\
-$(2)\implica (3)$: poniamo $U':=\cup_{n\in\Z}f^n(U)$; $U'$ è non vuoto e invariante $\implica\obar{U'}=X$
+$(2)\implica (3)$: poniamo $U':=\bigcup_{n\in\Z}f^n(U)$; $U'$ è non vuoto e invariante $\implica\obar{U'}=X$
 $\implica \obar{U'}\cap V\neq\emptyset \implica U'\cap V\neq\emptyset \implica \exists N\ f^N(U)\cap V\neq\emptyset$. \\
 $(3)\implica(4)$: sia $\set{U_n}$ una base numerabile di aperti. Ora $\obar{O_f(x)}=X\sse \forall n\ \exists j\ f^j(x)\in U_n
-\sse \forall n\ \exists m\ x\in f^m(U_n)\sse x\in\cap_n\cup_{m\in\Z} f^m(U_n)$.
-Per ipotesi, per ogni $n$ l'insieme $\cup_{m\in\Z} f^m(U_n)$ è un aperto denso.
+\sse \forall n\ \exists m\ x\in f^m(U_n)\sse x\in\bigcap_n\bigcup_{m\in\Z} f^m(U_n)$.
+Per ipotesi, per ogni $n$ l'insieme $\bigcup_{m\in\Z} f^m(U_n)$ è un aperto denso.
 Quindi $\set{x:\obar{O_f(x)}=X}$ è un $G_\delta$ e per il teorema di Baire è anche denso. \\
 $(4)\implica (1)$: ovvio perché l'insieme $\set{x:\obar{O_f(x)}=X}$, essendo denso, è anche non vuoto.
 \end{proof}
@@ -180,7 +180,7 @@ Perciò siamo nelle ipotesi del lemma: poniamo $\delta:=\frac{c}{4}$, con $c$ la
 Sia $x\in X$ e $U$ un suo intorno, che possiamo supporre contenuto in $B(x,\delta)$. Per densità di $\per(f)$ esiste $q\in U$ periodico,
 sia $n$ il periodo. Per il lemma esiste un punto $p$ periodico con $d\pa{x,O_f(p)}>c=4\delta$. Inoltre per transitività
 esiste un $z\in U$ che nella sua vita resta vicino almeno $\delta$ all'orbita di $p$ per almeno $n$ passi consecutivi:
-infatti posto $W_i:=B\pa{f^i(p),\delta}$ (per $i=1,\dots,n$) e $V:=\cap_{i=1}^n f^{-i}(W_i)$ (non vuoto perché $p\in V$)
+infatti posto $W_i:=B\pa{f^i(p),\delta}$ (per $i=1,\dots,n$) e $V:=\bigcap_{i=1}^n f^{-i}(W_i)$ (non vuoto perché $p\in V$)
 sappiamo che esistono $z\in U$ e $k\ge 0$ tali che $f^k(z)\in V$ (cfr. Osservazione \ref{osstransitivita}). $z$ soddisfa
 $f^{k+i}(z)\in W_i$ per $i=1,\dots,n$. Per uno di questi indici $i$, $k+i$ è multiplo di $n$,
 perciò $f^{k+i}(q)=q$, da cui otteniamo
