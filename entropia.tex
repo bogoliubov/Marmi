@@ -2,7 +2,7 @@
 
 Supponiamo di fare un esperimento con $n$ possibili esiti mutualmente esclusivi.
 Modelliamo la situazione con uno spazio di probabilità (spazio dei campioni) $(X,\mu)$
-e una partizione $X=A_1\sqcup \dots\sqcup A_n$ (il tutto anche mod $0$), con $\mu(A_i)=p_i$. 
+e una partizione $X=A_1\sqcup \dots\sqcup A_n$ (anche mod $0$), con $\mu(A_i)=p_i$. 
 
 Con l'esperimento non conosceremo il preciso elemento $x\in X$ ma solo l'esito $A_i$; vogliamo
 trovare un modo di misurare a priori la quantità media di \emph{informazione} su $x$ che si ottiene eseguendo l'esperimento. 
@@ -12,7 +12,7 @@ Se la situazione è un sistema fisico in evoluzione (ad esempio una scatola divi
 in ogni istante possiamo sapere in quale metà si trova), spesso c'è anche una trasformazione $f:X\to X$
 che preserva $\mu$: lavorando a tempo discreto, $f$ dice come si sposta un punto nello spazio delle fasi
 all'istante successivo. Eseguendo l'esperimento negli istanti $0,\dots,T$ troveremo ancora più informazione su $x$:
-in sostanza conosceremo $\uno_{A_i}\pa{f^k(x)}=\uno_{f^{-k}(A_i)}$, perciò l'entropia sarà quella associata
+in sostanza conosceremo $\uno_{A_i}\pa{f^k(x)}=\uno_{f^{-k}(A_i)}(x)$, perciò l'entropia sarà quella associata
 alla \emph{partizione congiunta} fatta da tutte le possibili intersezioni $A_{i_0}\cap f^{-1}(A_{i_1})\cap \dots\cap f^{-T}(A_{i_T})$.
 
 \subsection{Definizione assiomatica dell'entropia}
@@ -46,7 +46,7 @@ Supponendo ora $r,\ell\ge 2$, per ogni $n$ scegliamo $m$ tale che $\ell^m\le r^n
 $K(\cdot)$ e il logaritmo sono entrambi non decrescenti e trasformano prodotti in somme, quindi
 \[ \ln(\ell^m)\le\ln(r^n)\le\ln(\ell^{m+1})\implica \frac{m}{n}\le\frac{\ln r}{\ln \ell}\le\frac{m}{n}+\frac{1}{n} \]
 \[ K(\ell^m)\le K(r^n)\le K(\ell^{m+1})\implica \frac{m}{n}\le\frac{K(r)}{K(\ell)}\le\frac{m}{n}+\frac{1}{n} \]
-e mandando $n\to\infty$ otteniamo $\frac{K(r)}{K(\ell)}=\frac{\ln r}{\ln n}$, da cui $K(n)=c\ln n$ per qualche $c\ge 0$. \\
+e mandando $n\to\infty$ otteniamo $\frac{K(r)}{K(\ell)}=\frac{\ln r}{\ln \ell}$, da cui $K(n)=c\ln n$ per qualche $c\ge 0$. \\
 Osserviamo ora che, grazie a $(3)$, l'assioma $(5)$ vale in questa forma più generale:
 \[ H^{\pa{\sum \ell_i}}(\pi_{11},\dots,\pi_{1\ell_1},\dots,\pi_{n1},\dots,\pi_{n\ell_n})
 =H^{(n)}(p_1,\dots,p_n)+\sum_{i=1}^n p_i H^{(\ell_i)}\pa{\frac{\pi_{i1}}{p_i},\dots,\frac{\pi_{i\ell_i}}{p_i}} \]
@@ -60,7 +60,7 @@ Per la densità in $\Delta^{(n)}$ dei punti a coordinate razionali e la continui
 \begin{oss}Le $H^{(n)}$ definite dalla formula trovata soddisfano effettivamente tutti gli assiomi.
 L'unico non ovvio è il $(4)$: la convessità di $x\mapsto x\ln x$ su $[0,\infty)$ dà
 $\frac{1}{n}\sum p_i\ln p_i\ge\frac{1}{n}\ln\pa{\frac{1}{n}}$ (perché $\sum p_i=1$), ovvero
-$-\sum p_i\ln p_i\le\ln n=K(n)$.
+$-c\sum p_i\ln p_i\le c\ln n=K(n)$.
 \end{oss}
 
 Scegliamo per convenzione $c=1$.
@@ -85,7 +85,7 @@ $\lim_{n\to\infty}\frac{a(n)}{n}$ e coincide con $\inf_n\frac{a(n)}{n}$.
 
 \begin{proof}Ovviamente $\liminf_{n\to\infty}\frac{a(n)}{n}\ge\inf_n\frac{a(n)}{n}$. Fissiamo ora $m>0$
 e per ogni $n$ facciamo la divisione con resto: $n=km+r$. La subadditività dà
-\[ \frac{a(n)}{n}\le\frac{a(km)+a(r)}{km+r}=\frac{k}{km+r}a(m)+\frac{a(r)}{km+r} \]
+\[ \frac{a(n)}{n}\le\frac{a(km)+a(r)}{km+r}\le\frac{k}{km+r}a(m)+\frac{a(r)}{km+r} \]
 e mandando $n\to\infty$ (essendo $r$ limitato e così pure $a(r)$) otteniamo $\limsup_{n\to\infty}\le\frac{a(m)}{m}$.
 Dato che questo vale per tutti gli $m$ segue la tesi.
 \end{proof}
@@ -122,16 +122,16 @@ $h_{KS}(f):=\sup_{\mathcal{P}}h(f,\mathcal{P})$, al variare delle partizioni mis
 
 
 Consideriamo $X:=\set{1,\dots,N}^{\Z}$: questo diventa uno spazio metrico definendo, per $x,y\in X$, $a(x,y):=\min\set{\abs{i}:x_i\neq y_i}$ 
-(che vale per convenzione $+\infty$ se $x=y$) e $d(x,y)=2^{-a(x,y)}$. $(X,d)$ è compatto, e lo shift sinistro $\sigma:X\to X$ dato da $\pa{\sigma(x)}_i:=x_{i+1}$ 
-è un omeomorfismo di $X$.
+(che vale per convenzione $+\infty$ se $x=y$) e $d(x,y)=2^{-a(x,y)}$. $(X,d)$ è compatto e lo shift sinistro $\sigma:X\to X$ dato da $\pa{\sigma(x)}_i:=x_{i+1}$ è un omeomorfismo di $X$.
 
 Data una misura di probabilità arbitraria su $\set{1,\dots,N}$ che vale $p_i$ su $\set{i}$, possiamo mettere su $X$
 la probabilità prodotto $\mu$, che è ovviamente $\sigma$-invariante. 
-Chiamiamo \emph{schema di Bernoulli} il sistema dinamico misurabile che abbiamo costruito, e lo indicheremo con $BS(p_1,\dots,p_N)$.
+Chiamiamo \emph{schema di Bernoulli} il sistema dinamico misurabile che abbiamo costruito; lo indicheremo con $BS(p_1,\dots,p_N)$.
 
 Nel caso di due simboli, che chiamiamo $0$ e $1$ per comodità, abbiamo una mappa 
 \[\tilde{\pi}:\set{0,1}^{\Z}\to [0,1]^2  \qquad (x_i)\mapsto (\xi,\eta) \mbox{ con }  \begin{cases} \xi=\sum_{i\ge 0}x_i 2^{-(i+1)} \\ \eta=\sum_{i<0}x_i 2^{-\abs{i}}\end{cases}.\] 
-$\tilde{\pi}$ ha inversa definita q.o. e coniuga $\sigma$ nella ``mappa del panettiere'' $f(x,y):=\pa{\pa{2x},\frac{y+\floor{2x}}{2}}$,
+$\tilde{\pi}$ ha inversa definita q.o. e coniuga $\sigma$ nella ``mappa del panettiere''
+\[ f(x,y):=\pa{\pa{2x},\frac{y+\floor{2x}}{2}}, \]
 che graficamente agisce come
 
 \begin{center}\begin{tikzpicture}[scale=0.70]
@@ -169,7 +169,7 @@ Se $\mathcal{P}$ è una partizione \emph{generante}, cioè tale che $\bigvee_{n=
 \end{teo}
 
 Sia $A_k:=\set{x\in X:x_0=k}$ per $k=1,\dots,N$; la partizione $\mathcal{P}:=\set{A_1,\dots,A_N}$ è generante.
-Inoltre le partizioni $\sigma^n(\mathcal{P})$ sono tutte indipendenti congiuntamente, quindi per l'ultima osservazione
+Inoltre le partizioni $\sigma^n(\mathcal{P})$ sono tutte indipendenti congiuntamente, quindi per un'osservazione precedente
 $H(\mathcal{P}_n)=nH(\mathcal{P})$, per cui $h(\sigma,\mathcal{P})=H(\mathcal{P})$. Dunque, per Kolmogorov-Sinai, l'entropia di 
 $BS(p_1,\dots,p_N)$ è $h(\sigma,\mathcal{P})=H(\mathcal{P})=-\sum_{i=1}^N p_i\ln p_i$.
 
@@ -178,6 +178,10 @@ Sappiamo che due sistemi misurabili isomorfi hanno la stessa entropia. Sorprende
 
 \begin{teo}[Ornstein]Se due schemi di Bernoulli hanno la stessa entropia, sono isomorfi come sistemi dinamici misurabili.
 \end{teo}
+
+\begin{esempio}$BS\pa{\frac{1}{2},\frac{1}{8},\frac{1}{8},\frac{1}{8},\frac{1}{8}}$ e $BS\pa{\frac{1}{4},\frac{1}{4},\frac{1}{4},\frac{1}{4}}$
+hanno la stessa entropia, pari a $2\ln 2$, dunque per Ornstein sono isomorfi.
+\end{esempio}
 
 \subsection{Entropia topologica}
 
@@ -236,12 +240,12 @@ Quindi $\limsup_{n\to\infty}\frac{1}{n}\ln r(n,\delta,f^m)\ge m\limsup_{n\to\inf
 \begin{esempio}L'entropia può anche essere infinita. Consideriamo ad esempio
 \[ X:=\set{x\in\ell^2(\N):\abs{x_i}\le 2^{-i}} \]
 (compatto) con l'endomorfismo $f:X\to X$, $\pa{f(x)}_i:=2x_{i+1}$. \Eacc $r\pa{n,\frac{1}{k}}>k^n$:
-infatti $d_n(x,y)\ge\max_{0\le k\le n}\abs{\pa{f^k(x)}_0-\pa{f^k(y)}_0}=\max_{0\le k\le n}2^k\abs{x_k-y_k}$,
-quindi, se $S$ è $\pa{n,\frac{1}{k}}$-spanning, scegliendo
-\[ x=\sum_{k=0}^n\alpha_k 2^{-k}e_k \]
-(con $\abs{\alpha_k}\le 1$) deve esistere un $y\in S$ tale che $\abs{x_k-y_k}<\frac{1}{2^k\cdot k}$,
-cioè $\abs{\alpha_k-(2^k y_k)}<\frac{1}{k}$ per $0\le k\le n$.
-Ma gli $\alpha_k$ variano in modo arbitrario su $[-1,1]$, quindi
+infatti $d_n(x,y)\ge\max_{0\le j\le n}\abs{\pa{f^j(x)}_0-\pa{f^j(y)}_0}=\max_{0\le j\le n}2^j\abs{x_j-y_j}$,
+quindi se $S$ è $\pa{n,\frac{1}{k}}$-spanning scegliendo
+\[ x=\sum_{j=0}^n\alpha_j 2^{-j}e_j \]
+(con $\abs{\alpha_j}\le 1$) deve esistere un $y\in S$ tale che $\abs{x_j-y_j}<\frac{1}{2^j\cdot k}$,
+cioè $\abs{\alpha_j-(2^j y_j)}<\frac{1}{k}$ per $0\le j\le n$.
+Ma gli $\alpha_j$ variano in modo arbitrario su $[-1,1]$, quindi
 \[ [-1,1]^{n+1}\subseteq \bigcup_{y\in S}B\pa{\pi(y),\frac{1}{k}}, \]
 dove $\pi(y)=(y_0,2y_1,\dots,2^n y_n)\in \R^{n+1}$ e le palle sono rispetto alla norma $\norm{\fantasma{a}}_\infty$.
 Confrontando le misure, $2^{n+1}\le \abs{S}\cdot\pa{\frac{2}{k}}^{n+1}$ $\implica$ $\abs{S}\ge k^{n+1}$, che è la tesi. 
@@ -261,9 +265,9 @@ Allora $h_{top}(f)=\lim_{\epsilon\to 0}\limsup_{n\to\infty}\frac{1}{n}\ln s(n,\e
 \begin{proof}Sia $A$ un insieme che realizza $s(n,\epsilon)$. $A$ è anche $(n,\epsilon)$-spanning:
 ogni $x\in X\setminus A$ dista (nel senso di $d_n$) meno di $\epsilon$ da un elemento di $A$, altrimenti $A$
 non sarebbe massimale. Quindi $r(n,\epsilon)\le s(n,\epsilon)$. \\
-Inoltre $s(n,2\epsilon)\le r(n,\epsilon)$: siano $A$ è $(n,2\epsilon)$-separato
-e $S=\set{x_1,\dots,x_k}$ è $(n,\epsilon)$-spanning; osserviamo che in realtà
-$S$ è $(n,\epsilon')$-spanning per qualche $\epsilon'<\epsilon$ (per compattezza di $X$),
+Inoltre $s(n,2\epsilon)\le r(n,\epsilon)$: siano $A$ $(n,2\epsilon)$-separato
+e $S=\set{x_1,\dots,x_k}$ $(n,\epsilon)$-spanning; osserviamo che in realtà
+$S$ è anche $(n,\epsilon')$-spanning per qualche $\epsilon'<\epsilon$ (per compattezza di $X$),
 quindi $\set{B(x_i,\epsilon',n)\mid i=1,\dots,k}$ è un ricoprimento con diametro massimo (rispetto a $d_n$) $\le 2\epsilon'$,
 perciò ogni palla $B(x_i,\epsilon',n)$ contiene al più un elemento di $A$.
 Da ciò segue che $\abs{A}\le\abs{S}$. \\
@@ -276,8 +280,8 @@ Dato un ricoprimento aperto $\alpha$, chiamiamo $N(\alpha)$ la cardinalità mini
 (finita per compattezza).
 \end{defi}
 
-\begin{oss}$N(\alpha\vee\beta)\le N(\alpha)N(\beta)$ e $N\pa{f^{-1}(\alpha)}\le N(\alpha)$
-(qui $f^{-1}(\alpha)=\set{f^{-1}(A)\mid A\in\alpha}$). \\
+\begin{oss}$N(\alpha\vee\beta)\le N(\alpha)N(\beta)$ e $N\pa{f^{-1}(\alpha)}\le N(\alpha)$,
+intendendo che $f^{-1}(\alpha)=\set{f^{-1}(A)\mid A\in\alpha}$. \\
 Dunque, ponendo temporaneamente $a(n):=\ln N\pa{\bigvee_{i=0}^{n-1}f^{-i}(\alpha)}$,
 \[ a(m+n)\le\ln N\pa{\bigvee_{i=0}^{m-1}f^{-i}(\alpha)}+\ln N\pa{f^{-m}\pa{\bigvee_{i=0}^{n-1}f^{-i}(\alpha)}}
 \le a(m)+a(n). \]
@@ -291,13 +295,13 @@ di Kolmogorov-Sinai:
 \end{teo}
 
 \begin{proof}[Dimostrazione (facoltativa)]Sia $H$ il secondo membro della tesi. \\
-Dato $\alpha=\set{A_i}$ ricoprimento aperto, chiamiamo $\delta>0$ il numero di Lebesgue
+Dato $\alpha=\set{A_i}$ ricoprimento aperto, chiamiamo $2\delta>0$ il numero di Lebesgue
 associato. Sia ora $S\subseteq X$ $(n-1,\delta)$-spanning; per ogni $x\in S$ e ogni $0\le k\le n-1$ esiste $i_k$ per cui
 $B(f^k(x),\delta)\subseteq A_{i_k}$, ovvero
 \[ B(x,\delta,n-1)=\bigcap_{k=0}^{n-1} f^{-k}\pa{B\pa{f^k(x),\delta}}\subseteq\bigcap_{k=0}^{n-1} f^{-k}\pa{A_{i_k}}. \]
 Dunque $\mathcal{U}:=\set{B(x,\delta,n-1)\mid x\in S}$ è un raffinamento di $\bigvee_{i=0}^{n-1}f^{-i}(\alpha)$,
 da cui segue che $\abs{S}\ge N\pa{\bigvee_{i=0}^{n-1}f^{-i}(\alpha)}$ (per ogni elemento di $\mathcal{U}$
-scelgo un elemento di $\bigvee_{i=0}^{n-1}f^{-i}(\alpha)$ che lo include e, siccome $\mathcal{U}$ è anche un ricoprimento,
+scelgo un elemento di $\bigvee_{i=0}^{n-1}f^{-i}(\alpha)$ che lo include e, siccome $\mathcal{U}$ è un ricoprimento,
 i sovrainsiemi scelti ricoprono $X$). Infine
 \[ h_{top}(f)\ge\limsup_{n\to\infty}\frac{1}{n}\ln r(n-1,\delta)
 \ge\limsup_{n\to\infty}\frac{1}{n}\ln N\pa{\bigvee_{i=0}^{n-1}f^{-i}(\alpha)} \]
@@ -319,6 +323,8 @@ Concludiamo con il teorema più importante sull'entropia topologica:
 Dunque è anche invariante per coniugazione.
 \end{teo}
 
+Questo risultato segue già dall'ultima caratterizzazione dell'entropia topologica, ma ne diamo una dimostrazione più semplice.
+
 \begin{proof}Siano $d$ e $d'$ due metriche che inducono la stessa topologia di $X$ (compatto).
 Fissiamo $\epsilon>0$ e poniamo
 \[ D_\epsilon:=\set{(x,y)\in X\times X:d(x,y)\ge\epsilon}. \]
@@ -332,7 +338,7 @@ Quindi, per ogni $x\in X$, $B_{d'}(x,\delta')\subseteq B_d(x,\epsilon)$ e deduci
 Ma allora un insieme $(n,\delta')$-spanning (per $d'$) è $(n,\epsilon)$-spanning (per $d$), da cui
 $r_{d'}(n,\delta')\ge r_d(n,\epsilon)$ e infine
 \[ h_{top}(f,d)=\sup_\epsilon \limsup_{n\to\infty}\frac{1}{n}\ln r_d(n,\epsilon)
-\le \sup_\delta'\limsup_{n\to\infty}\frac{1}{n}\ln r_{d'}(n,\delta')=h_{top}(f,d'). \]
+\le \sup_{\delta'}\limsup_{n\to\infty}\frac{1}{n}\ln r_{d'}(n,\delta')=h_{top}(f,d'). \]
 Scambiando i ruoli di $d$ e $d'$ otteniamo anche la disuguaglianza opposta.
 \end{proof}
 
@@ -364,7 +370,7 @@ Altri fatti interessanti (sull'entropia di Kolmogorov-Sinai):
 
 \begin{teo}[Shannon-Breiman-McMillan]Siano $(X,\mathcal{A},\mu,f)$ ergodico e $\alpha$ una partizione misurabile finita.
 Fissato $x\in X$, indichiamo con $\alpha^n(x)$ l'elemento di $\bigvee_{i=0}^{n-1}f^{-i}(\alpha)$ che contiene $x$
-(è ben definito per q.o. $x$). Sia $h_{KS}(f,\alpha):=\lim_{n\to\infty}\frac{1}{n}H\pa{\vee_{i=0}^{n-1}f^{-k}(\alpha)}$
+(è ben definito per q.o. $x$). Sia $h_{KS}(f,\alpha):=\lim_{n\to\infty}\frac{1}{n}H\pa{\bigvee_{i=0}^{n-1}f^{-k}(\alpha)}$
 l'entropia relativa alla partizione $\alpha$. Allora, per q.o. $x$,
 \[ h_{KS}(f,\alpha)=\lim_{n\to\infty}-\frac{1}{n}\ln \mu\pa{\alpha^n(x)}. \]
 \end{teo}
@@ -390,8 +396,8 @@ delle misure di probabilità $f$-invarianti. Vale
 \subsection{Catene di Markov}
 
 Consideriamo un grafo \emph{diretto} $\Gamma$ su $N$ nodi, cioè in simboli $\Gamma\subseteq\set{1,\dots,N}^2$
-(un arco può anche collegare un nodo a se stesso). La sua \emph{matrice di adiacenza} $A\in\R^{N\times N}$
-è $a_{ij}:=\begin{cases}1 & \text{se }(i,j)\in\Gamma \\ 0 & \text{altrimenti}\end{cases}$. \\
+(un arco può anche collegare un nodo a se stesso). La sua \emph{matrice di adiacenza} $A\in\R^{N\times N}$ è
+\[ a_{ij}:=\begin{cases}1 & \text{se }(i,j)\in\Gamma \\ 0 & \text{altrimenti}\end{cases} \] \\
 Sia ora $\Sigma_A:=\set{x\in\set{1,\dots,N}^{\Z}:(x_i,x_{i+1})\in\Gamma}$, ovvero l'insieme dei cammini biinfiniti
 su $\Gamma$, e poniamo $\sigma_A:=\restr{\sigma}{\Sigma_A}$ (restrizione dello shift sinistro). \\
 Mettiamo su $\set{1,\dots,N}^{\Z}$ la distanza $d(x,y):=2^{-\min\set{\abs{i}:x_i\neq y_i}}$, che lo rende
@@ -409,21 +415,22 @@ esiste $k\ge 0$ tale che $(A^k)_{ij}>0$ per ogni $i,j$.
 \end{defi}
 
 \begin{oss}Se $A$ è irriducibile, $I+A$ è primitiva (lo si vede sviluppando una potenza alta di $I+A$ con il binomio di Newton). \\
-Se $A$ è primitiva e $A^k$ ha tutti i coefficienti $>0$, allora anche $A^h$ ha tutti i coefficienti $>0$ per ogni $k\ge h$.
+Se $A$ è primitiva e $A^k$ ha tutti i coefficienti $>0$, allora anche $A^h$ ha tutti i coefficienti $>0$ per ogni $h\ge k$.
 \end{oss}
 
-\begin{oss}$A$ è primitiva se e solo se $\Gamma$ è fortemente connesso, cioè se da ogni nodo si può raggiungere ogni altro nodo.
+\begin{oss}$A$ è irriducibile se e solo se $\Gamma$ è fortemente connesso, cioè se da ogni nodo si può raggiungere ogni altro nodo.
 Infatti $(A^k)_{ij}>0$ se e solo se si può andare dal nodo $i$ al nodo $j$ con un cammino di esattamente $k$ passi.
 \end{oss}
 
 \begin{teo}[Perron-Frobenius]Se $A$ è primitiva, esiste un autovalore $\lambda_A>0$ tale che
 \begin{itemize}
 	\item $\abs{\lambda}<\lambda_A$ per ogni altro autovalore $\lambda\neq\lambda_A$
-	\item gli autovettori destri e sinistri di $\lambda_A$ sono $>0$ (cioè hanno tutte le componenti positive) e sono unici
+	\item gli autovettori destri e sinistri di $\lambda_A$ sono $>0$ (cioè hanno tutte le componenti positive) e sono unici, a meno di multipli
 	\item $\lambda_A$ è una radice semplice del polinomio caratteristico $P_A(\lambda)$.
 \end{itemize}
 \end{teo}
 
+Ricordiamo che $v,w\in\R^N$ sono autovettori destro e sinistro di $\lambda_A$ se $Av=\lambda_A v$ e $w^t A=\lambda_A w^t$ rispettivamente.
 Non dimostriamo Perron-Frobenius; vediamo piuttosto come si deduce il seguente
 
 \begin{cor}Se $A\ge 0$ (coefficienti nonnegativi), esiste $\lambda_A\ge 0$ autovalore tale che
@@ -435,7 +442,7 @@ con componenti $\ge 0$.
 $A_\epsilon:=A+\epsilon J$ è primitiva per ogni $\epsilon>0$. Sia $\rho(A_\epsilon)$ il raggio spettrale di $A_\epsilon$
 (il massimo modulo degli autovalori). \\
 $\epsilon\mapsto\rho(A_\epsilon)$ è continua, così come i coefficienti del polinomio caratteristico $P_{A_\epsilon}(t)$.
-Quindi, da $P_{A_\epsilon}\pa{\rho(A_\epsilon)}=0$ (Perron-Frobenius), mandando $\epsilon\to 0$ otteniamo $P_A{\rho(A)}=0$.
+Quindi, da $P_{A_\epsilon}\pa{\rho(A_\epsilon)}=0$ (Perron-Frobenius), mandando $\epsilon\to 0$ otteniamo $P_A\pa{\rho(A)}=0$.
 Perciò $\rho(A)$ è autovalore di $A$ ed è il $\lambda_A$ cercato. \\
 Infine sia $\epsilon_n\to 0$ una successione qualsiasi. Prendiamo per ogni $n$ un autovettore destro $v_n$
 per $A_{\epsilon_n}$, con $\abs{v_n}=1$. A meno di sottosuccessioni, possiamo supporre $v_n\to v$ con $\abs{v}=1$
@@ -444,12 +451,11 @@ $Av=\lambda_A v$; infine $v\ge 0$ essendo $v_n>0$. \\
 L'esistenza di un autovettore sinistro con componenti $\ge 0$ è analoga.
 \end{proof}
 
-Ricordiamo che $v,w\in\R^N$ sono autovettori destro e sinistro di $\lambda_A$ se $Av=\lambda_A v$ e $w^t A=\lambda_A w^t$ rispettivamente.
-
-Si può dimostrare che, se $A$ è primitiva ed è la matrice di adiacenza di un grafo, la catena di Markov
+\begin{oss}Si può dimostrare che, se $A$ è primitiva ed è la matrice di adiacenza di un grafo, la catena di Markov
 $(\Sigma_A,d,\sigma_A)$ ha entropia topologica $h_{top}(\sigma_A)=\ln \lambda_A$.
+\end{oss}
 
-Torniamo alla costruzione di una misura invariante: fissato un nodo $i$, assegnamo ad ogni arco $(i,j)\in\Gamma$
+Torniamo alla costruzione di una misura invariante: fissato un nodo $i$, assegniamo ad ogni arco $(i,j)\in\Gamma$
 una qualsiasi quantità $P_{ij}\ge 0$ in modo che $\sum_j P_{ij}=1$ (poniamo $P_{ij}=0$ se $(i,j)\nin\Gamma$).
 $P_{ij}$ rappresenta la probabilità (assegnata da noi) di percorrere l'arco $(i,j)$ partendo da $i$. \\
 $P$ è una matrice $N\times N$ e $P\ge 0$. Il suo raggio spettrale è $\rho(P)=1$:
@@ -457,7 +463,7 @@ se $Pv=\lambda v$ abbiamo $\abs{\lambda}\abs{v_i}=\abs{\sum_j P_{ij}v_j}\le\sum_
 (essendo $\sum_j P_{ij}=1$), da cui $\abs{\lambda}\max_j\abs{v_j}\le\max_j\abs{v_j}$ e quindi $\abs{\lambda}\le 1$;
 d'altro canto $(1,\dots,1)$ è autovettore destro di $1$. \\
 Quindi per il corollario a Perron-Frobenius esiste un autovettore sinistro
-$p=(p_1,\dots,p_N)$ per l'autovalore $1$. \\
+$p=(p_1,\dots,p_N)$ per l'autovalore $1$.
 Fissato $i_0\in\Z$, assegniamo all'insieme cilindrico
 \[ C^{i_0,\cdots, i_0+k}_{j_0,\cdots, j_k}:=\set{x:x_{i_0}=j_0,x_{i_0+1}=j_1,\dots,x_{i_0+k}=j_k}\subseteq\set{1,\dots,N}^{\Z} \]
 la misura $p_{j_0}P_{j_0j_1}\cdots P_{j_{k-1}j_k}$
@@ -465,7 +471,7 @@ la misura $p_{j_0}P_{j_0j_1}\cdots P_{j_{k-1}j_k}$
 $p_{j_0}$ e consideriamo il movimento sul grafo come un processo di Markov).
 Estendiamo a tutti gli insiemi cilindrici per additività: è facile vedere che la buona definizione della misura sui cilindrici
 equivale al fatto che $p$ è autovettore sinistro di $P$
-(infatti essendo $C^{i_0\cdots, i_0+k}_{j_0,\cdots, j_k}=\sqcup_{j=1}^N C^{i_0-1,i_0\cdots, i_0+k}_{j,j_0,\cdots, j_k}$
+(infatti essendo $C^{i_0\cdots, i_0+k}_{j_0,\cdots, j_k}=\bigsqcup_{j=1}^N C^{i_0-1,i_0\cdots, i_0+k}_{j,j_0,\cdots, j_k}$
 vogliamo che coincidano le quantità  $p_{j_0}P_{j_0 j_1}\cdots P_{j_{k-1}j_k}$ e $\sum_j p_jP_{jj_0}\cdots P_{j_{k-1}j_k}$,
 ovvero vogliamo $\sum_j p_j P_{jj_0}=p_{j_0}$). \\
 Il teorema di estensione di Kolmogorov permette di estendere il tutto a una misura di probabilità, che è ovviamente $\sigma_A$-invariante

@@ -2,13 +2,13 @@
 
 Consideriamo il toro $d$-dimensionale $\T^d=\R^d/\Z^d$ per $d\geq 2$, $\alpha\in\R^d\smallsetminus \{0\}$. In $\T^d$ abbiamo la dinamica continua data dal flusso integrale 
 \[S^t_\alpha x=x+t\alpha \qquad \mbox{dell'equazione} \qquad \dot x=\alpha\]
-in $\R^d$ al quoziente sul toro, e la dinamica discreta ad essa strettamente collegata data dalla traslazione 
-$S_\alpha: x\mapsto x+\alpha$ in $\R^d$ al quoziente sul toro (in entrambi i casi parleremo di traslazioni sul toro). 
+in $\R^d$ passata al quoziente sul toro, e la dinamica discreta ad essa strettamente collegata data dalla traslazione 
+$S_\alpha: x\mapsto x+\alpha$ (in entrambi i casi parleremo di traslazioni sul toro). 
 Osserviamo che la misura di Haar è invariante per entrambe, e se non meglio specificato ci riferiremo a quella.
 
 \begin{defi} $\alpha=(\alpha_1,\dots,\alpha_d)$ è \emph{non risonante} se i reali $1,\alpha_1,\dots,\alpha_d$ sono linearmente indipendenti su $\Q$, ovvero
- \[\forall k\in \Z^{d+1} \qquad (1,\alpha)\cdot k=0 \Rightarrow k=0,\]
- diremo altrimenti che $\alpha$ è \emph{risonante}, e in tal caso sarà non nullo $R=\{k\in\Z^d:(1,\alpha)\cdot k=0\}$
+ \[\forall k\in \Z^{d+1} \qquad (1,\alpha)\cdot k=0 \Rightarrow k=0;\]
+ diremo altrimenti che $\alpha$ è \emph{risonante}, e in tal caso sarà non nullo $R=\{k\in\Z^{d+1}:(1,\alpha)\cdot k=0\}$
 \end{defi}
 
 \begin{teo} Le dinamiche $S^t_\alpha$ e $S_\alpha$ sono minimali se e solo se $\alpha$ è non risonante. 
@@ -30,19 +30,23 @@ Inoltre sono ergodiche se e solo se $\alpha$ è non risonante, e in tal caso son
 \end{proof}
 
 Lo stesso risultato vale se riparametrizziamo il tempo, ovvero se consideriamo invece il flusso dato da $\dot x=\phi(x)\alpha$ con $\phi\in C^1(\T^d,\R^+)$, 
-che ha le stesse orbite di $S^t$. La misura invariante è però ora $\phi(x)dx$, con $dx$ la misura di Haar.
+che ha le stesse orbite di $S^t$. La misura invariante è però ora $\frac{dx}{\phi(x)}$, con $dx$ la misura di Haar.
 
-Sia ora $\beta=(\alpha,1)\in \R^{d+1}$ non risonante e $\psi\in C^1(\T^d,\R^+)$: consideriamo il flusso in $\T^{d+1}$ dato da 
+Sia ora $\beta=(\alpha,1)\in \R^{d+1}$ non risonante e $\psi\in C^1(\T^d,\R^+)$: consideriamo il flusso in $\T^d\times\R$ dato da 
 \[(x,s)\mapsto(x,s+t) \qquad \mbox{in }\T^d\times \R\]
-al quoziente su $(x,s+\psi(x))\sim(S_\alpha,s)$. Questo flusso $S^t_{\alpha,\psi}$ è detto \emph{flusso speciale} su $\T^{d+1}$, 
-e conserva la misura $\frac{dxds}{\int_{\T^d}\psi(x)dx}$ ($dx$ su $\T^d$ e $ds$ su $\T^1$).
+passato al quoziente su $X:=\T^d\times\R/\sim$, dove $(x,s+\psi(x))\sim (S_\alpha(x),s)$. Questo flusso $S^t_{\alpha,\psi}$ è detto \emph{flusso speciale} su $\T^{d+1}$ 
+e conserva la misura $\frac{dxds}{\int_{\T^d}\psi(x)dx}$ ($dx$ su $\T^d$ e $ds$ su $\R$).
 
 \begin{teo}Il flusso speciale $S^t_{\alpha,\psi}$ è $C^r$-coniugato a $S^t_\beta$, ovvero
- \[\exists h\in C^r(\T^{d+1},\T^{d+1}):\quad \forall t \quad S^t_{\alpha,\psi}h=hS^t_\beta\]
+ \[\exists h\in C^r(\T^{d+1},X):\quad \forall t \quad S^t_{\alpha,\psi}h=hS^t_\beta\]
  se e solo se esiste una soluzione $\chi\in C^r(\T^d,\R^+)$ dell'\emph{equazione coomologica}
  \[\psi(x)-\int_{\T^d}\psi(x)dx=\chi(x)-\chi(x+\alpha)\]
  (soluzione che sarà unica se $\chi$ ha media nulla).
 \end{teo}
+
+L'idea della dimostrazione (che omettiamo) è che i due sistemi sono coniugati se e solo se esiste una \emph{sezione di Poincaré} su $X$,
+ovvero una $\chi:\T^d\to\R$ tale che, partendo da un punto $x$ del suo grafico $\Gamma(\chi)$ (proiettato su $X$), il tempo di ritorno a $\Gamma(\chi)$
+sia costante al variare di $x$.
 
 Studieremo per $d=1$ il legame tra l'equazione coomologica e le proprietà di $\alpha$. Premettiamo un lemma sulle serie di Fourier.
 
@@ -50,16 +54,16 @@ Studieremo per $d=1$ il legame tra l'equazione coomologica e le proprietà di $\
 \begin{lista}
  \item $\chi\in C^\infty$ se e solo se i suoi coefficienti sono \emph{a decrescenza rapida}, ovvero
       \[\forall N\in \N\quad \exists C_N>0: \quad \forall n \quad \left|\hat\chi_n\right|\leq\frac{C_N}{(1+|n|)^N}\]
- \item $\chi$ è analitica, ovvero esiste un intorno di $T^1=\R/\Z$ in $\C/\Z$ su cui $\chi$ si estende a una funzione olomorfa, se e solo se esistono $M,\delta>0$ tali che $\forall n \quad \left|\hat\chi_n\right|\leq Me^{-\delta |n|}$.
+ \item $\chi$ è analitica, ovvero esiste un intorno di $\T^1=\R/\Z$ in $\C/\Z$ su cui $\chi$ si estende a una funzione olomorfa, se e solo se esistono $M,\delta>0$ tali che $\forall n \quad \left|\hat\chi_n\right|\leq Me^{-\delta |n|}$.
 \end{lista}
 \end{teo}
 \begin{proof}
- Per il primo punto, se $\chi\in C^\infty$ integrando per parti si ottiene
+ Per il primo punto, se $\chi\in C^\infty$ integrando per parti si ottiene (per $n\neq 0$)
  \[\hat\chi_n=\frac{1}{2\pi in}\int_0^1\chi'(x)e^{-2\pi inx}dx \quad \Rightarrow \quad \left|\hat\chi_n\right|\leq \frac{1}{2\pi |n|}\left|\widehat{\chi_n'}\right|\]
  da cui la tesi iterando; il viceversa è immediato perchè le stime sui $\hat\chi_n$ danno convergenza uniforme per le derivate.
- Il secondo punto. Se $\chi$ è analitica, sia $\chi(z)$ olomorfa sul rettangolo di vertici $0, 1,1+i\delta,i\delta$: orientiamo il bordo $\Gamma$ in senso antiorario e applichiamo il teorema di Cauchy ottenendo
+ Vediamo il secondo punto. Se $\chi$ è analitica, sia $\chi(z)$ olomorfa sul rettangolo di vertici $0, 1,1+i\delta,i\delta$: orientiamo il bordo $\Gamma$ in senso antiorario e applichiamo il teorema di Cauchy ottenendo
  \[\int_\Gamma \chi(z)e^{-2\pi inz}dz=0 \quad \Rightarrow \quad \hat\chi_n=\int_0^1\chi(x)e^{-2\pi inx}dx=\int_0^1\chi(x+i\delta)e^{-2\pi in(x+i\delta)}dx\]
- ricordando che in $\C/\Z$ i bordi verticali del rettangolo coincidono, da cui il controllo cercato. Per gli $n$ pari invece si prende il rettangolo \emph{sotto} il segmento $[0,1]$, orientandolo in senso orario. Per il viceversa basta osservare che dalle stime si ha che $\chi$ è somma convergente di funzioni olomorfe. 
+ ricordando che in $\C/\Z$ i bordi verticali del rettangolo coincidono, da cui il controllo cercato per $n<0$. Per gli $n>0$ invece si prende il rettangolo \emph{sotto} il segmento $[0,1]$, orientandolo in senso orario. Per il viceversa basta osservare che dalle stime si ha che $\chi$ è somma convergente di funzioni olomorfe in un intorno di $\R/\Z$.
 \end{proof}
 
 Usiamo questa caratterizzazione per dare due criteri aritmetici su $\alpha$ che garantiscono
@@ -93,8 +97,8 @@ abbiamo $\norm{n\alpha}\ge\norm{q_k\alpha}$ dove $q_k\le n<q_{k+1}$. Inoltre
 \[ \norm{q_k\alpha}=\frac{1}{q_{k+1}+q_k\alpha_{k+1}}\sim\frac{1}{q_{k+1}} \]
 ($0<\alpha_{k+1}<1$ si ottiene applicando $k+1$ volte la mappa di Gauss a $\set{\alpha}$).
 L'ipotesi dice che $\abs{\widehat{\psi}(n)}\le Ce^{-\delta n}$, quindi come nel punto precedente otteniamo
-\[ \abs{\widehat{\chi}(n)}=\frac{\abs{\widehat{\psi}(n)}}{\abs{1-e^{2\pi i n\alpha}}}\lesssim Ce^{-\delta n}\norm{n\alpha}^{-1}
-\lesssim Ce^{-\delta n}q_{k+1} \]
+\[ \abs{\widehat{\chi}(n)}=\frac{\abs{\widehat{\psi}(n)}}{\abs{1-e^{2\pi i n\alpha}}}\lesssim e^{-\delta n}\norm{n\alpha}^{-1}
+\lesssim e^{-\delta n}q_{k+1} \]
 e per concludere basta ad esempio $q_{k+1}\le e^{\frac{\delta}{2}n}$ definitivamente.
 Ma per ipotesi $\ln q_{k+1}\le \frac{\delta}{2}q_k\le\frac{\delta}{2}n$ definitivamente. \\
 $(\Leftarrow)$: per assurdo esista $\delta>0$ e una successione $k_j\uparrow\infty$ tale che
@@ -134,9 +138,10 @@ con $F(x,u):=\pa{f(x),u+\phi(x)}$. $(X,\phi)$ è un fattore di $(X\times\R,F)$.
 Nelle iterate di $F$ compaiono proprio le somme di Birkhoff:
 \[ F^n(x,u)=\pa{f^n(x),u+\sum_{j=0}^{n-1}(\phi\circ f^j)(x)}. \]
 L'ipotesi dice che la chiusura dell'orbita positiva di $(x_0,0)$, in simboli
-$M:=\obar{\set{F^n(x_0,0)\mid n\ge 0}}$, è un insieme compatto e $F$-invariante (nel senso che $F(M)\subseteq M$). \\
+\[ M:=\obar{\set{F^n(x_0,0)\mid n\ge 0}}, \]
+è un insieme compatto e $F$-invariante (nel senso che $F(M)\subseteq M$). \\
 Per il lemma di Zorn esiste un $K\subseteq M$ compatto, non vuoto e $F$-invariante che è \emph{minimale} tra gli insiemi
-con queste proprietà. La minimalità di $K$ ha diverse conseguenze:
+con queste proprietà. La minimalità di $K$ (e di $f$) ha diverse conseguenze:
 \begin{itemize}
 	\item $F(K)=K$, altrimenti $F(K)$ sarebbe compatto invariante e più piccolo di $K$;
 	\item $\pi_X(K)=X$: infatti da $\pi_X\circ F=f\circ\pi_X$ segue che $\pi_X(K)$ è $f$-invariante (e compatto),
@@ -145,11 +150,11 @@ con queste proprietà. La minimalità di $K$ ha diverse conseguenze:
 	$T_t(K)$ è $F$-invariante. Se $t\neq 0$ abbiamo $T_t(K)\nsupseteq K$ (perché $\pi_\R\pa{T_t(K)}=\pi_\R(K)+t$),
 	quindi $T_t(K)\cap K\subsetneq K$, da cui (per minimalità di $K$) $T_t(K)\cap K=\emptyset$.
 \end{itemize}
-In questo modo abbiamo dimostrato che $K$ è il grafico di una funzione $\psi:X\to\R$. La compattezza di $K$
-implica la continuità di $\psi$: se per assurdo $x_n\to x$ e $\abs{\psi(x_n)-\psi(x)}\ge\epsilon$,
+In questo modo abbiamo dimostrato che $K$ è il grafico di una funzione $\psi:X\to\R$. \\
+La compattezza di $K$ implica la continuità di $\psi$: se per assurdo $x_n\to x$ e $\abs{\psi(x_n)-\psi(x)}\ge\epsilon$,
 a meno di sottosuccessioni $\pa{x_n,\psi(x_n)}\to (x,u)\in K$ con $u\neq\psi(x)$, per cui
-$(x,u),(x,\psi(x))\in K$, contraddicendo l'ultimo punto. \\
+$(x,u),(x,\psi(x))$ $\in K$, contraddicendo l'ultimo punto. \\
 Infine l'$F$-invarianza di $K$ dice che $F(x,\psi(x))=\pa{f(x),\psi(x)+\phi(x)}\in K$, cioè (per definizione di $\psi$)
-$\psi\pa{f(x)}=\psi(x)+\phi(x)$.
+$\psi\pa{f(x)}=\psi(x)+\phi(x)$. Dunque $-\psi$ risolve l'equazione coomologica.
 \end{proof}
 
