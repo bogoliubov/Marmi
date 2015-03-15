@@ -1,7 +1,7 @@
 \section{Frazioni Continue e Mappa di Gauss}
 
 Osserviamo che un $\alpha\in\R$  \`e irrazionale se e solo se esistono tutte le iterate della mappa di Gauss $G(x)=\{\frac{1}{x}\}$ (ovvero $G^n(\alpha)$ non  \`e mai nulla). Prendiamo allora $\alpha\in\irr$ e definiamo l'$n$\emph{-esimo quoziente completo}
-\[\alpha_n=G(\alpha_{n-1}) \quad\mbox{con}\quad \alpha_0=G\left(\frac{1}{\alpha}\right)\]
+\[\alpha_n=G(\alpha_{n-1}) \quad\mbox{con}\quad \alpha_0=G\left(\frac{1}{\alpha}\right)=\set{\alpha}\]
 e l'$n$\emph{-esimo quoziente parziale}, che sar\`a sempre un intero,
 \[a_n=\frac{1}{\alpha_{n-1}}-\alpha_n=\frac{1}{\alpha_{n-1}}-G(\alpha_{n-1})=\left[\frac{1}{\alpha_{n-1}}\right] \quad \mbox{con} \quad a_0=\alpha-\alpha_0\]
 per cui abbiamo una scrittura di $\alpha$ detta \emph{frazione continua}:
@@ -15,13 +15,13 @@ Possiamo far corrispondere in modo naturale (non unico) le successioni troncate 
 \[\frac{p_n}{q_n}=[a_0,a_1,a_2,\dots,a_n]=a_0+\frac{1}{a_1+}\frac{1}{a_2+}\cdots\frac{1}{a_{n-1}+}\frac{1}{a_n}\]
 Il problema della rappresentazione non unica di numeri razionali in frazione continua, per cui ad esempio $[2,2,3]=[2,2,2,1]$, 
 si pu\`o risolvere semplicemente imponendo che il numero di termini della frazione continua sia sempre pari o sempre dispari, 
-ovvero che l'ultimo denominatore sia sempre 1, o non sia mai 1. 
+oppure che l'ultimo denominatore sia sempre 1, o non sia mai 1. 
 Per il momento non adotteremo convenzioni, essendo interessati invece a passare dalle frazioni ai razionali.
 
 \begin{teo}[Propriet\`a dei convergenti] Per ogni $n$ valgono le seguenti
 \[\begin{cases}
-   p_0=a_0 \quad p_1=a_1a_0+1 \quad p_{n}=a_np_{n-1}+p_{n-2}\\
-   q_0=1 \quad q_1=a_1 \quad q_{n}=a_nq_{n-1}+q_{n-2}
+   p_0=a_0 \qquad p_1=a_1a_0+1 \qquad p_{n}=a_np_{n-1}+p_{n-2}\\
+   q_0=1 \qquad q_1=a_1 \qquad q_{n}=a_nq_{n-1}+q_{n-2}
   \end{cases}\]
 \[p_nq_{n-1}-p_{n-1}q_n=(-1)^{n-1} \qquad p_nq_{n-2}-p_{n-2}q_n=(-1)^na_n\]
 \[\alpha=\frac{p_n+p_{n-1}\alpha_n}{q_n+q_{n-1}\alpha_n} \qquad \alpha_n=-\frac{q_n\alpha-p_n}{q_{n-1}\alpha-p_{n-1}}\]
@@ -45,13 +45,13 @@ I convergenti approssimano $\alpha$ molto bene, come vediamo con i seguenti risu
   \item se $\left|\alpha-\frac{p}{q}\right|<\frac{1}{2q^2}$ allora $p/q$  \`e un convergente.
   \end{enumerate}\end{teo}
 
-La prova di questo importante teorema non  \`e difficile, ma laboriosa. Le frazioni continue permettono anche di caratterizzare i numeri diofantei come segue:
+La dimostrazione di questo importante teorema non  \`e difficile, ma laboriosa (la omettiamo). Le frazioni continue permettono anche di caratterizzare i numeri diofantei come segue:
 \[\begin{split} CD(\tau)&=\{\alpha\in\irr:q_{n+1}=O(q_n^{1+\tau})\}\\
 			&=\{\alpha\in\irr:a_{n+1}=O(q_n^{\tau})\}\\
 			&=\{\alpha\in\irr:\alpha_n^{-1}=O(\beta_{n-1}^{-\tau})\}\\
 			&=\{\alpha\in\irr:\beta_n^{-1}=O(\beta_{n-1}^{-1-\tau})\}
 \end{split}\]
-Un altro esercizio non difficile  \`e provare che convergono $\sum^\infty\frac{\ln q_k}{q_k}$ e $\sum^\infty\frac{1}{q_k}$.
+\Eacc immediato verificare che convergono $\sum_{k=0}^\infty\frac{\ln q_k}{q_k}$ e $\sum_{k=0}^\infty\frac{1}{q_k}$.
 
 
 
@@ -68,10 +68,10 @@ Infatti $h(0)$ deve essere un estremo dell'intervallo e un punto fisso per la ma
 Dunque vale anche $h(1)=1$ e $h$ deve essere strettamente crescente.
 
 Si verifica inoltre che: 
-$$\biguni_k T^{-k}(0)=\Q_D \inter [0,1] \quad \biguni_k F^{-k}(0)=\Q \inter [0,1] \quad h\left(T^{-n}(0)\right)\subset F^{-n}(0) \text{ per ogni } n\in\N$$
+$$\biguni_k T^{-k}(0)=\Q_D \inter [0,1], \biguni_k F^{-k}(0)=\Q \inter [0,1], h\left(T^{-n}(0)\right)\subset F^{-n}(0) \text{ per ogni } n\in\N$$
 dove $\Q_D$ sono i razionali diadici.
 
-Per ogni $x\in [0,1]$, $\#T^{-1}(x)=\#F^{-1}(x)<\infty$. Perci\`o $\# T^{-n}(0)=\# F^{-n}(0)<\infty$ per ogni $n\in \N$. 
+Per ogni $x\in [0,1]$, $\#T^{-1}(x)=\#F^{-1}(x)<\infty$. Si verifica anche che $\# T^{-n}(0)=\# F^{-n}(0)<\infty$ per ogni $n\in \N$. 
 Dato che $h$ \`e strettamente crescente e $h\left(T^{-n}(0)\right)\subset F^{-n}(0)$, i valori di $h$ su $T^{-n}(0)$ sono determinati in modo unico. 
 Quindi $h$ \`e determinata in modo unico su $\Q_D \inter [0,1]$ e dunque abbiamo l'unicit\`a.
 

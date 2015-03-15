@@ -3,15 +3,15 @@
 Consideriamo $X$ spazio metrico compatto, con $\ndom X=C(X,X)$ le funzioni continue e $\aut X=\homeo X$ gli omeomorfismi. 
 Denoteremo il sistema dinamico con $(X,d,f)$, dove $d$ è la metrica dello spazio. Iniziamo con alcune definizioni generali.
 
-\begin{defi} $x\in X$ è un \emph{punto errante} se ne esiste un intorno $U$ tale che 
-\[\bigcup_n f^n(U)\cap U=\varnothing.\]
-L'insieme di tali punti è detto l'\emph{insieme errante} del sistema. Un insieme $A$ è \emph{invariante} se $f(A)\subseteq A$, 
-e per omeomorfismi si dice \emph{totalmente invariante} se lo è anche negativamente, cioè per $f^{-1}$, ovvero si ha $f^{-1}(A)=A=f(A)$. 
-Gli insiemi di $\alpha$ e $\omega$-limite ($\alpha$ solo per omeo) sono
+\begin{defi} $x\in X$ è un \emph{punto errante} se esiste un suo intorno $U$ tale che 
+\[\bigcup_{n\neq 0} f^n(U)\cap U=\varnothing.\]
+L'insieme di tali punti è detto l'\emph{insieme errante} del sistema. Un insieme $A$ è \emph{invariante} se $f(A)\subseteq A$;
+per omeomorfismi si dice \emph{totalmente invariante} se lo è anche negativamente, cioè per $f^{-1}$, ovvero si ha $f^{-1}(A)=A=f(A)$. 
+Gli insiemi di $\alpha$ e $\omega$-limite ($\alpha$ solo per omeomorfismi) sono
 \[\alpha(x)=\bigcap_{n<0}\obar{\bigcup_{m\leq n}f^m(x)}\qquad \omega(x)=\bigcap_{n>0}\obar{\bigcup_{m\geq n}f^m(x)} \]
 ovvero un $\omega$-limite è un punto $y$ limite di una sottosuccessione di $f^n(x)$. 
-Se $x\in\omega(x)$ (risp. $x\in\alpha(x)$) si dice positivamente (risp. negativamente) ricorrente, e nel caso accadano entrambe le cose si dice che $x$ è \emph{ricorrente}, 
-il che equivale a dire $x$ non errante. I punti ricorrenti sono quindi l'insieme non errante.
+Se $x\in\omega(x)$ (risp. $x\in\alpha(x)$), $x$ si dice positivamente (risp. negativamente) ricorrente. Nel caso degli endomorfismi, si dice semplicemente che $x$ è \emph{ricorrente}, 
+il che equivale a $x$ non errante. I punti ricorrenti sono quindi l'insieme non errante.
 \end{defi}
 
 \begin{esercizio}
@@ -48,7 +48,7 @@ $(4)\implica (1)$: ovvio perché l'insieme $\set{x:\obar{O_f(x)}=X}$, essendo de
 \begin{oss}\label{osstransitivita} Se $f:X\to X$ è solo continua (cioè è un endomorfismo), è facile dimostrare che le condizioni $(1)$ e $(3)$ sono
   ancora equivalenti se assumiamo che $X$ non abbia punti isolati.\newline
   Osserviamo inoltre che nel caso $f\in\homeo (X)$ la terza condizione del teorema è equivalente alla \emph{decomponibilità}: 
-  $f$ non transitiva se e solo se esistono due aperti disgiunti (totalmente) invarianti.
+  $f$ non è transitiva se e solo se esistono due aperti disgiunti (totalmente) invarianti.
 \end{oss}
 
 \begin{prop}Se $f:X\to X$ è topologicamente transitivo, gli unici \emph{integrali primi} continui (cioè
@@ -80,7 +80,7 @@ allora è anche minimale. Se inoltre $G$ è metrizzabile, è un gruppo abeliano.
 \end{lemma}
 \begin{proof}
  Se $\{g_0^kg_1\}_k$ è densa, poichè $g_0^kg=(g_0^kg_1)(g_1^{-1}g)$ si ha che l'orbita di $g$ si ottiene con una traslazione, che per ipotesi è un omeomorfismo, di un'orbita densa. 
- Per il secondo punto, abbiamo che il sottogruppo ciclico $G'=\{g_0^kg_1\}_k$ è denso, quindi poichè lo spazio è metrico si usa il criterio di continuità per successioni: 
+ Per il secondo punto, abbiamo che il sottogruppo ciclico (e quindi abeliano) $G'=\{g_0^k\mid k\in\Z\}$ è denso, ma poichè lo spazio è metrico si può usare il criterio di continuità per successioni: 
  se $g_n\rightarrow g$ e $h_n\rightarrow h$ con $g_n, h_n \in G'$, si ha $[g,h]\leftarrow [g_n,h_n]=e$, e quindi per continuità $[g,h]=e$.
 \end{proof}
 
@@ -92,7 +92,7 @@ spesso ci si riconduce nello studio dei sistemi dinamici. Consideriamo
 \[ \xymatrix{ \{0,1\}^\N \ar[r]^\sigma \ar[d]_\pi & \{0,1\}^\N \ar[d]^\pi \\ [0,1] \ar[r]_S & [0,1] } \]
  dove $S(x)=2x(\mbox{mod } 1)$ è il \emph{raddoppiamento} o \emph{dente di sega}, $\sigma(a_1,a_2,\dots)=(a_2,a_3,\dots)$ è lo \emph{shift} e 
  \[\pi(a_1,a_2,\dots)=\sum_1^\infty a_k 2^{-k}.\]
- La mappa $\pi$ è iniettiva e dunque $S$ risulta essere un sottosistema di $\sigma$. In questo modo si vede subito che il raddoppiamento è transitivo non minimale: 
+ La mappa $\pi$ è surgettiva e dunque $S$ risulta essere un fattore di $\sigma$. In questo modo si vede subito che il raddoppiamento è transitivo non minimale: 
  lavorando in $\{0,1\}^\N$, la successione ottenuta concatenando tutte le possibili parole finite di soli $0$ e $1$ (che sono numerabili) corrisponde a un punto con orbita densa; 
  invece le successioni periodiche corrispondono a punti periodici (se ne trovano di ogni ordine). 
  \Eacc importante osservare che i due sistemi non possono essere coniugati perchè $[0,1]$ è connesso e $\{0,1\}^\N$ è omeomorfo all'insieme di Cantor, 
@@ -103,8 +103,9 @@ spesso ci si riconduce nello studio dei sistemi dinamici. Consideriamo
 
 
 \begin{esempio}[Tenda e Logistic Map] Un altro esempio di dinamiche coniugate: 
-su $[0,1]$ sono coniugate tramite $h(x)=\sin^2\left(\frac{\pi x}{2}\right)$ la mappa \emph{tenda} 
-$f(x)=\begin{cases}2x \quad x\leq 1/2 \\ 2-2x \quad x\geq 1/2\end{cases}$ e la \emph{mappa logistica} $Q_4(x)=4x(1-x)$, $Q_4\circ h=h\circ f$.
+su $[0,1]$ la mappa \emph{tenda} 
+$f(x)=\begin{cases}2x & x\leq 1/2 \\ 2-2x & x\geq 1/2\end{cases}$ e la \emph{mappa logistica} $Q_4(x)=4x(1-x)$
+sono coniugate tramite $h(x)=\sin^2\left(\frac{\pi x}{2}\right)$, cioè $Q_4\circ h=h\circ f$.
 La mappa tenda è transitiva, infatti per gli intervalli della forma $\bra{\frac{i}{2^k},\frac{i+1}{2^k}}$ l'immagine
 tramite $T^n$ è definitivamente tutto $[0,1]$ (si dice che $T$ è \emph{espansiva}). Per cui anche la mappa logistica è transitiva (vedi anche il prossimo esempio).
 \end{esempio}
@@ -116,22 +117,22 @@ Infatti per qualche $h:X\to Y$ surgettiva è $gh=hf$, quindi $g^k h=h f^k$, perc
 se $x\in X$ ha orbita densa abbiamo $O_g(h(x))=h(O_f(x))$, che è un insieme denso essendo $h$ surgettiva.\newline
 Un esempio (un po' improprio perchè $S$ è discontinua) è il seguente: se
 \[S(x):=\begin{cases}2x &\text{se }0\le x<\mz \\ 2x-1 &\text{se }\mz\le x\le 1\end{cases}\]
-allora commuta il diagramma
+è il dente di sega, allora commuta il diagramma
 \[ \xymatrix{X \ar[r]^S \ar[d]_T & X \ar[d]^T \\ X \ar[r]_T & X} \]
 per cui $T$ è un fattore di $S$, e dunque abbiamo un'altra dimostrazione che $T$ è transitivo. 
 \end{esempio}
 
 
 
-\begin{esempio}[facoltativo] Avere solo integrali primi costanti non implica transitività. Sia $T:=\R^2/\Z^2$ il $2$-toro e $A\in SL(2,\Z)$ una trasformazione ergodica
+\begin{esempio}[facoltativo] Avere solo integrali primi costanti non implica la transitività. Sia $T:=\R^2/\Z^2$ il $2$-toro e $A\in SL(2,\Z)$ una trasformazione ergodica
 su $T$, ad esempio il \emph{gatto di Arnold},
-\[A=\begin{pmatrix} 2 & 1 \\ 1 & 1 \end{pmatrix}\]
-Costruiamo $X$ partendo da due copie del toro, $T$ e $T'$ e identificando (quoziente topologico) i loro elementi neutri. 
+\[A=\begin{pmatrix} 2 & 1 \\ 1 & 1 \end{pmatrix}.\]
+Costruiamo $X$ partendo da due copie del toro, $T$ e $T'$, e identificando (quoziente topologico) i loro elementi neutri. 
 La mappa su $T\sqcup T'$ che si ottiene accostando $A:T\to T$ e $A:T'\to T'$ induce una mappa $f:X\to X$.
 $f$ non è topologicamente transitiva essendo i sottospazi $T$ e $T'$ invarianti (stiamo identificando $T$ con la sua proiezione a quoziente,
 come pure $T'$).
 Un integrale primo $F:X\to \R$ però è costante: infatti che $\restr{f}{T}:T\to T$ è topologicamente transitivo 
-(essendo ergodico, vedi il relativo capitolo),
+(essendo ergodico, vedi l'Esempio \ref{gattoerg} e l'Osservazione \ref{ergtrans}),
 perciò $F$ è costante su $T$ e lo stesso vale per $T'$. Siccome (in $X$) $T$ e $T'$ si intersecano, deduciamo che $F$ è costante su tutto $X$. 
 \end{esempio}
 
@@ -157,7 +158,7 @@ perciò $F$ è costante su $T$ e lo stesso vale per $T'$. Siccome (in $X$) $T$ e
  e se questo vale $\forall x\in X$ diremo che la dinamica ha \emph{dipendenza sensibile}.
  Viceversa $(X,d,f)$ è \emph{stabile secondo Lyapunov} in $x_0\in X$ se
  \[\forall \epsilon>0 \quad \exists U \mbox{ intorno di } x_0: \quad \forall y_0\in U\quad\forall n\geq 0 \quad d(f^nx_0,f^ny_0)<\epsilon\]
- (contronominale della precedente) ovvero se le iterate $\{f^n\}$ sono equicontinue.
+ (contronominale della precedente) ovvero se le iterate $\{f^n\}$ sono equicontinue in $x_0$.
 \end{defi}
 
 \begin{teo}Se $f$ è caotica e $X$ non ha punti isolati, $f$ ha dipendenza sensibile dalle condizioni iniziali.
