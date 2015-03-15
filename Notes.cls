@@ -175,7 +175,7 @@
 \newcommand{\TODO}{\mymarginpar{TODO}}%
 
 %%% Theorems and sections style
-\newtheoremstyle{plainsc}{10pt}{10pt}{\normalfont\itshape}{}{\normalfont\smallcaps}{.}{.5em}{}
+\newtheoremstyle{plainsc}{10pt}{10pt}{\normalfont}{}{\normalfont\smallcaps}{.}{.5em}{}
 \newtheoremstyle{definitionsc}{10pt}{10pt}{\normalfont}{}{\normalfont\smallcaps}{.}{.5em}{}
 \newtheoremstyle{remarksc}{10pt}{10pt}{\normalfont}{}{\normalfont\smallcaps}{.}{.5em}{}
 
@@ -184,7 +184,7 @@
 \ifthenelse{\equal{\notes@theorem}{section}}{\newtheorem{theorem}{\notes@theoremname}[section]}{}
 \ifthenelse{\equal{\notes@theorem}{subsection}}{\newtheorem{theorem}{\notes@theoremname}[subsection]}{}
 \newtheorem{proposition}[theorem]{\notes@propositionname}
-\newtheorem{lemma}[theorem]{\notes@lemmaname}
+%\newtheorem{lemma}[theorem]{\notes@lemmaname}
 \newtheorem{corollary}[theorem]{\notes@corollaryname}
 \newtheorem{conjecture}[theorem]{\notes@conjecturename}
 \newtheorem{claim}[theorem]{\notes@claimname}
