@@ -1,7 +1,8 @@
 \section{Dinamica Misurabile}
 
 Sia $(X,\A,\mu)$ uno spazio di probabilità. Un sistema dinamico misurabile è dato da una mappa $f:X\rightarrow X$ che preserva la misura, 
-cioè tale che $f^{-1}\A\subseteq \A$ (ossia $f$ misurabile) e per ogni $A\in\A$ valga $\mu(f^{-1}A)=\mu(A)$. (Scegliamo questa definizione con $f^{-1}$ coerentemente con la nozione di misura immagine.)
+cioè tale che $f^{-1}\A\subseteq \A$ (ossia $f$ misurabile) e per ogni $A\in\A$ valga $\mu(f^{-1}A)=\mu(A)$. 
+(Scegliamo questa definizione con $f^{-1}$ coerentemente con la nozione di misura immagine.)
 I sistemi dinamici topologici considerati finora sono anche sistemi misurabili, come prova il seguente
 
 \begin{teo}[Krylov-Bogoliubov] Dati $X$ spazio metrico compatto e $f:X\to X$ continua, esiste sempre una probabilità $f$-invariante.
@@ -20,6 +21,20 @@ Verifichiamo che $\nu$ è $f$-invariante: per ogni $\phi\in C(X)$ vale
 &=\lim_{n\to\infty}\int_X\frac{\phi-\phi\circ f^n}{n}\,d\mu_n=0 \end{split} \]
 essendo $\abs{\int_X\frac{\phi-\phi\circ f^n}{n}\,d\mu_n}\le\frac{2}{n}\norm{\phi}_\infty\to 0$. Questo dice che $\nu=f_*\nu$ come elementi del duale di $C(X)$,
 quindi (siccome $C(X)'=\mathcal{M}(X)$) le misure $\nu$ e $f_*\nu$ coincidono.
+\end{proof}
+
+Dato $A\in\A$, coerentemente con la nozione di punto ricorrente in dinamica topologica, definiamo l'insieme dei punti ricorrenti di $A$ come
+\[A_r=\{x\in A: f^n(x)\in A \mbox{ frequentemente}\}.\]
+\begin{teo}[ricorrenza di Poincarè] Per ogni $a\in\A$ vale $\mu(A\smallsetminus A_r)$.\end{teo}
+\begin{proof} I punti non ricorrenti sono quelli che definitivamente non tornano in $A$, per cui abbiamo
+\[A_r=A\smallsetminus \bigcup^\infty B_n \quad \mbox{con} \quad B_n=A\smallsetminus \bigcup_{j\geq n}f^{-j}A\]
+da cui intanto abbiamo $A_r$ misurabile, inoltre i punti di $B_n$ sono punti che tornano in $A$ ma non dopo $n$, in simboli
+\[B_n\subseteq \bigcup_{j\geq 0} f^{-j}(A)\smallsetminus \bigcup_{j\geq n} f^{-j}(A)\]
+(nella prima unione è contenuto anche $A$) da cui 
+\[\begin{aligned}\mu B_n &\leq \mu\left(\bigcup_{j\geq 0} f^{-j}(A)\right)-\mu\left(\bigcup_{j\geq n} f^{-j}(A)\right)\\
+			 &=\mu\left(\bigcup_{j\geq 0} f^{-j}(A)\right)-\mu\left(f^n \bigcup_{j\geq 0} f^{-j}(A)\right)=0
+  \end{aligned}\]
+in cui l'ultimo passaggio si ha perchè $f$ preserva la misura.
 \end{proof}
 
 Una bigezione che coniuga un sistema misurabile $(X,\A,\mu,f)$ con uno qualsiasi $Y$ induce su $Y$ una misura invariante:
